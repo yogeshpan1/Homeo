@@ -1,23 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ===== Meta & Title ===== -->
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Homeo | Travel Made Easy</title>
-  <link rel="icon" type="image/png" href="images/Icon.webp">
-
-  <!-- ===== Fonts & Icons ===== -->
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet"/>
+  <link rel="icon" href="../images/topLogo.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-e7VPqzWR4CMV/7y2Sb+wq5WYKhRUnr8WqhVZc5U69UVGJ3uAQp9rxR5M8hDCcQTuLxZP02dQF+nSgRj3oeR5FQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
-  <!-- ===== Flatpickr Date Picker CSS ===== -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"/>
-
-  <!-- ===== Custom Styles ===== -->
   <style>
-    /* ===== Reset ===== */
+    /* ===== CSS: Reset ===== */
     * {
       margin: 0;
       padding: 0;
@@ -25,23 +17,28 @@
     }
 
     body {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Poppins', sans-serif;
       background-color: #f9f9f9;
       position: relative;
       min-height: 100vh;
-      padding-bottom: 200px; /* Space for footer */
+      padding-bottom: 200px;
+      color: #333;
     }
 
-    /* ===== Header / Nav Bar ===== */
+    /* ===== CSS: Header / Navigation ===== */
     header {
-      position: relative;
-      background: url("D:\AIRBNB-VCS-PROJECT\images\navBanner.jpeg") no-repeat center center;
-      background-size: cover;
-      padding: 5px 0;
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
+      background: transparent;
+      transition: all 0.3s ease;
+      padding: 20px 0;
+    }
+
+    header.scrolled {
+      background: white;
+      padding: 10px 0;
       box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     }
 
@@ -56,9 +53,15 @@
     }
 
     .logo img {
-      max-height: 100px;
+      max-height: 60px;
       width: auto;
       height: auto;
+      transition: all 0.3s ease;
+      filter: drop-shadow(0 0 5px rgba(0,0,0,0.5));
+    }
+
+    header.scrolled .logo img {
+      filter: none;
     }
 
     .nav-icons {
@@ -69,20 +72,40 @@
     }
 
     .nav-icons i {
-      font-size: 1.2rem;
+      font-size: 1.5rem;
       margin-left: 20px;
-      color: white;
       cursor: pointer;
       transition: color 0.3s ease;
+      text-shadow: 0 0 5px rgba(0,0,0,0.5);
     }
 
-    .nav-icons i:hover {
-      color: #f0f0f0;
+    /* Hamburger menu icon - orange */
+    #hamburger-menu {
+      color: #F5503D;
+      position: relative;
+      top: -5px; /* Moved up */
     }
 
-    /* ===== Hero Section ===== */
+    /* Login icon - white */
+    .fa-user {
+      color: white !important;
+    }
+
+    header.scrolled .nav-icons i {
+      text-shadow: none;
+    }
+
+    header.scrolled #hamburger-menu {
+      color: #F5503D; /* Keep orange when scrolled */
+    }
+
+    header.scrolled .fa-user {
+      color: #F5503D !important; /* Change to orange when scrolled */
+    }
+
+    /* ===== CSS: Hero Section ===== */
     #hero {
-      padding: 120px 20px 60px;
+      padding: 100px 0 80px; /* Reduced height */
       background: url('https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2074&q=80') no-repeat center center;
       background-size: cover;
       text-align: center;
@@ -90,7 +113,6 @@
       position: relative;
     }
 
-    /* Overlay for better text visibility */
     #hero::before {
       content: '';
       position: absolute;
@@ -99,6 +121,12 @@
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.4);
+      z-index: 1;
+    }
+
+    #hero > * {
+      position: relative;
+      z-index: 2;
     }
 
     #hero h1 {
@@ -106,6 +134,7 @@
       font-weight: 700;
       position: relative;
       text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+      margin-bottom: 10px;
     }
 
     #hero p {
@@ -115,20 +144,22 @@
       text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
     }
 
-    /* ===== Search Bar ===== */
+    /* ===== CSS: Search Bar ===== */
     .searchBar-container {
       position: absolute;
-      bottom: -40px; /* hangs down into white section */
+      bottom: -40px;
       left: 50%;
       transform: translateX(-50%);
       width: 100%;
       display: flex;
       justify-content: center;
+      transition: all 0.3s ease;
+      z-index: 1005; /* Increased z-index */
     }
 
     .searchBar-container.hidden {
       opacity: 0;
-      transform: translateY(-20px);
+      transform: translateX(-50%) translateY(-20px);
       pointer-events: none;
     }
 
@@ -152,12 +183,19 @@
       padding: 1rem;
       flex: 1 1 200px;
       min-width: 180px;
-      border-right: 1px solid #eee;
       position: relative;
     }
 
-    .searchBar-field:last-child {
-      border-right: none;
+    /* Add a pseudo-element for the divider line */
+    .searchBar-field:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 50%;
+      transform: translateY(-50%);
+      height: 24px;
+      width: 1px;
+      background-color: #eee;
     }
 
     .searchBar-field i {
@@ -184,9 +222,10 @@
       outline: none;
       background: transparent;
       cursor: pointer;
+      font-family: 'Poppins', sans-serif;
     }
 
-    /* ===== Search Button ===== */
+    /* ===== CSS: Search Button ===== */
     .search-button {
       background-color: #F5503D;
       color: white;
@@ -214,14 +253,14 @@
       background-color: #e04a4f;
     }
 
-    /* ===== Calendar ===== */
-     
+    /* ===== CSS: Calendar ===== */
     .flatpickr-calendar {
-      font-family: 'Roboto', sans-serif;
+      font-family: 'Poppins', sans-serif;
       border: none;
       border-radius: 12px;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
       overflow: hidden;
+      top: 50px !important; /* Force calendar to position lower */
     }
 
     .flatpickr-months {
@@ -289,10 +328,11 @@
       cursor: default;
     }
 
-    /* ===== Guest Field and Dropdown ===== */
+    /* ===== CSS: Guest Field and Dropdown ===== */
     #guest-field {
       overflow: visible;
       position: relative;
+      z-index: 1010; /* Higher z-index to ensure visibility */
     }
 
     #guest-dropdown {
@@ -300,12 +340,12 @@
       top: 100%;
       left: 0;
       margin-top: 10px;
-      width: 300px;
+      width: 350px; /* Increased width */
       background: #fff;
       box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
       border-radius: 16px;
       padding: 20px;
-      z-index: 1001;
+      z-index: 1015; /* Increased z-index to appear above everything */
       color: #333;
       font-size: 15px;
       max-height: 60vh;
@@ -399,10 +439,6 @@
       margin: 0;  
     }
 
-    .pets-row input {
-      margin-right: 8px;
-    }
-
     /* Done Button in Guest Dropdown */
     #done-btn {
       width: 100%;
@@ -417,7 +453,7 @@
       transition: background-color 0.3s ease;
     }
 
-    /* ===== Dropdown Menu (Hamburger) ===== */
+    /* ===== CSS: Dropdown Menu (Hamburger) ===== */
     .menu-dropdown {
       position: absolute;
       top: 100%;
@@ -434,6 +470,7 @@
       transform: translateY(-10px);
       transition: opacity 0.3s ease, transform 0.3s ease;
       pointer-events: none;
+      margin-top: 10px;
     }
 
     .menu-dropdown.active {
@@ -491,33 +528,34 @@
       outline-offset: 2px;
     }
 
-    /* ===== Utility Classes ===== */
+    /* ===== CSS: Utility Classes ===== */
     .hidden {
       display: none;
     }
 
-    /* ===== Mini Search Bar ===== */
+    /* ===== CSS: Mini Search Bar ===== */
     .mini-search {
-      position: absolute;
+      position: fixed;
       left: 50%;
-      top: 35%;  
-      transform: translate(-50%, -50%);
+      top: 20px;
+      transform: translateX(-50%);
       background: white;
       border-radius: 40px;
-      padding: 10px 16px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      padding: 12px 20px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
       display: flex;
       align-items: center;
       z-index: 999;
       transition: all 0.4s ease;
       opacity: 0;
       pointer-events: none;
+      width: 90%;
+      max-width: 600px;
     }
 
     .mini-search.visible {
       opacity: 1;
       pointer-events: auto;
-      transform: translateX(-50%) translateY(0);
     }
 
     .mini-btn {
@@ -525,9 +563,14 @@
       border: none;
       font-size: 15px;
       font-weight: 500;
-      padding: 12px 18px;
+      padding: 8px 12px;
       cursor: pointer;
       color: #333;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex: 1;
+      text-align: center;
     }
 
     .divider {
@@ -541,26 +584,28 @@
       background-color: #F5503D;
       border: none;
       color: white;
-      padding: 10px;
+      padding: 8px;
       border-radius: 50%;
       cursor: pointer;
-      margin-left: 10px;
-      font-size: 16px;
+      margin-left: 5px;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
     }
 
     .mini-search-icon:hover {
       background-color: #e04a4f;
     }
 
-    /* ---------------------------
-    Listing Page Styles
-    --------------------------- */
-
-    /* ===== Hotel Listings ===== */
+    /* ===== CSS: Hotel Listings ===== */
     #hotel-listings {
       padding: 3rem 2rem;
       max-width: 1200px;
-      margin: 0 auto; /* center the whole block */
+      margin: 0 auto;
+      margin-top: 60px;
     }   
 
     .listing-category {
@@ -568,10 +613,13 @@
     }
 
     .listing-category h2 {
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
-      font-weight: bold;
-      color: #333;
+      font-size: 1.8rem;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      color: #2d333f;
+      padding-bottom: 10px;
+      border-bottom: 2px solid #f0f0f0;
+      padding-left: 40px; /* Align with cards */
     }
 
     .listing-wrapper {
@@ -582,44 +630,51 @@
 
     .listing-row {
       display: flex;
-      gap: 1rem;
+      gap: 1.5rem;
       overflow-x: auto;
       scroll-behavior: smooth;
-      padding: 1rem 0;
+      padding: 1rem 0.5rem;
       scrollbar-width: none;
+      width: calc(100% - 80px);
+      margin: 0 auto;
     }
 
     .listing-row::-webkit-scrollbar {
       display: none;
     }
 
+    /* Updated card styles for 4 cards */
     .listing-card {
-      flex: 0 0 250px;
+      flex: 0 0 calc(25% - 1.5rem); /* 4 cards per row */
       background: white;
       border-radius: 12px;
-      padding: 0.75rem;
+      padding: 1rem;
       text-align: center;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
       position: relative;
       transition: all 0.3s ease;
       cursor: pointer;
       overflow: hidden;
-      max-height: 250px;
+      max-height: 380px; /* Increased to accommodate larger image */
+      min-width: 280px; /* Minimum width */
     }
 
-    /* Expanded state on hover */
-    .listing-card.expanded {
-      flex: 0 0 350px;
-      max-height: 400px;
-      z-index: 20;
+    /* Horizontal expansion on hover - centered */
+    .listing-card:hover {
+      flex: 0 0 500px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+      transform: translateY(-5px);
+      z-index: 10; /* Ensure expanded card is on top */
+      position: relative;
     }
 
+    /* Updated image container size - larger and more square */
     .listing-image {
       width: 100%;
-      height: 150px;
-      background: #ccc;
+      height: 220px; /* Increased from 180px */
+      background: #f0f0f0;
       border-radius: 10px;
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.8rem; /* Adjusted spacing */
       overflow: hidden;
       position: relative;
     }
@@ -654,6 +709,37 @@
       opacity: 1;
     }
 
+    /* Image navigation arrows */
+    .image-nav {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.8);
+      border: none;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 5;
+    }
+
+    .listing-card:hover .image-nav {
+      opacity: 1;
+    }
+
+    .image-nav.prev {
+      left: 10px;
+    }
+
+    .image-nav.next {
+      right: 10px;
+    }
+
     .slider-dot {
       width: 8px;
       height: 8px;
@@ -670,7 +756,7 @@
     .arrow {
       background: white;
       border: none;
-      font-size: 2rem;
+      font-size: 1.5rem;
       cursor: pointer;
       position: absolute;
       top: 50%;
@@ -680,6 +766,11 @@
       box-shadow: 0 2px 5px rgba(0,0,0,0.2);
       z-index: 10;
       transition: background-color 0.3s ease;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .arrow:hover {
@@ -687,68 +778,118 @@
     }
 
     .arrow.left {
-      left: -15px;
+      left: 0;
     }
 
     .arrow.right {
-      right: -15px;
+      right: 0;
     }
 
-    /* Expanded content */
+    /* Card content - reduced gap between image and title */
+    .listing-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.3rem; /* Reduced from 0.5rem */
+      color: #2d333f;
+      margin-top: 0.5rem; /* Added to compensate for reduced margin-bottom on image */
+    }
+
+    .listing-card .price {
+      font-size: 1rem;
+      color: #F5503D;
+      font-weight: 500;
+      margin-bottom: 1rem;
+    }
+
+    /* Expanded content on hover */
     .listing-details {
+      display: flex;
       max-height: 0;
       opacity: 0;
       overflow: hidden;
       transition: max-height 0.4s ease, opacity 0.4s ease;
       text-align: left;
+      gap: 20px;
+      flex-direction: column;
     }
 
-    .listing-card.expanded .listing-details {
-      max-height: 200px;
+    .listing-card:hover .listing-details {
+      max-height: 250px; /* Increased to accommodate new button */
       opacity: 1;
-      margin-top: 10px;
+      margin-top: 1rem;
+    }
+
+    .detail-left {
+      flex: 1;
+    }
+
+    .detail-right {
+      flex: 1;
     }
 
     .listing-details p {
       font-size: 14px;
       color: #555;
-      margin-bottom: 10px;
-      line-height: 1.4;
+      margin-bottom: 12px;
+      line-height: 1.5;
     }
 
     .listing-features {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
 
     .feature-tag {
       background: #f0f7ff;
       color: #0071c2;
-      padding: 4px 8px;
-      border-radius: 4px;
+      padding: 4px 10px;
+      border-radius: 20px;
       font-size: 12px;
       font-weight: 500;
+      display: inline-block;
+      margin-bottom: 5px;
     }
 
     .view-details-btn {
       background: #F5503D;
       color: white;
       border: none;
-      padding: 8px 16px;
+      padding: 10px 20px;
       border-radius: 6px;
       font-weight: 500;
       cursor: pointer;
       transition: background-color 0.3s ease;
       width: 100%;
+      font-family: 'Poppins', sans-serif;
+      margin-bottom: 10px;
     }
 
     .view-details-btn:hover {
       background: #e04a4f;
     }
 
-    /* ===== Footer ===== */
+    /* Dive Deeper Button */
+    .dive-deeper-btn {
+      background: transparent;
+      color: #F5503D;
+      border: 2px solid #F5503D;
+      padding: 10px 20px;
+      border-radius: 6px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      width: 100%;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .dive-deeper-btn:hover {
+      background: #F5503D;
+      color: white;
+    }
+
+    /* ===== CSS: Footer ===== */
     footer {
       background: #2d333f;
       color: white;
@@ -756,6 +897,7 @@
       position: absolute;
       bottom: 0;
       width: 100%;
+      margin-top: 60px;
     }
 
     .footer-content {
@@ -777,6 +919,7 @@
       font-size: 18px;
       margin-bottom: 15px;
       color: #fff;
+      font-weight: 600;
     }
 
     .footer-column ul {
@@ -791,6 +934,7 @@
       color: #cbd5e0;
       text-decoration: none;
       transition: color 0.3s ease;
+      font-weight: 300;
     }
 
     .footer-column ul li a:hover {
@@ -822,36 +966,38 @@
       color: white;
     }
 
-    /* Responsive adjustments */
-    @media (max-width: 768px) {
-      .footer-column {
-        flex: 100%;
+    /* Media queries for responsive adjustments */
+    @media (max-width: 1200px) {
+      .listing-card {
+        flex: 0 0 calc(33.333% - 1.5rem); /* 3 cards per row on medium screens */
+      }
+    }
+
+    @media (max-width: 900px) {
+      .listing-card {
+        flex: 0 0 calc(50% - 1.5rem); /* 2 cards per row on smaller screens */
+      }
+    }
+
+    @media (max-width: 600px) {
+      .listing-card {
+        flex: 0 0 100%; /* 1 card per row on mobile */
       }
       
-      .searchBar-box {
-        flex-direction: column;
-        border-radius: 16px;
-      }
-      
-      .searchBar-field {
-        border-right: none;
-        border-bottom: 1px solid #eee;
-        width: 100%;
-      }
-      
-      .searchBar-field:last-child {
-        border-bottom: none;
+      .listing-category h2 {
+        padding-left: 0;
+        text-align: center;
       }
     }
   </style>
 </head>
 <body>
 
-    <!-- ===== Header / Navigation ===== -->
+    <!-- ===== HTML: Header / Navigation ===== -->
     <header>
       <div class="container">
         <div class="logo">
-          <img src="images/Logo.png" alt="Homeo Logo" />
+          <img src="../images/Logo.png" alt="Homeo Logo" />
         </div>
 
         <!-- Mini Search Bar -->
@@ -866,7 +1012,7 @@
 
         <div class="nav-icons">
           <div class="menu-wrapper relative">
-            <i id="hamburger-menu" class="fas fa-bars" style="color: white; font-size: 24px;"></i>
+            <i id="hamburger-menu" class="fas fa-bars"></i>
             <div id="menu-dropdown" class="menu-dropdown">
               <ul>
                 <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
@@ -881,8 +1027,11 @@
       </div>
     </header>
 
-    <!-- ===== Hero Section ===== -->
+    <!-- ===== HTML: Hero Section ===== -->
     <section id="hero">
+      <h1>Find Your Perfect Getaway</h1>
+      <p>Discover amazing places to stay around the world</p>
+      
       <!-- Search Bar -->
       <div class="searchBar-container">
         <div class="searchBar-box">
@@ -970,195 +1119,544 @@
       </div>
     </section>
     
-    <!-- ===== Hotel Listings ===== -->
+    <!-- ===== HTML: Hotel Listings ===== -->
     <section id="hotel-listings">
-
-      <!-- Popular Homes -->
+      <!-- Beachfront Escapes Section -->
       <div class="listing-category">
-        <h2>Popular Homes</h2>
+        <h2>Beachfront Escapes</h2>
         <div class="listing-wrapper">
           <button class="arrow left" onclick="slide(this, -1)">&#10094;</button>
           <div class="listing-row">
-            <div class="listing-card" data-id="1">
-              <div class="listing-image">
-                <div class="image-slider">
-                  <div class="slider-image" style="background-color: #ff9999;"></div>
-                  <div class="slider-image" style="background-color: #99ff99;"></div>
-                  <div class="slider-image" style="background-color: #9999ff;"></div>
+            <!-- Card 1 -->
+            <div class="listing-card">
+                <div class="listing-image">
+                    <div class="image-slider">
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJlYWNoJTIwYm91bmdhbG93fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGJlYWNoJTIwYm91bmdhbG93fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                    </div>
+                    <button class="image-nav prev">&#10094;</button>
+                    <button class="image-nav next">&#10095;</button>
+                    <div class="slider-controls">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
                 </div>
-                <div class="slider-controls">
-                  <div class="slider-dot active"></div>
-                  <div class="slider-dot"></div>
-                  <div class="slider-dot"></div>
+                <h3>Seaside Bungalow</h3>
+                <div class="price">$145 for 2 days • ☆ 4.5</div>
+                
+                <div class="listing-details">
+                  <div class="detail-left">
+                    <p>Charming beach bungalow steps from the sand with a cozy interior and outdoor shower. Enjoy stunning ocean views from your private deck.</p>
+                  </div>
+                  <div class="detail-right">
+                    <div class="listing-features">
+                        <span class="feature-tag">2 Bedrooms</span>
+                        <span class="feature-tag">1 Bathroom</span>
+                        <span class="feature-tag">Beach Access</span>
+                        <span class="feature-tag">Outdoor Shower</span>
+                    </div>
+                    <button class="view-details-btn">View Details</button>
+                    <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                  </div>
                 </div>
-              </div>
-              <p>Luxury Beach Villa</p>
-              <span>$189 for 2 days • ⭐4.8</span>
-              
-              <!-- Expanded content on hover -->
-              <div class="listing-details">
-                <p>Beautiful beachfront property with panoramic ocean views. Features a private pool, modern amenities, and direct beach access.</p>
-                <div class="listing-features">
-                  <span class="feature-tag">3 Bedrooms</span>
-                  <span class="feature-tag">2 Bathrooms</span>
-                  <span class="feature-tag">Pool</span>
-                  <span class="feature-tag">Beachfront</span>
-                </div>
-                <button class="view-details-btn">View Details</button>
-              </div>
             </div>
-            
-            <div class="listing-card" data-id="2">
-              <div class="listing-image">
-                <div class="image-slider">
-                  <div class="slider-image" style="background-color: #ffcc99;"></div>
-                  <div class="slider-image" style="background-color: #ccff99;"></div>
-                  <div class="slider-image" style="background-color: #99ccff;"></div>
+
+            <!-- Card 2 -->
+            <div class="listing-card">
+                <div class="listing-image">
+                    <div class="image-slider">
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    </div>
+                    <button class="image-nav prev">&#10094;</button>
+                    <button class="image-nav next">&#10095;</button>
+                    <div class="slider-controls">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
                 </div>
-                <div class="slider-controls">
-                  <div class="slider-dot active"></div>
-                  <div class="slider-dot"></div>
-                  <div class="slider-dot"></div>
+                <h3>Oceanview Villa</h3>
+                <div class="price">$320 for 2 days • ☆ 4.8</div>
+                
+                <div class="listing-details">
+                  <div class="detail-left">
+                    <p>Luxury villa with panoramic ocean views, private pool, and modern amenities. Features include a gourmet kitchen and spacious living areas.</p>
+                  </div>
+                  <div class="detail-right">
+                    <div class="listing-features">
+                        <span class="feature-tag">3 Bedrooms</span>
+                        <span class="feature-tag">2 Bathrooms</span>
+                        <span class="feature-tag">Private Pool</span>
+                        <span class="feature-tag">Ocean View</span>
+                    </div>
+                    <button class="view-details-btn">View Details</button>
+                    <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                  </div>
                 </div>
-              </div>
-              <p>Mountain View Cabin</p>
-              <span>$125 for 2 days • ⭐4.6</span>
-              
-              <!-- Expanded content on hover -->
-              <div class="listing-details">
-                <p>Cozy cabin nestled in the mountains with breathtaking views. Perfect for a peaceful retreat with hiking trails nearby.</p>
-                <div class="listing-features">
-                  <span class="feature-tag">2 Bedrooms</span>
-                  <span class="feature-tag">1 Bathroom</span>
-                  <span class="feature-tag">Fireplace</span>
-                  <span class="feature-tag">Mountain View</span>
-                </div>
-                <button class="view-details-btn">View Details</button>
-              </div>
             </div>
-            
-            <!-- Additional listing cards with similar structure -->
-            <div class="listing-card" data-id="3">
-              <div class="listing-image">
-                <div class="image-slider">
-                  <div class="slider-image" style="background-color: #ff99cc;"></div>
-                  <div class="slider-image" style="background-color: #cc99ff;"></div>
-                  <div class="slider-image" style="background-color: #99ffcc;"></div>
+
+            <!-- Card 3 -->
+            <div class="listing-card">
+                <div class="listing-image">
+                    <div class="image-slider">
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGhovGVsJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJlYWNoJTIwaG91c2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    </div>
+                    <button class="image-nav prev">&#10094;</button>
+                    <button class="image-nav next">&#10095;</button>
+                    <div class="slider-controls">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
                 </div>
-                <div class="slider-controls">
-                  <div class="slider-dot active"></div>
-                  <div class="slider-dot"></div>
-                  <div class="slider-dot"></div>
+                <h3>Beach House Paradise</h3>
+                <div class="price">$280 for 2 days • ☆ 4.7</div>
+                
+                <div class="listing-details">
+                  <div class="detail-left">
+                    <p>Spacious beach house with direct beach access, perfect for families and groups. Features a large living area and beautiful deck with outdoor seating.</p>
+                  </div>
+                  <div class="detail-right">
+                    <div class="listing-features">
+                        <span class="feature-tag">4 Bedrooms</span>
+                        <span class="feature-tag">3 Bathrooms</span>
+                        <span class="feature-tag">Direct Beach Access</span>
+                        <span class="feature-tag">Family Friendly</span>
+                    </div>
+                    <button class="view-details-btn">View Details</button>
+                    <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                  </div>
                 </div>
-              </div>
-              <p>Downtown Loft</p>
-              <span>$145 for 2 days • ⭐4.7</span>
-              
-              <div class="listing-details">
-                <p>Modern loft in the heart of the city with easy access to restaurants, shopping, and entertainment venues.</p>
-                <div class="listing-features">
-                  <span class="feature-tag">1 Bedroom</span>
-                  <span class="feature-tag">1 Bathroom</span>
-                  <span class="feature-tag">City View</span>
-                  <span class="feature-tag">Parking</span>
-                </div>
-                <button class="view-details-btn">View Details</button>
-              </div>
             </div>
-            
-            <div class="listing-card" data-id="4">
-              <div class="listing-image">
-                <div class="image-slider">
-                  <div class="slider-image" style="background-color: #ffff99;"></div>
-                  <div class="slider-image" style="background-color: #99ffff;"></div>
-                  <div class="slider-image" style="background-color: #ff99ff;"></div>
+
+            <!-- Card 4 -->
+            <div class="listing-card">
+                <div class="listing-image">
+                    <div class="image-slider">
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    </div>
+                    <button class="image-nav prev">&#10094;</button>
+                    <button class="image-nav next">&#10095;</button>
+                    <div class="slider-controls">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
                 </div>
-                <div class="slider-controls">
-                  <div class="slider-dot active"></div>
-                  <div class="slider-dot"></div>
-                  <div class="slider-dot"></div>
+                <h3>Luxury Beach Resort</h3>
+                <div class="price">$420 for 2 days • ☆ 4.9</div>
+                
+                <div class="listing-details">
+                  <div class="detail-left">
+                    <p>5-star resort with premium amenities, spa services, and multiple dining options. Experience ultimate luxury in a breathtaking beachfront setting.</p>
+                  </div>
+                  <div class="detail-right">
+                    <div class="listing-features">
+                        <span class="feature-tag">1 Bedroom</span>
+                        <span class="feature-tag">1 Bathroom</span>
+                        <span class="feature-tag">Spa Access</span>
+                        <span class="feature-tag">All Inclusive</span>
+                    </div>
+                    <button class="view-details-btn">View Details</button>
+                    <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                  </div>
                 </div>
-              </div>
-              <p>Countryside Cottage</p>
-              <span>$98 for 2 days • ⭐4.4</span>
-              
-              <div class="listing-details">
-                <p>Charming cottage in the countryside surrounded by nature. Perfect for a quiet getaway with a beautiful garden.</p>
-                <div class="listing-features">
-                  <span class="feature-tag">2 Bedrooms</span>
-                  <span class="feature-tag">1 Bathroom</span>
-                  <span class="feature-tag">Garden</span>
-                  <span class="feature-tag">Pet Friendly</span>
-                </div>
-                <button class="view-details-btn">View Details</button>
-              </div>
             </div>
-            
-            <div class="listing-card" data-id="5">
-              <div class="listing-image">
-                <div class="image-slider">
-                  <div class="slider-image" style="background-color: #ccffcc;"></div>
-                  <div class="slider-image" style="background-color: #ffcccc;"></div>
-                  <div class="slider-image" style="background-color: #ccccff;"></div>
+
+            <!-- Card 5 -->
+            <div class="listing-card">
+                <div class="listing-image">
+                    <div class="image-slider">
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJlYWNoJTIwYm91bmdhbG93fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGJlYWNoJTIwYm91bmdhbG93fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                    </div>
+                    <button class="image-nav prev">&#10094;</button>
+                    <button class="image-nav next">&#10095;</button>
+                    <div class="slider-controls">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
                 </div>
-                <div class="slider-controls">
-                  <div class="slider-dot active"></div>
-                  <div class="slider-dot"></div>
-                  <div class="slider-dot"></div>
+                <h3>Sunset Bungalow</h3>
+                <div class="price">$175 for 2 days • ☆ 4.6</div>
+                
+                <div class="listing-details">
+                  <div class="detail-left">
+                    <p>Beautiful bungalow with stunning sunset views, perfect for romantic getaways. Features a cozy interior and comfortable king-sized bed.</p>
+                  </div>
+                  <div class="detail-right">
+                    <div class="listing-features">
+                        <span class="feature-tag">1 Bedroom</span>
+                        <span class="feature-tag">1 Bathroom</span>
+                        <span class="feature-tag">Sunset View</span>
+                        <span class="feature-tag">Romantic</span>
+                    </div>
+                    <button class="view-details-btn">View Details</button>
+                    <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                  </div>
                 </div>
-              </div>
-              <p>Lakeside Retreat</p>
-              <span>$167 for 2 days • ⭐4.9</span>
-              
-              <div class="listing-details">
-                <p>Beautiful lakeside property with private dock and stunning water views. Great for fishing and water activities.</p>
-                <div class="listing-features">
-                  <span class="feature-tag">3 Bedrooms</span>
-                  <span class="feature-tag">2 Bathrooms</span>
-                  <span class="feature-tag">Lake Access</span>
-                  <span class="feature-tag">Dock</span>
-                </div>
-                <button class="view-details-btn">View Details</button>
-              </div>
             </div>
-            
-            <div class="listing-card" data-id="6">
-              <div class="listing-image">
-                <div class="image-slider">
-                  <div class="slider-image" style="background-color: #ffcc66;"></div>
-                  <div class="slider-image" style="background-color: #66ffcc;"></div>
-                  <div class="slider-image" style="background-color: #cc66ff;"></div>
+
+            <!-- Card 6 -->
+            <div class="listing-card">
+                <div class="listing-image">
+                    <div class="image-slider">
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    </div>
+                    <button class="image-nav prev">&#10094;</button>
+                    <button class="image-nav next">&#10095;</button>
+                    <div class="slider-controls">
+                        <span class="slider-dot active</span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
                 </div>
-                <div class="slider-controls">
-                  <div class="slider-dot active"></div>
-                  <div class="slider-dot"></div>
-                  <div class="slider-dot"></div>
+                <h3>Beachfront Paradise</h3>
+                <div class="price">$380 for 2 days • ☆ 4.9</div>
+                
+                <div class="listing-details">
+                  <div class="detail-left">
+                    <p>Luxury beachfront property with stunning views and premium amenities. Offers direct access to the beach and a private pool.</p>
+                  </div>
+                  <div class="detail-right">
+                    <div class="listing-features">
+                        <span class="feature-tag">3 Bedrooms</span>
+                        <span class="feature-tag">2 Bathrooms</span>
+                        <span class="feature-tag">Beachfront</span>
+                        <span class="feature-tag">Luxury</span>
+                    </div>
+                    <button class="view-details-btn">View Details</button>
+                    <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                  </div>
                 </div>
-              </div>
-              <p>Urban Studio</p>
-              <span>$112 for 2 days • ⭐4.3</span>
-              
-              <div class="listing-details">
-                <p>Compact but well-designed studio apartment in a trendy neighborhood with easy access to public transportation.</p>
-                <div class="listing-features">
-                  <span class="feature-tag">Studio</span>
-                  <span class="feature-tag">1 Bathroom</span>
-                  <span class="feature-tag">Balcony</span>
-                  <span class="feature-tag">Public Transport</span>
-                </div>
-                <button class="view-details-btn">View Details</button>
-              </div>
             </div>
           </div>
           <button class="arrow right" onclick="slide(this, 1)">&#10095;</button>
         </div>
       </div>
 
-      <!-- Additional listing categories would follow the same pattern -->
-      
+      <!-- Mountain Getaways Section -->
+      <div class="listing-category">
+        <h2>Mountain Getaways</h2>
+        <div class="listing-wrapper">
+          <button class="arrow left" onclick="slide(this, -1)">&#10094;</button>
+          <div class="listing-row">
+            <!-- Card 1 -->
+            <div class="listing-card">
+                <div class="listing-image">
+                    <div class="image-slider">
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1597211833712-2e452c25e99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=c crop&w=500&q=80')"></div>
+                    </div>
+                    <button class="image-nav prev">&#10094;</button>
+                    <button class="image-nav next">&#10095;</button>
+                    <div class="slider-controls">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
+                </div>
+                <h3>Mountain View Cabin</h3>
+                <div class="price">$190 for 2 days • ☆ 4.7</div>
+                
+                <div class="listing-details">
+                  <div class="detail-left">
+                    <p>Cozy cabin nestled in the mountains with breathtaking views. Features a wood-burning fireplace and easy access to hiking trails.</p>
+                  </div>
+                  <div class="detail-right">
+                    <div class="listing-features">
+                        <span class="feature-tag">2 Bedrooms</span>
+                        <span class="feature-tag">1 Bathroom</span>
+                        <span class="feature-tag">Fireplace</span>
+                        <span class="feature-tag">Mountain View</span>
+                    </div>
+                    <button class="view-details-btn">View Details</button>
+                    <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="listing-card">
+                <div class="listing-image">
+                    <div class="image-slider">
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1vdW50YWluJTIwcmV0cmVhdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1590071089560-5d4df1fdaca5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1vdW50YWluJTIwcmV0cmVhdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1586375300770-1db2096c8d0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG1vdW50YWluJTIwcmV0cmVhdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    </div>
+                    <button class="image-nav prev">&#10094;</button>
+                    <button class="image-nav next">&#10095;</button>
+                    <div class="slider-controls">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
+                </div>
+                <h3>Alpine Retreat</h3>
+                <div class="price">$320 for 2 days • ☆ 4.9</div>
+                
+                <div class="listing-details">
+                  <div class="detail-left">
+                    <p>Luxurious mountain retreat with panoramic views, hot tub, and modern amenities. Perfect for those seeking peace and tranquility.</p>
+                  </div>
+                  <div class="detail-right">
+                    <div class="listing-features">
+                        <span class="feature-tag">3 Bedrooms</span>
+                        <span class="feature-tag">2 Bathrooms</span>
+                        <span class="feature-tag">Hot Tub</span>
+                        <span class="feature-tag">Panoramic Views</span>
+                    </div>
+                    <button class="view-details-btn">View Details</button>
+                    <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="listing-card">
+                <div class="listing-image">
+                    <div class="image-slider">
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1595877244574-e90ce41ce089?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fG1vdW50YWluJTIwbG9kZ2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1581888227590-9c6fa5c60b8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG1vdW50YWluJTIwbG9dZ2V8ZW58MHx8MHx8fDA%3D&auto-format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1590071089560-5d4df1fdaca5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1ovW50YWluJTIwcmV0cmVhdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    </div>
+                    <button class="image-nav prev">&#10094;</button>
+                    <button class="image-nav next">&#10095;</button>
+                    <div class="slider-controls">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
+                </div>
+                <h3>Mountain Lodge</h3>
+                <div class="price">$280 for 2 days • ☆ 4.8</div>
+                
+                <div class="listing-details">
+                  <div class="detail-left">
+                    <p>Spacious mountain lodge with rustic charm and modern comforts. Features a large deck with stunning mountain views and easy ski access.</p>
+                  </div>
+                  <div class="detail-right">
+                    <div class="listing-features">
+                        <span class="feature-tag">4 Bedrooms</span>
+                        <span class="feature-tag">3 Bathrooms</span>
+                        <span class="feature-tag">Ski Access</span>
+                        <span class="feature-tag">Rustic Charm</span>
+                    </div>
+                    <button class="view-details-btn">View Details</button>
+                    <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="listing-card">
+                <div class="listing-image">
+                    <div class="image-slider">
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW91bnThaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1597211833712-2e452c25e99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    </div>
+                    <button class="image-nav prev">&#10094;</button>
+                    <button class="image-nav next">&#10095;</button>
+                    <div class="slider-controls">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
+                </div>
+                <h3>Forest Cabin</h3>
+                <div class="price">$160 for 2 days • ☆ 4.6</div>
+                
+                <div class="listing-details">
+                  <div class="detail-left">
+                    <p>Secluded cabin in the forest with a peaceful atmosphere. Perfect for disconnecting and enjoying nature with hiking trails right at your doorstep.</p>
+                  </div>
+                  <div class="detail-right">
+                    <div class="listing-features">
+                        <span class="feature-tag">1 Bedroom</span>
+                        <span class="feature-tag">1 Bathroom</span>
+                        <span class="feature-tag">Secluded</span>
+                        <span class="feature-tag">Forest Access</span>
+                    </div>
+                    <button class="view-details-btn">View Details</button>
+                    <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <button class="arrow right" onclick="slide(this, 1)">&#10095;</button>
+        </div>
+      </div>
+
+      <!-- City Escapes Section -->
+      <div class="listing-category">
+        <h2>City Escapes</h2>
+        <div class="listing-wrapper">
+          <button class="arrow left" onclick="slide(this, -1)">&#10094;</button>
+          <div class="listing-row">
+            <!-- Card 1 -->
+            <div class="listing-card">
+                <div class="listing-image">
+                    <div class="image-slider">
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    </div>
+                    <button class="image-nav prev">&#10094;</button>
+                    <button class="image-nav next">&#10095;</button>
+                    <div class="slider-controls">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
+                </div>
+                <h3>Downtown Loft</h3>
+                <div class="price">$180 for 2 days • ☆ 4.7</div>
+                
+                <div class="listing-details">
+                  <div class="detail-left">
+                    <p>Modern loft in the heart of the city with easy access to restaurants, shops, and entertainment. Features high ceilings and industrial design.</p>
+                  </div>
+                  <div class="detail-right">
+                    <div class="listing-features">
+                        <span class="feature-tag">1 Bedroom</span>
+                        <span class="feature-tag">1 Bathroom</span>
+                        <span class="feature-tag">City Center</span>
+                        <span class="feature-tag">Modern Design</span>
+                    </div>
+                    <button class="view-details-btn">View Details</button>
+                    <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="listing-card">
+                <div class="listing-image">
+                    <div class="image-slider">
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0bWVntHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    </div>
+                    <button class="image-nav prev">&#10094;</button>
+                    <button class="image-nav next">&#10095;</button>
+                    <div class="slider-controls">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
+                </div>
+                <h3>Luxury Penthouse</h3>
+                <div class="price">$450 for 2 days • ☆ 4.9</div>
+                
+                <div class="listing-details">
+                  <div class="detail-left">
+                    <p>Stunning penthouse with panoramic city views, rooftop terrace, and premium amenities. Experience luxury in the heart of the city.</p>
+                  </div>
+                  <div class="detail-right">
+                    <div class="listing-features">
+                        <span class="feature-tag">2 Bedrooms</span>
+                        <span class="feature-tag">2 Bathrooms</span>
+                        <span class="feature-tag">Rooftop Terrace</span>
+                        <span class="feature-tag">Luxury</span>
+                    </div>
+                    <button class="view-details-btn">View Details</button>
+                    <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeeper</button>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="listing-card">
+                <div class="listing-image">
+                    <div class="image-slider">
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    </div>
+                    <button class="image-nav prev">&#10094;</button>
+                    <button class="image-nav next">&#10095;</button>
+                    <div class="slider-controls">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
+                </div>
+                <h3>Historic Townhouse</h3>
+                <div class="price">$280 for 2 days • ☆ 4.8</div>
+                
+                <div class="listing-details">
+                  <div class="detail-left">
+                    <p>Charming historic townhouse with original architectural details and modern updates. Located in a trendy neighborhood with easy access to attractions.</p>
+                  </div>
+                  <div class="detail-right">
+                    <div class="listing-features">
+                        <span class="feature-tag">3 Bedrooms</span>
+                        <span class="feature-tag">2 Bathrooms</span>
+                        <span class="feature-tag">Historic</span>
+                        <span class="feature-tag">Trendy Location</span>
+                    </div>
+                    <button class="view-details-btn">View Details</button>
+                    <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                  </div>
+                </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="listing-card">
+                <div class="listing-image">
+                    <div class="image-slider">
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                        <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                    </div>
+                    <button class="image-nav prev">&#10094;</button>
+                    <button class="image-nav next">&#10095;</button>
+                    <div class="slider-controls">
+                        <span class="slider-dot active"></span>
+                        <span class="slider-dot"></span>
+                        <span class="slider-dot"></span>
+                    </div>
+                </div>
+                <h3>Studio Apartment</h3>
+                <div class="price">$120 for 2 days • ☆ 4.5</div>
+                
+                <div class="listing-details">
+                  <div class="detail-left">
+                    <p>Cozy studio apartment in a convenient location. Perfect for solo travelers or couples looking to explore the city on a budget.</p>
+                  </div>
+                  <div class="detail-right">
+                    <div class="listing-features">
+                        <span class="feature-tag">Studio</span>
+                        <span class="feature-tag">1 Bathroom</span>
+                        <span class="feature-tag">Budget Friendly</span>
+                        <span class="feature-tag">Central Location</span>
+                    </div>
+                    <button class="view-details-btn">View Details</button>
+                    <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                  </div>
+                </div>
+            </div>
+          </div>
+          <button class="arrow right" onclick="slide(this, 1)">&#10095;</button>
+        </div>
+      </div>
     </section>
 
-    <!-- ===== Footer ===== -->
+    <!-- ===== HTML: Footer ===== -->
     <footer>
       <div class="footer-content">
         <div class="footer-column">
@@ -1217,227 +1715,233 @@
       </div>
     </footer>
 
-  <!-- ===== Scripts ===== -->
+  <!-- ===== JavaScript: External Libraries ===== -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
-  <script>
-    // Hotel data - in a real app, this would come from a database
-    const hotelData = {
-      1: {
-        title: "Luxury Beach Villa",
-        price: "$189 for 2 days • ⭐4.8",
-        images: ["#ff9999", "#99ff99", "#9999ff"],
-        description: "Beautiful beachfront property with panoramic ocean views. Features a private pool, modern amenities, and direct beach access.",
-        features: ["3 Bedrooms", "2 Bathrooms", "Pool", "Beachfront"]
-      },
-      // Additional hotel data would be defined here
-    };
-
-    // Initialize image sliders for each card
-    document.querySelectorAll('.listing-card').forEach(card => {
-      const slider = card.querySelector('.image-slider');
-      const dots = card.querySelectorAll('.slider-dot');
-      let currentIndex = 0;
-      
-      // Set up dots click events
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', (e) => {
-          e.stopPropagation();
-          currentIndex = index;
-          updateSlider();
-        });
-      });
-      
-      // Function to update slider position
-      function updateSlider() {
-        slider.style.transform = `translateX(-${currentIndex * 100}%)`;
-        dots.forEach((dot, index) => {
-          dot.classList.toggle('active', index === currentIndex);
-        });
-      }
-      
-      // Auto slide every 5 seconds
-      let slideInterval = setInterval(() => {
-        currentIndex = (currentIndex + 1) % dots.length;
-        updateSlider();
-      }, 5000);
-      
-      // Pause auto slide on hover
-      card.addEventListener('mouseenter', () => {
-        clearInterval(slideInterval);
-        // Expand card on hover
-        document.querySelectorAll('.listing-card').forEach(c => {
-          if (c !== card) c.classList.remove('expanded');
-        });
-        card.classList.add('expanded');
-      });
-      
-      // Resume auto slide when not hovering
-      card.addEventListener('mouseleave', () => {
-        card.classList.remove('expanded');
-        slideInterval = setInterval(() => {
-          currentIndex = (currentIndex + 1) % dots.length;
-          updateSlider();
-        }, 5000);
-      });
-    });
-    
-    // Function to slide the row of cards
-    function slide(button, direction) {
-      const row = button.parentElement.querySelector('.listing-row');
-      const scrollAmount = 220; // move one card width
-      row.scrollBy({
-        left: scrollAmount * direction,
-        behavior: 'smooth'
-      });
-    }
-  </script>
+  
+  <!-- ===== JavaScript: Custom Code ===== -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
-      // =========================
-      // Calendar: Check-in & Check-out
-      // =========================
-      const checkinInput = document.getElementById("checkin");
-      const checkoutInput = document.getElementById("checkout");
+        // =========================
+        // JavaScript: Image Sliders for Each Card
+        // =========================
+        document.querySelectorAll('.listing-card').forEach(card => {
+            const slider = card.querySelector('.image-slider');
+            const dots = card.querySelectorAll('.slider-dot');
+            const prevBtn = card.querySelector('.image-nav.prev');
+            const nextBtn = card.querySelector('.image-nav.next');
+            let currentIndex = 0;
+            const totalSlides = dots.length;
 
-      let checkoutPicker = null;
+            function updateSlider() {
+                if (!slider) return;
+                slider.style.transform = `translateX(-${currentIndex * 100}%)`;
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentIndex);
+                });
+            }
 
-      const checkinPicker = flatpickr(checkinInput, {
-        minDate: "today",
-        dateFormat: "M j, Y",
-        onOpen: () => setTimeout(() => {
-          checkinInput._flatpickr.calendarContainer.style.width = "auto";
-        }, 100),
-        onChange: function (selectedDates) {
-          if (selectedDates.length > 0) {
-            const minCheckoutDate = new Date(selectedDates[0]);
-            minCheckoutDate.setDate(minCheckoutDate.getDate() + 1);
-            checkoutPicker.set("minDate", minCheckoutDate);
-            checkoutPicker.clear();
-            setTimeout(() => checkoutPicker.open(), 200);
-          }
-        }
-      });
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentIndex = index;
+                    updateSlider();
+                });
+            });
 
-      checkoutPicker = flatpickr(checkoutInput, {
-        minDate: "today",
-        dateFormat: "M j, Y",
-        onOpen: () => setTimeout(() => {
-          checkoutInput._flatpickr.calendarContainer.style.width = "auto";
-        }, 100)
-      });
+            if (prevBtn && nextBtn) {
+                prevBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+                    updateSlider();
+                });
+                nextBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    currentIndex = (currentIndex + 1) % totalSlides;
+                    updateSlider();
+                });
+            }
 
-      // =========================
-      // Guest Dropdown
-      // =========================
-      const guestFields = document.querySelectorAll("#guest-field, #mini-guests");
-      const guestDropdown = document.getElementById("guest-dropdown");
-      const guestInput = document.getElementById("guests");
-      const doneBtn = document.getElementById("done-btn");
-      const petsCheckbox = document.getElementById("pets");
-      const counts = { adults: 2, children: 0 };
+            card.addEventListener('mouseenter', () => {
+                document.querySelectorAll('.listing-card').forEach(c => {
+                    if (c !== card) c.classList.remove('expanded');
+                });
+                card.classList.add('expanded');
+            });
 
-      guestFields.forEach(field => {
-        field.addEventListener("click", e => {
-          e.stopPropagation();
-          guestDropdown.classList.toggle("hidden");
+            card.addEventListener('mouseleave', () => {
+                card.classList.remove('expanded');
+            });
         });
-      });
 
-      guestDropdown.addEventListener("click", e => e.stopPropagation());
+        // =========================
+        // JavaScript: Function to slide the row of cards
+        // =========================
+        window.slide = function(button, direction) {
+            const row = button.parentElement.querySelector('.listing-row');
+            if (!row) return;
+            const scrollAmount = 250;
+            row.scrollBy({ left: scrollAmount * direction, behavior: 'smooth' });
+        };
 
-      document.addEventListener("click", e => {
-        if (!guestDropdown.contains(e.target)) {
-          guestDropdown.classList.add("hidden");
-        }
-      });
-
-      document.querySelectorAll(".plus, .minus").forEach(btn => {
-        btn.addEventListener("click", () => {
-          const type = btn.dataset.type;
-          const countEl = document.getElementById(`${type}-count`);
-          if (btn.classList.contains("plus")) {
-            counts[type]++;
-          } else if (counts[type] > 0) {
-            counts[type]--;
-          }
-          countEl.textContent = counts[type];
+        // =========================
+        // JavaScript: Navbar scroll effect
+        // =========================
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (!header) return;
+            header.classList.toggle('scrolled', window.scrollY > 50);
         });
-      });
 
-      doneBtn.addEventListener("click", () => {
-        const pets = petsCheckbox.checked;
-        let summary = `${counts.adults} adults · ${counts.children} children`;
-        if (pets) summary += " · pets";
-        guestInput.value = summary;
-        guestDropdown.classList.add("hidden");
-      });
+        // =========================
+        // JavaScript: Calendar: Check-in & Check-out
+        // =========================
+        const checkinInput = document.getElementById("checkin");
+        const checkoutInput = document.getElementById("checkout");
+        let checkoutPicker = null;
 
-      // =========================
-      // Clear All
-      // =========================
-      document.getElementById("clear-all-btn").addEventListener("click", () => {
-        counts.adults = 0;
-        counts.children = 0;
-        petsCheckbox.checked = false;
-        document.getElementById("adults-count").textContent = 0;
-        document.getElementById("children-count").textContent = 0;
-        guestInput.value = "";
-      });
+        if (checkinInput && checkoutInput) {
+            const checkinPicker = flatpickr(checkinInput, {
+                minDate: "today",
+                dateFormat: "M j, Y",
+                onChange: function (selectedDates) {
+                    if (selectedDates.length > 0) {
+                        const minCheckoutDate = new Date(selectedDates[0]);
+                        minCheckoutDate.setDate(minCheckoutDate.getDate() + 1);
+                        checkoutPicker.set("minDate", minCheckoutDate);
+                        checkoutPicker.clear();
+                        setTimeout(() => checkoutPicker.open(), 200);
+                    }
+                }
+            });
 
-      // =========================
-      // Hamburger Menu Dropdown
-      // =========================
-      const hamburger = document.getElementById("hamburger-menu");
-      const menuDropdown = document.getElementById("menu-dropdown");
+            checkoutPicker = flatpickr(checkoutInput, {
+                minDate: "today",
+                dateFormat: "M j, Y"
+            });
+        }
 
-      hamburger.addEventListener("click", e => {
-        e.stopPropagation();
-        menuDropdown.classList.toggle("active");
-      });
+        // =========================
+        // JavaScript: Guest Dropdown
+        // =========================
+        const guestFields = document.querySelectorAll("#guest-field, #mini-guests");
+        const guestDropdown = document.getElementById("guest-dropdown");
+        const guestInput = document.getElementById("guests");
+        const doneBtn = document.getElementById("done-btn");
+        const petsCheckbox = document.getElementById("pets");
+        const counts = { adults: 2, children: 0 };
 
-      document.addEventListener("click", () => {
-        menuDropdown.classList.remove("active");
-      });
+        if (guestDropdown && guestInput) {
+            guestFields.forEach(field => {
+                field.addEventListener("click", e => {
+                    e.stopPropagation();
+                    guestDropdown.classList.toggle("hidden");
+                });
+            });
 
-      menuDropdown.addEventListener("click", e => e.stopPropagation());
+            guestDropdown.addEventListener("click", e => e.stopPropagation());
 
-      // =========================
-      // Scroll Behavior: Mini Search Bar
-      // =========================
-      const largeSearch = document.querySelector(".searchBar-container");
-      const miniSearch = document.getElementById("mini-search-bar");
+            document.addEventListener("click", e => {
+                if (!guestDropdown.contains(e.target)) {
+                    guestDropdown.classList.add("hidden");
+                }
+            });
 
-      window.addEventListener("scroll", () => {
-        const scrolled = window.scrollY > 120;
-        largeSearch.classList.toggle("hidden", scrolled);
-        miniSearch.classList.toggle("visible", scrolled);
-      });
+            document.querySelectorAll(".plus, .minus").forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const type = btn.dataset.type;
+                    const countEl = document.getElementById(`${type}-count`);
+                    if (!countEl) return;
+                    if (btn.classList.contains("plus")) {
+                        counts[type]++;
+                    } else if (counts[type] > 0) {
+                        counts[type]--;
+                    }
+                    countEl.textContent = counts[type];
+                });
+            });
 
-      // =========================
-      // Mini Search Bar Interaction
-      // =========================
-      document.getElementById("mini-where").addEventListener("click", () => expandFullSearch("where"));
-      document.getElementById("mini-date").addEventListener("click", () => expandFullSearch("date"));
-      document.getElementById("mini-guests").addEventListener("click", () => expandFullSearch("guests"));
+            if (doneBtn) {
+                doneBtn.addEventListener("click", () => {
+                    const pets = petsCheckbox && petsCheckbox.checked;
+                    let summary = `${counts.adults} adults · ${counts.children} children`;
+                    if (pets) summary += " · pets";
+                    guestInput.value = summary;
+                    guestDropdown.classList.add("hidden");
+                });
+            }
 
-      function expandFullSearch(focusTarget) {
-        const heroOffset = document.getElementById("hero").offsetTop;
-        window.scrollTo({ top: heroOffset, behavior: "smooth" });
+            const clearBtn = document.getElementById("clear-all-btn");
+            if (clearBtn) {
+                clearBtn.addEventListener("click", () => {
+                    counts.adults = 0;
+                    counts.children = 0;
+                    if (petsCheckbox) petsCheckbox.checked = false;
+                    document.getElementById("adults-count").textContent = 0;
+                    document.getElementById("children-count").textContent = 0;
+                    guestInput.value = "";
+                });
+            }
+        }
 
-        setTimeout(() => {
-          switch (focusTarget) {
-            case "where":
-              document.getElementById("destination").focus();
-              break;
-            case "date":
-              checkinInput._flatpickr.open();
-              break;
-            case "guests":
-              guestDropdown.classList.remove("hidden");
-              break;
-          }
-        }, 200);
-      }
+        // =========================
+        // JavaScript: Hamburger Menu Dropdown
+        // =========================
+        const hamburger = document.getElementById("hamburger-menu");
+        const menuDropdown = document.getElementById("menu-dropdown");
+
+        if (hamburger && menuDropdown) {
+            hamburger.addEventListener("click", e => {
+                e.stopPropagation();
+                menuDropdown.classList.toggle("active");
+            });
+
+            document.addEventListener("click", () => {
+                menuDropdown.classList.remove("active");
+            });
+
+            menuDropdown.addEventListener("click", e => e.stopPropagation());
+        }
+
+        // =========================
+        // JavaScript: Scroll Behavior: Mini Search Bar
+        // =========================
+        const largeSearch = document.querySelector(".searchBar-container");
+        const miniSearch = document.getElementById("mini-search-bar");
+
+        if (largeSearch && miniSearch) {
+            window.addEventListener("scroll", () => {
+                const scrolled = window.scrollY > 120;
+                largeSearch.classList.toggle("hidden", scrolled);
+                miniSearch.classList.toggle("visible", scrolled);
+            });
+        }
+
+        // =========================
+        // JavaScript: Mini Search Bar Interaction
+        // =========================
+        function expandFullSearch(focusTarget) {
+            const hero = document.getElementById("hero");
+            if (!hero) return;
+            window.scrollTo({ top: hero.offsetTop, behavior: "smooth" });
+
+            setTimeout(() => {
+                switch (focusTarget) {
+                    case "where":
+                        document.getElementById("destination")?.focus();
+                        break;
+                    case "date":
+                        checkinInput?._flatpickr?.open();
+                        break;
+                    case "guests":
+                        guestDropdown?.classList.remove("hidden");
+                        break;
+                }
+            }, 200);
+        }
+
+        document.getElementById("mini-where")?.addEventListener("click", () => expandFullSearch("where"));
+        document.getElementById("mini-date")?.addEventListener("click", () => expandFullSearch("date"));
+        document.getElementById("mini-guests")?.addEventListener("click", () => expandFullSearch("guests"));
     });
   </script>
 </body>
