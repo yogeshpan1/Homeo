@@ -21,128 +21,190 @@
 </head>
 <body>
 
-  <!-- ===== Header / Navigation ===== -->
-  <header>
-    <div class="container">
-      <div class="logo">
-        <img src="images/NavLogo.webp" alt="Homeo Logo" />
-      </div>
+    <!-- ===== Header / Navigation ===== -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <img src="images/Logo.png" alt="Homeo Logo" />
+        </div>
 
-      <!-- Mini Search Bar -->
-      <div id="mini-search-bar" class="mini-search hidden">
-        <button id="mini-where" class="mini-btn">Where</button>
-        <span class="divider"></span>
-        <button id="mini-date" class="mini-btn">Date</button>
-        <span class="divider"></span>
-        <button id="mini-guests" class="mini-btn">Add Guests</button>
-        <button class="mini-search-icon"><i class="fas fa-search"></i></button>
-      </div>
+        <!-- Mini Search Bar -->
+        <div id="mini-search-bar" class="mini-search hidden">
+          <button id="mini-where" class="mini-btn">Where</button>
+          <span class="divider"></span>
+          <button id="mini-date" class="mini-btn">Date</button>
+          <span class="divider"></span>
+          <button id="mini-guests" class="mini-btn">Add Guests</button>
+          <button class="mini-search-icon"><i class="fas fa-search"></i></button>
+        </div>
 
-      <div class="nav-icons">
-        <div class="menu-wrapper relative">
-          <i id="hamburger-menu" class="fas fa-bars" style="color: white; font-size: 24px;"></i>
-          <div id="menu-dropdown" class="hidden menu-dropdown">
-            <ul>
-              <li><a href="#">Help Center</a></li>
-              <li><a href="#">Host</a></li>
-              <li><a href="#">Gift cards</a></li>
-            </ul>
-            <div class="dropdown-divider"></div>
-            <button id="login-signup-btn">Log in | Sign up</button>
+        <div class="nav-icons">
+          <div class="menu-wrapper relative">
+            <i id="hamburger-menu" class="fas fa-bars" style="color: white; font-size: 24px;"></i>
+            <div id="menu-dropdown" class="hidden menu-dropdown">
+              <ul>
+                <li><a href="#">Help Center</a></li>
+                <li><a href="#">Host</a></li>
+                <li><a href="#">Gift cards</a></li>
+              </ul>
+              <div class="dropdown-divider"></div>
+              <button id="login-signup-btn">Log in | Sign up</button>
+            </div>
           </div>
         </div>
+      </div>
+    </header>
+
+    <!-- ===== Hero Section ===== -->
+    <section id="hero">
+      <!-- Search Bar -->
+      <div class="searchBar-container">
+        <div class="searchBar-box">
+
+          <!-- Destination Input -->
+          <div class="searchBar-field">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="field-content">
+              <label>Where</label>
+              <input type="text" id="destination" placeholder="Search destinations" />
+            </div>
+          </div>
+
+          <!-- Check In Date -->
+          <div class="searchBar-field" id="checkin-field">
+            <i class="fas fa-calendar-alt"></i>
+            <div class="field-content">
+              <label>Check in</label>
+              <input type="text" id="checkin" placeholder="Add date" readonly />
+            </div>
+          </div>
+
+          <!-- Check Out Date -->
+          <div class="searchBar-field" id="checkout-field">
+            <i class="fas fa-calendar-alt"></i>
+            <div class="field-content">
+              <label>Check out</label>
+              <input type="text" id="checkout" placeholder="Add date" readonly />
+            </div>
+          </div>
+
+          <!-- Guests Selector -->
+          <div class="searchBar-field relative" id="guest-field">
+            <i class="fas fa-user-friends"></i>
+            <div class="field-content">
+              <label>Guests</label>
+              <input
+                type="text"
+                id="guests"
+                readonly
+                placeholder="Add guests"
+                class="w-full text-sm outline-none bg-transparent mt-1 cursor-pointer"
+              />
+            </div>
+
+            <!-- Guests Dropdown -->
+            <div id="guest-dropdown" class="hidden">
+              <!-- Adults -->
+              <div class="guest-row">
+                <span>Adults</span>
+                <div class="flex items-center">
+                  <button class="minus" data-type="adults">–</button>
+                  <span id="adults-count" class="count">0</span>
+                  <button class="plus" data-type="adults">+</button>
+                </div>
+              </div>
+
+              <!-- Children -->
+              <div class="guest-row">
+                <span>Children</span>
+                <div class="flex items-center">
+                  <button class="minus" data-type="children">–</button>
+                  <span id="children-count" class="count">0</span>
+                  <button class="plus" data-type="children">+</button>
+                </div>
+              </div>
+
+              <!-- Pets and Clear All -->
+              <div class="pets-row">
+                <label for="pets" class="pets-label">
+                  <input type="checkbox" id="pets" />
+                  Bringing pets
+                </label>
+                <button id="clear-all-btn" class="clear-all-btn" type="button">Clear All</button>
+              </div>
+
+              <!-- Done Button -->
+              <button id="done-btn">Done</button>
+            </div>
+          </div>
+
+          <!-- Search Button -->
+          <button class="search-button"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+    </section>
+  <!-- ===== Hotel Listings ===== -->
+  <section id="hotel-listings">
+
+    <!-- Popular Homes -->
+    <div class="listing-category">
+      <h2>Popular Homes</h2>
+      <div class="listing-wrapper">
+        <button class="arrow left" onclick="slide(this, -1)">&#10094;</button>
+        <div class="listing-row">
+          <div class="listing-card"><div class="listing-image"></div><p>Home home home</p><span>$23 for 2 days • ⭐4.1</span></div>
+          <div class="listing-card"><div class="listing-image"></div><p>Home home home</p><span>$23 for 2 days • ⭐4.1</span></div>
+          <div class="listing-card"><div class="listing-image"></div><p>Home home home</p><span>$23 for 2 days • ⭐4.1</span></div>
+          <div class="listing-card"><div class="listing-image"></div><p>Home home home</p><span>$23 for 2 days • ⭐4.1</span></div>
+          <div class="listing-card"><div class="listing-image"></div><p>Home home home</p><span>$23 for 2 days • ⭐4.1</span></div>
+        </div>
+        <button class="arrow right" onclick="slide(this, 1)">&#10095;</button>
       </div>
     </div>
-  </header>
 
-  <!-- ===== Hero Section ===== -->
-  <section id="hero">
-    <!-- Search Bar -->
-    <div class="searchBar-container">
-      <div class="searchBar-box">
-
-        <!-- Destination Input -->
-        <div class="searchBar-field">
-          <i class="fas fa-map-marker-alt"></i>
-          <div class="field-content">
-            <label>Where</label>
-            <input type="text" id="destination" placeholder="Search destinations" />
-          </div>
+    <!-- Around You -->
+    <div class="listing-category">
+      <h2>Around You</h2>
+      <div class="listing-wrapper">
+        <button class="arrow left" onclick="slide(this, -1)">&#10094;</button>
+        <div class="listing-row">
+          <div class="listing-card"><div class="listing-image"></div><p>Nearby home</p><span>$45 for 3 days • ⭐4.5</span></div>
+          <div class="listing-card"><div class="listing-image"></div><p>Nearby home</p><span>$60 for 4 days • ⭐4.3</span></div>
+          <div class="listing-card"><div class="listing-image"></div><p>Nearby home</p><span>$75 for 5 days • ⭐4.8</span></div>
+          <div class="listing-card"><div class="listing-image"></div><p>Nearby home</p><span>$50 for 2 days • ⭐4.2</span></div>
         </div>
-
-        <!-- Check In Date -->
-        <div class="searchBar-field" id="checkin-field">
-          <i class="fas fa-calendar-alt"></i>
-          <div class="field-content">
-            <label>Check in</label>
-            <input type="text" id="checkin" placeholder="Add date" readonly />
-          </div>
-        </div>
-
-        <!-- Check Out Date -->
-        <div class="searchBar-field" id="checkout-field">
-          <i class="fas fa-calendar-alt"></i>
-          <div class="field-content">
-            <label>Check out</label>
-            <input type="text" id="checkout" placeholder="Add date" readonly />
-          </div>
-        </div>
-
-        <!-- Guests Selector -->
-        <div class="searchBar-field relative" id="guest-field">
-          <i class="fas fa-user-friends"></i>
-          <div class="field-content">
-            <label>Guests</label>
-            <input
-              type="text"
-              id="guests"
-              readonly
-              placeholder="Add guests"
-              class="w-full text-sm outline-none bg-transparent mt-1 cursor-pointer"
-            />
-          </div>
-
-          <!-- Guests Dropdown -->
-          <div id="guest-dropdown" class="hidden">
-            <!-- Adults -->
-            <div class="guest-row">
-              <span>Adults</span>
-              <div class="flex items-center">
-                <button class="minus" data-type="adults">–</button>
-                <span id="adults-count" class="count">0</span>
-                <button class="plus" data-type="adults">+</button>
-              </div>
-            </div>
-
-            <!-- Children -->
-            <div class="guest-row">
-              <span>Children</span>
-              <div class="flex items-center">
-                <button class="minus" data-type="children">–</button>
-                <span id="children-count" class="count">0</span>
-                <button class="plus" data-type="children">+</button>
-              </div>
-            </div>
-
-            <!-- Pets and Clear All -->
-            <div class="pets-row">
-              <label for="pets" class="pets-label">
-                <input type="checkbox" id="pets" />
-                Bringing pets
-              </label>
-              <button id="clear-all-btn" class="clear-all-btn" type="button">Clear All</button>
-            </div>
-
-            <!-- Done Button -->
-            <button id="done-btn">Done</button>
-          </div>
-        </div>
-
-        <!-- Search Button -->
-        <button class="search-button"><i class="fas fa-search"></i></button>
+        <button class="arrow right" onclick="slide(this, 1)">&#10095;</button>
       </div>
     </div>
+
+    <!-- Traditional -->
+    <div class="listing-category">
+      <h2>Traditional</h2>
+      <div class="listing-wrapper">
+        <button class="arrow left" onclick="slide(this, -1)">&#10094;</button>
+        <div class="listing-row">
+          <div class="listing-card"><div class="listing-image"></div><p>Traditional home</p><span>$30 for 2 days • ⭐4.0</span></div>
+          <div class="listing-card"><div class="listing-image"></div><p>Traditional home</p><span>$40 for 3 days • ⭐4.2</span></div>
+          <div class="listing-card"><div class="listing-image"></div><p>Traditional home</p><span>$55 for 4 days • ⭐4.6</span></div>
+          <div class="listing-card"><div class="listing-image"></div><p>Traditional home</p><span>$25 for 1 day • ⭐3.9</span></div>
+        </div>
+        <button class="arrow right" onclick="slide(this, 1)">&#10095;</button>
+      </div>
+    </div>
+
   </section>
+
+<script>
+    function slide(button, direction) {
+      const row = button.parentElement.querySelector('.listing-row');
+      const scrollAmount = 220; // move one card width
+      row.scrollBy({
+        left: scrollAmount * direction,
+        behavior: 'smooth'
+      });
+    }
+  </script>
+
 
 
   <!-- ===== Scripts ===== -->
