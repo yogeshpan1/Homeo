@@ -77,36 +77,34 @@ signupBtn.addEventListener('click', () => {
 // Login redirect
 loginForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    let check = true;
-    loginForm.querySelectorAll('.input100').forEach(input => {
-        if (!validate(input)) {
-            showValidate(input);
-            check = false;
-        }
-    });
-    if (check) {
+
+    let email = loginForm.querySelector('input[name="email"]');
+    let pass = loginForm.querySelector('input[name="pass"]');
+
+    if (validate(email) && validate(pass)) {
         window.location.href = 'index.html';
+    } else {
+        if (!validate(email)) showValidate(email);
+        if (!validate(pass)) showValidate(pass);
     }
 });
 
 // Signup redirect
 signupForm.addEventListener('submit', function(e) {
     e.preventDefault();
-    let check = true;
-    signupForm.querySelectorAll('.input100').forEach(input => {
-        if (!validate(input)) {
-            showValidate(input);
-            check = false;
-        }
-    });
 
-    const privacy = signupForm.querySelector('input[name="privacy"]');
-    if (!privacy.checked) {
-        check = false;
-        alert('You must agree to the Privacy Policy and Terms of Service.');
-    }
+    let username = signupForm.querySelector('input[name="username"]');
+    let email = signupForm.querySelector('input[name="email"]');
+    let pass = signupForm.querySelector('input[name="pass"]');
+    let privacy = signupForm.querySelector('input[name="privacy"]');
 
-    if (check) {
+    if (validate(username) && validate(email) && validate(pass) && privacy.checked) {
         window.location.href = 'index.html';
+    } else {
+        if (!validate(username)) showValidate(username);
+        if (!validate(email)) showValidate(email);
+        if (!validate(pass)) showValidate(pass);
+        if (!privacy.checked) alert('You must agree to the Privacy Policy and Terms of Service.');
     }
 });
+
