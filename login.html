@@ -1,63 +1,114 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <title>Login Page</title>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/png" href="images copy/icons/favicon.ico">
-  <link rel="stylesheet" type="text/css" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-</head>
-<body>
-  
-  <div class="limiter">
-    <div class="container-login100">
-      <div class="wrap-login100">
+    <title>Login Page</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="images copy/icons/favicon.ico">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <style>
         
-        <!-- Left side illustration -->
-        <div class="login100-pic">
-          <img src="images copy/img-01.png" alt="IMG">
+    </style>
+</head>
+
+<body>
+
+    <div class="limiter">
+        <div class="container-login100">
+
+            <div class="wrap-login100">
+
+                <!-- Left side illustration -->
+                <div class="login100-pic">
+                    <img src="images copy/img-01.png" alt="IMG">
+                </div>
+
+                <!-- Right side forms -->
+                <div class="form-wrapper">
+
+                    <!-- Slider Toggle above forms -->
+                    <div class="form-toggle">
+                        <div id="loginBtn" class="toggle active">Login</div>
+                        <div id="signupBtn" class="toggle">Signup</div>
+                    </div>
+
+                    <!-- Login form -->
+                    <form id="loginForm" class="login100-form validate-form">
+                        <span class="login100-form-title" style="padding-top: 30px;">
+                            Member Login
+                        </span>
+
+                        <div class="wrap-input100 validate-input" data-validate="Valid email is required:ex@abc.xyz">
+                            <input class="input100" type="text" name="email" placeholder="Email">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Password is required">
+                            <input class="input100" type="password" name="pass" placeholder="Password">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-lock"></i>
+                            </span>
+                        </div>
+
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn">Login</button>
+                        </div>
+
+                        <div class="text-center p-t-12" style="margin-top: 30px;">
+                            <span class="txt1">Forgot</span>
+                            <a class="txt2" href="#"> Username / Password?</a>
+                        </div>
+                    </form>
+
+                    <form id="signupForm" class="login100-form validate-form" style="display:none;">
+                        <span class="login100-form-title" style="padding-top: 30px;">
+                            Member Signup
+                        </span>
+
+                        <div class="wrap-input100 validate-input" data-validate="Username is required">
+                            <input class="input100" type="text" name="username" placeholder="Username">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-user"></i>
+                            </span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                            <input class="input100" type="email" name="email" placeholder="Email">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-envelope"></i>
+                            </span>
+                        </div>
+
+                        <div class="wrap-input100 validate-input" data-validate="Password is required">
+                            <input class="input100" type="password" name="pass" placeholder="Password">
+                            <span class="focus-input100"></span>
+                            <span class="symbol-input100">
+                                <i class="fa fa-lock"></i>
+                            </span>
+                        </div>
+
+                        <div class="container-login100-form-btn">
+                            <button class="login100-form-btn">Signup</button>
+                        </div>
+                    </form>
+
+
+                </div>
+
+            </div>
         </div>
-
-        <!-- Right side form -->
-        <form class="login100-form validate-form">
-          <span class="login100-form-title">
-            Member Login
-          </span>
-
-          <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
-            <input class="input100" type="text" name="email" placeholder="Email">
-            <span class="focus-input100"></span>
-            <span class="symbol-input100">
-              <i class="fa fa-envelope"></i>
-            </span>
-          </div>
-
-          <div class="wrap-input100 validate-input" data-validate="Password is required">
-            <input class="input100" type="password" name="pass" placeholder="Password">
-            <span class="focus-input100"></span>
-            <span class="symbol-input100">
-              <i class="fa fa-lock"></i>
-            </span>
-          </div>
-          
-          <div class="container-login100-form-btn">
-            <button class="login100-form-btn">Login</button>
-          </div>
-
-          <div class="text-center p-t-12">
-            <span class="txt1">Forgot</span>
-            <a class="txt2" href="#"> Username / Password?</a>
-          </div>
-
-        </form>
-      </div>
     </div>
-  </div>
 
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-  <script src="js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 
-</body>
 </html>
