@@ -1,61 +1,58 @@
-
 (function ($) {
     "use strict";
 
-    
     /*==================================================================
     [ Validate ]*/
     var input = $('.validate-input .input100');
 
-    $('.validate-form').on('submit',function(){
+    $('.validate-form').on('submit', function() {
         var check = true;
 
-        for(var i=0; i<input.length; i++) {
-            if(validate(input[i]) == false){
+        for (var i = 0; i < input.length; i++) {
+            if (validate(input[i]) == false) {
                 showValidate(input[i]);
-                check=false;
+                check = false;
             }
         }
 
         return check;
     });
 
-
-    $('.validate-form .input100').each(function(){
-        $(this).focus(function(){
-           hideValidate(this);
+    $('.validate-form .input100').each(function() {
+        $(this).focus(function() {
+            hideValidate(this);
         });
     });
 
-    function validate (input) {
-        if($(input).attr('type') == 'email' || $(input).attr('name') == 'email') {
-            if($(input).val().trim().match(/^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/) == null) {
-                return false;
-            }
-        }
-        else {
-            if($(input).val().trim() == ''){
-                return false;
-            }
-        }
-    }
-
-    function showValidate(input) {
-        var thisAlert = $(input).parent();
-
-        $(thisAlert).addClass('alert-validate');
-    }
-
-    function hideValidate(input) {
-        var thisAlert = $(input).parent();
-
-        $(thisAlert).removeClass('alert-validate');
-    }
-    
-    
-
 })(jQuery);
 
+// ====================== VALIDATE FUNCTIONS (Moved outside) ======================
+function validate(input) {
+    if (input.type === 'email' || input.name === 'email') {
+        const regex = /^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{1,5}|[0-9]{1,3})(\]?)$/;
+        return regex.test(input.value.trim());
+    } else {
+        return input.value.trim() !== '';
+    }
+}
+
+function showValidate(input) {
+    if (input instanceof jQuery) {
+        input.parent().addClass('alert-validate');
+    } else {
+        input.parentElement.classList.add('alert-validate');
+    }
+}
+
+function hideValidate(input) {
+    if (input instanceof jQuery) {
+        input.parent().removeClass('alert-validate');
+    } else {
+        input.parentElement.classList.remove('alert-validate');
+    }
+}
+
+// ====================== TOGGLE FORMS ======================
 const loginBtn = document.getElementById('loginBtn');
 const signupBtn = document.getElementById('signupBtn');
 const loginForm = document.getElementById('loginForm');
@@ -73,4 +70,43 @@ signupBtn.addEventListener('click', () => {
     signupForm.style.display = 'block';
     signupBtn.classList.add('active');
     loginBtn.classList.remove('active');
+});
+
+// ====================== REDIRECT ON VALID SUBMIT ======================
+
+// Login redirect
+loginForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    let check = true;
+    loginForm.querySelectorAll('.input100').forEach(input => {
+        if (!validate(input)) {
+            showValidate(input);
+            check = false;
+        }
+    });
+    if (check) {
+        window.location.href = 'index.html';
+    }
+});
+
+// Signup redirect
+signupForm.addEventListener('submit', function(e) {
+    e.preventDefault();
+    let check = true;
+    signupForm.querySelectorAll('.input100').forEach(input => {
+        if (!validate(input)) {
+            showValidate(input);
+            check = false;
+        }
+    });
+
+    const privacy = signupForm.querySelector('input[name="privacy"]');
+    if (!privacy.checked) {
+        check = false;
+        alert('You must agree to the Privacy Policy and Terms of Service.');
+    }
+
+    if (check) {
+        window.location.href = 'index.html';
+    }
 });
