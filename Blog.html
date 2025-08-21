@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Neat Blog Layout</title>
+    <title>Homeo Blogs </title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
     <style>
@@ -11,7 +11,6 @@
             background: #f9f9f9;
             font-family: 'Inter', sans-serif;
             margin: 0;
-            /* remove 20px so footer aligns properly */
             display: flex;
             flex-direction: column;
             min-height: 100vh;
@@ -19,7 +18,6 @@
 
         .container {
             flex: 1;
-            /* makes content take available space */
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -64,8 +62,10 @@
 
         .blog-card:hover {
             transform: translateY(-4px);
-            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1), 0 12px 24px rgba(0, 0, 0, 0.18);
+            box-shadow: 0 6px 12px rgba(255, 0, 0, 0.15),
+                0 12px 24px rgba(255, 0, 0, 0.2);
         }
+
 
         .blog-card img {
             transition: transform 0.4s ease;
@@ -79,11 +79,10 @@
         .blog-card h3 {
             transition: color 0.3s ease;
             color: #222;
-            /* default */
         }
 
         .blog-card:hover h3 {
-            color: #007bff;
+            color: #ff0000;
         }
 
 
@@ -199,6 +198,44 @@
         .social-icons a:hover {
             color: white;
         }
+
+        /* ===== Responsive Styles ===== */
+        @media (max-width: 768px) {
+
+            .top-row,
+            .bottom-row {
+                flex-direction: column;
+            }
+
+            .top-row .blog-card,
+            .bottom-row .blog-card {
+                width: 100%;
+            }
+
+            .featured img,
+            .side-tall img {
+                height: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                margin: 10px;
+                gap: 12px;
+            }
+
+            .content h3 {
+                font-size: 14px;
+            }
+
+            .content p {
+                font-size: 12px;
+            }
+
+            .meta {
+                font-size: 10px;
+            }
+        }
     </style>
 </head>
 
@@ -209,51 +246,64 @@
         <!-- Top row -->
         <div class="top-row">
             <div class="blog-card featured">
-                <img src="https://picsum.photos/id/1018/800/500" alt="">
-                <div class="content">
-                    <h3>10 Must-Have Amenities for Your Beach Rental</h3>
-                    <p>Transform your coastal property into a guest favorite with these essential amenities.</p>
-                    <div class="meta">By Sarah Chen · Dec 15, 2024 · 5 min read</div>
-                </div>
+                <a href="Blog1.html">
+                    <img src="../AIRBNB-VCS-PROJECT/images/Blog1.jpeg" alt="">
+                    <div class="content">
+                        <h3>Hidden Gems of Nepal: Beyond the Crowded Trails</h3>
+                        <p>Nepal is famous for the Himalayas and iconic trekking routes like Everest Base Camp and
+                            Annapurna Circuit</p>
+                        <div class="meta">By Arjan Regmi · Dec 15, 2024 · 5 min read</div>
+                    </div>
+                </a>
+
             </div>
 
             <div class="blog-card">
-                <img src="https://picsum.photos/id/1025/600/800" alt="">
-                <div class="content">
-                    <h3>Hidden Gems: Europe’s Most Charming City Escapes</h3>
-                    <p>Discover enchanting destinations perfect for your next getaway.</p>
-                    <div class="meta">By Marco Rodriguez · Dec 12, 2024 · 8 min read</div>
-                </div>
+                <a href="Blog2.html">
+                    <img src="../AIRBNB-VCS-PROJECT/images/Blog2.jpg" alt="">
+                    <div class="content">
+                        <h3>Our Story: How Homeo Began, The beginnings of a Journey</h3>
+                        <p>The Epic Story of Homeo.</p>
+                        <div class="meta">By Jasun Maharjan · Dec 12, 2024 · 8 min read</div>
+                    </div>
+                </a>
             </div>
         </div>
 
         <!-- Bottom row -->
         <div class="bottom-row">
             <div class="blog-card">
-                <img src="https://picsum.photos/id/1011/600/400" alt="">
-                <div class="content">
-                    <h3>Creating the Perfect Mountain Retreat</h3>
-                    <p>Learn how to design an unforgettable mountain cabin experience.</p>
-                    <div class="meta">By Emma Thompson · Dec 10, 2024 · 6 min read</div>
-                </div>
+                <a href="Blog3.html">
+                    <img src="../AIRBNB-VCS-PROJECT/images/Blog3.jpg" alt="">
+                    <div class="content">
+                        <h3>Discovering Kathmandu's Best Restaurants</h3>
+                        <p>Here's a guide to some must-visit restaurants.</p>
+                        <div class="meta">By Rikesh Sharma · Dec 10, 2024 · 6 min read</div>
+                    </div>
+                </a>
             </div>
 
             <div class="blog-card">
-                <img src="https://picsum.photos/id/1005/600/400" alt="">
-                <div class="content">
-                    <h3>Seasonal Decorating Tips for Vacation Rentals</h3>
-                    <p>Keep your property fresh and inviting year-round with simple strategies.</p>
-                    <div class="meta">By David Kim · Dec 8, 2024 · 4 min read</div>
-                </div>
+                <a href="Blog4.html">
+                    <img src="https://picsum.photos/id/1005/600/400" alt="">
+                    <div class="content">
+                        <h3>Seasonal Decorating Tips for Vacation Rentals</h3>
+                        <p>Keep your property fresh and inviting year-round with simple strategies.</p>
+                        <div class="meta">By Yogesh Pant · Dec 8, 2024 · 4 min read</div>
+                    </div>
+                </a>
             </div>
 
             <div class="blog-card">
-                <img src="https://picsum.photos/id/1015/600/400" alt="">
-                <div class="content">
-                    <h3>Guest Communication: The Art of 5-Star Reviews</h3>
-                    <p>Master communication skills that turn good stays into stellar reviews.</p>
-                    <div class="meta">By Lisa Park · Dec 5, 2024 · 7 min read</div>
-                </div>
+                <a href="Blog5.html">
+
+                    <img src="https://picsum.photos/id/1015/600/400" alt="">
+                    <div class="content">
+                        <h3>Guest Communication: The Art of 5-Star Reviews</h3>
+                        <p>Master communication skills that turn good stays into stellar reviews.</p>
+                        <div class="meta">By Aditya Shah · Dec 5, 2024 · 7 min read</div>
+                    </div>
+                </a>
             </div>
         </div>
 
