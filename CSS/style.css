@@ -592,26 +592,26 @@
     background-color: #e04a4f;
   }
 
-  /* ===== CSS: Hotel Listings - UPDATED ===== */
-  #hotel-listings {
-  padding: 4rem 3rem;         /* More breathing room */
-  max-width: 1400px;          /* Wider to use left/right whitespace */
-  margin: 0 auto;
-  margin-top: 40px;           /* Start a bit higher */
-  margin-bottom: 80px;
+    /* ===== CSS: Hotel Listings - UPDATED ===== */
+  .hotel-listings {
+    padding: 0 3rem;         /* Remove top/bottom padding, keep left/right */
+    max-width: 1400px;          /* Wider to use left/right whitespace */
+    margin: 0 auto;
+    margin-bottom: 0;           /* Remove bottom margin */
   }   
 
   .listing-category {
-    margin-bottom: 3rem;
+    margin-bottom: 0;           /* Remove bottom margin */
+    padding: 2rem 0;            /* Add padding inside category instead */
   }
 
   .listing-category h2 {
-  font-size: 1.5rem;          /* Larger heading */
-  margin-bottom: 2rem;
-  font-weight: 700;
-  color: #424242;
-  border-bottom: 3px solid #f0f0f0;
-  padding-left: 10px; 
+    font-size: 1.5rem;          /* Larger heading */
+    margin-bottom: 2rem;
+    font-weight: 700;
+    color: #424242;
+    border-bottom: 3px solid #f0f0f0;
+    padding-left: 10px; 
   }
 
   .listing-wrapper {
@@ -885,84 +885,58 @@
     color: white;
   }
 
+    footer {
+      margin-top: auto; /* pushes footer to bottom */
+      background: #2d333f; /* dark grey/black */
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid #444;
+      color: #ddd;
+    }
 
-  
-  /* ===== CSS: Footer ===== */
-  footer {
-    background: #2d333f;
-    color: white;
-    padding: 40px 0;
-    position: absolute;
-    bottom: 0;
-    width: 100%;
-    margin-top: 60px;
-  }
+    footer .logo {
+      font-size: 40px;
+      color: #e74c3c;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
 
-  .footer-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding: 0 20px;
-  }
+    footer p {
+      margin: 8px 0 20px;
+      font-size: 16px;
+      color: #ddd;
+    }
 
-  .footer-column {
-    flex: 1;
-    min-width: 200px;
-    margin-bottom: 30px;
-  }
+    footer .social-icons {
+      margin: 15px 0;
+    }
 
-  .footer-column h3 {
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: #fff;
-    font-weight: 600;
-  }
+    footer .social-icons a {
+      display: inline-block;
+      margin: 0 10px;
+      font-size: 24px;
+      color: #ddd;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-  .footer-column ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-  }
+    footer .social-icons a:hover {
+      color: #e74c3c;
+    }
 
-  .footer-column ul li {
-    margin-bottom: 8px;
-  }
+    footer .links {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #aaa;
+    }
 
-  .footer-column ul li a {
-    color: #cbd5e0;
-    text-decoration: none;
-    transition: color 0.3s ease;
-    font-weight: 300;
-  }
+    footer .links a {
+      margin: 0 6px;
+      color: #aaa;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-  .footer-column ul li a:hover {
-    color: white;
-  }
-
-  .footer-bottom {
-    border-top: 1px solid #4a5568;
-    padding-top: 20px;
-    margin-top: 20px;
-    text-align: center;
-    color: #cbd5e0;
-    font-size: 14px;
-  }
-
-  .social-icons {
-    display: flex;
-    gap: 15px;
-    margin-top: 15px;
-    justify-content: center;
-  }
-
-  .social-icons a {
-    color: #cbd5e0;
-    font-size: 20px;
-    transition: color 0.3s ease;
-  }
-
-  .social-icons a:hover {
-    color: white;
-  }
+    footer .links a:hover {
+      color: #fff;
+    }
