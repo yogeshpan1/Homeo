@@ -61,6 +61,7 @@
     width: 300px;
     overflow: hidden;
     border-radius: 5px;
+    position: relative;
 }
 
 .room1_photo2
@@ -80,4 +81,35 @@
     height: 50px;
     border-radius: 50%;
     background-color: #D9D9D9;
+}
+
+.lock_container
+{
+    height: 30px;
+    width: 20px;
+    overflow: hidden;
+    margin-top: 5px;
+}
+
+.view-more-btn
+{
+    position: absolute;
+    bottom: 16px;
+    left: 60%;
+    transform: translateX(-50%);
+    background: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.lock_image
+{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+
+
 }
