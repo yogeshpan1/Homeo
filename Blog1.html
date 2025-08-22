@@ -21,6 +21,9 @@
       background: #fff;
       color: #0e0e10;
       line-height: 1.7;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     /* Navbar Styles */
@@ -153,11 +156,7 @@
       max-width: 820px;
       margin: 120px auto 0;
       padding: 40px 20px 80px;
-    }
-
-    .header-text {
-      text-align: center;
-      margin-bottom: 40px;
+      flex: 1;
     }
 
     h1 {
@@ -202,6 +201,64 @@
       height: 6px;
     }
 
+    /* Footer Styles */
+    footer {
+      background: #2d333f; /* dark grey/black */
+      padding: 40px 20px;
+      text-align: center;
+      border-top: 1px solid #444;
+      color: #ddd;
+      margin-top: auto;
+    }
+
+    footer .logo {
+      font-size: 40px;
+      color: #e74c3c;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    footer p {
+      margin: 8px 0 20px;
+      font-size: 16px;
+      color: #ddd;
+      max-width: none;
+    }
+
+    footer .social-icons {
+      margin: 15px 0;
+    }
+
+    footer .social-icons a {
+      display: inline-block;
+      margin: 0 10px;
+      font-size: 24px;
+      color: #ddd;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    footer .social-icons a:hover {
+      color: #e74c3c;
+    }
+
+    footer .links {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    footer .links a {
+      margin: 0 6px;
+      color: #aaa;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    footer .links a:hover {
+      color: #fff;
+    }
+
     @media (max-width: 768px) {
       .content {
         padding: 24px 16px 60px;
@@ -220,6 +277,19 @@
       h2 {
         font-size: 24px;
         line-height: 30px;
+      }
+      
+      footer {
+        padding: 30px 15px;
+      }
+      
+      footer p {
+        font-size: 14px;
+      }
+      
+      footer .social-icons a {
+        font-size: 20px;
+        margin: 0 8px;
       }
     }
   </style>
@@ -300,7 +370,35 @@
       follow winding mountain roads. The most unforgettable discoveries await those who venture off the guidebooks.
     </p>
   </div>
-      <script src="../AIRBNB-VCS-PROJECT/JS/hamscript.js"></script>
+  
+  <!-- Footer -->
+  <footer>
+    <!-- Home icon -->
+    <div class="logo">
+      <img src="../AIRBNB-VCS-PROJECT/images/Logo.png" alt="Home Logo" width="100">
+    </div>
+
+    <!-- Tagline -->
+    <p style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 24px;">Make searching a room comfortable</p>
+
+    <!-- Social media -->
+    <div class="social-icons">
+      <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.booking.com"><i class="fas fa-bed"></i></a>
+    </div>
+
+    <!-- Footer links -->
+    <div class="links">
+      © 2025 Homeo 
+      <a href="#"><u>Terms</u></a>
+      <a href="#"><u>Privacy</u></a>
+      <a href="#"><u>Cookies</u></a>
+    </div>
+  </footer>
+
+    <script src="../AIRBNB-VCS-PROJECT/JS/hamscript.js"></script>
 
 </body>
 
