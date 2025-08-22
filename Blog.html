@@ -2,371 +2,358 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>Homeo Blogs </title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Homeo Blogs</title>
 
-    <style>
-        body {
-            background: #f9f9f9;
-            font-family: 'Inter', sans-serif;
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
-        .container {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            max-width: 1200px;
-            margin: 20px auto;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-        /* Top row */
-        .top-row {
-            display: flex;
-            gap: 16px;
-        }
+    body {
+      background: #f9f9f9;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
 
-        .featured {
-            flex: 2;
-        }
-
-        .side-tall {
-            flex: 1;
-        }
-
-        /* Bottom row */
-        .bottom-row {
-            display: flex;
-            gap: 16px;
-        }
-
-        .bottom-row .blog-card {
-            flex: 1;
-        }
-
-        /* Blog card style */
-        .blog-card {
-            background: white;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(0, 0, 0, 0.12);
-            transition: transform 0.25s ease, box-shadow 0.25s ease;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .blog-card:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 6px 12px rgba(255, 0, 0, 0.15),
-                0 12px 24px rgba(255, 0, 0, 0.2);
-        }
+    /* ===== Navbar ===== */
+     header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      padding: 4px 0;
+      /* smaller navbar height */
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      /* subtle bottom shadow */
+    }
 
 
-        .blog-card img {
-            transition: transform 0.4s ease;
-        }
+    header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
 
-        .blog-card:hover img {
-            transform: scale(1.05);
-        }
+    .logo {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
 
-        /* Title color change on hover */
-        .blog-card h3 {
-            transition: color 0.3s ease;
-            color: #222;
-        }
-
-        .blog-card:hover h3 {
-            color: #ff0000;
-        }
+    .logo img {
+      height: 100%;
+      max-height: 60px;
+      object-fit: contain;
+    }
 
 
-        .blog-card img {
-            width: 100%;
-            height: 160px;
-            object-fit: cover;
-        }
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
 
-        .featured img {
-            height: 220px;
-        }
+    .nav-icons i {
+      font-size: 1.5rem;
+      margin-left: 20px;
+      cursor: pointer;
+      color: #F5503D;
+      text-shadow: none;
+      transition: transform 0.2s ease;
+    }
 
-        .side-tall img {
-            height: 220px;
-        }
+    .nav-icons i:hover {
+      transform: scale(1.1);
+    }
+    .menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 16px;
+      background: white;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      padding: 12px 0;
+      width: 220px;
+      font-size: 14px;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+      z-index: 1002;
+    }
 
-        .content {
-            padding: 12px;
-        }
+    .menu-dropdown.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
 
-        .content h3 {
-            margin: 0 0 6px;
-            font-size: 16px;
-            color: #222;
-            line-height: 1.3em;
-        }
+    .menu-dropdown ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-        .content p {
-            font-size: 13px;
-            color: #555;
-            margin-bottom: 8px;
-            line-height: 1.4em;
-        }
+    .menu-dropdown li a {
+      display: block;
+      padding: 10px 20px;
+      color: #333;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
 
-        .meta {
-            font-size: 11px;
-            color: #777;
-        }
+    .menu-dropdown li a:hover {
+      background-color: #f7f7f7;
+      border-radius: 6px;
+    }
 
-        footer {
-            background: #2d333f;
-            color: white;
-            padding: 40px 0;
-            margin-top: 60px;
-        }
+    .dropdown-divider {
+      height: 1px;
+      background-color: #eee;
+      margin: 10px 0;
+    }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            padding: 0 20px;
-        }
+    #login-signup-btn {
+      width: calc(100% - 32px);
+      margin: 0 16px;
+      background-color: #ff5a5f;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 0;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
 
-        .footer-column {
-            flex: 1;
-            min-width: 200px;
-            margin-bottom: 30px;
-        }
+    #login-signup-btn:hover {
+      background-color: #e04a4f;
+    }
 
-        .footer-column h3 {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #fff;
-            font-weight: 600;
-        }
+    /* ===== Blog cards ===== */
+    .container-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 1200px;
+      margin: 100px auto 20px;
+      padding: 0 20px;
+    }
 
-        .footer-column ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
+    .top-row,
+    .bottom-row {
+      display: flex;
+      gap: 16px;
+    }
 
-        .footer-column ul li {
-            margin-bottom: 8px;
-        }
+    .featured {
+      flex: 2;
+    }
 
-        .footer-column ul li a {
-            color: #cbd5e0;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            font-weight: 300;
-        }
+    .side-tall {
+      flex: 1;
+    }
 
-        .footer-column ul li a:hover {
-            color: white;
-        }
+    .bottom-row .blog-card {
+      flex: 1;
+    }
 
-        .footer-bottom {
-            border-top: 1px solid #4a5568;
-            padding-top: 20px;
-            margin-top: 20px;
-            text-align: center;
-            color: #cbd5e0;
-            font-size: 14px;
-        }
+    .blog-card {
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(0, 0, 0, 0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
+    }
 
-        .social-icons {
-            display: flex;
-            gap: 15px;
-            margin-top: 15px;
-            justify-content: center;
-        }
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(255, 0, 0, 0.15),
+        0 12px 24px rgba(255, 0, 0, 0.2);
+    }
 
-        .social-icons a {
-            color: #cbd5e0;
-            font-size: 20px;
-            transition: color 0.3s ease;
-        }
+    .blog-card img {
+      width: 100%;
+      object-fit: cover;
+      height: 160px;
+      transition: transform 0.4s ease;
+    }
 
-        .social-icons a:hover {
-            color: white;
-        }
+    .featured img,
+    .side-tall img {
+      height: 220px;
+    }
 
-        /* ===== Responsive Styles ===== */
-        @media (max-width: 768px) {
+    .blog-card:hover img {
+      transform: scale(1.05);
+    }
 
-            .top-row,
-            .bottom-row {
-                flex-direction: column;
-            }
+    .content {
+      padding: 12px;
+    }
 
-            .top-row .blog-card,
-            .bottom-row .blog-card {
-                width: 100%;
-            }
+    .content h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      color: #222;
+      transition: color 0.3s ease;
+    }
 
-            .featured img,
-            .side-tall img {
-                height: auto;
-            }
-        }
+    .blog-card:hover h3 {
+      color: #ff0000;
+    }
 
-        @media (max-width: 480px) {
-            .container {
-                margin: 10px;
-                gap: 12px;
-            }
+    .content p {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 8px;
+    }
 
-            .content h3 {
-                font-size: 14px;
-            }
+    .meta {
+      font-size: 11px;
+      color: #777;
+    }
 
-            .content p {
-                font-size: 12px;
-            }
+    /* Responsive */
+    @media (max-width: 768px) {
+      .top-row,
+      .bottom-row {
+        flex-direction: column;
+      }
 
-            .meta {
-                font-size: 10px;
-            }
-        }
-    </style>
+      .featured img,
+      .side-tall img {
+        height: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .content h3 {
+        font-size: 14px;
+      }
+
+      .content p {
+        font-size: 12px;
+      }
+
+      .meta {
+        font-size: 10px;
+      }
+    }
+  </style>
 </head>
 
 <body>
-
+  <!-- Navbar -->
+  <header>
     <div class="container">
-
-        <!-- Top row -->
-        <div class="top-row">
-            <div class="blog-card featured">
-                <a href="Blog1.html">
-                    <img src="../AIRBNB-VCS-PROJECT/images/Blog1.jpeg" alt="">
-                    <div class="content">
-                        <h3>Hidden Gems of Nepal: Beyond the Crowded Trails</h3>
-                        <p>Nepal is famous for the Himalayas and iconic trekking routes like Everest Base Camp and
-                            Annapurna Circuit</p>
-                        <div class="meta">By Arjan Regmi · Dec 15, 2024 · 5 min read</div>
-                    </div>
-                </a>
-
-            </div>
-
-            <div class="blog-card">
-                <a href="Blog2.html">
-                    <img src="../AIRBNB-VCS-PROJECT/images/Blog2.jpg" alt="">
-                    <div class="content">
-                        <h3>Our Story: How Homeo Began, The beginnings of a Journey</h3>
-                        <p>The Epic Story of Homeo.</p>
-                        <div class="meta">By Jasun Maharjan · Dec 12, 2024 · 8 min read</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-
-        <!-- Bottom row -->
-        <div class="bottom-row">
-            <div class="blog-card">
-                <a href="Blog3.html">
-                    <img src="../AIRBNB-VCS-PROJECT/images/Blog3.jpg" alt="">
-                    <div class="content">
-                        <h3>Discovering Kathmandu's Best Restaurants</h3>
-                        <p>Here's a guide to some must-visit restaurants.</p>
-                        <div class="meta">By Rikesh Sharma · Dec 10, 2024 · 6 min read</div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="blog-card">
-                <a href="Blog4.html">
-                    <img src="../AIRBNB-VCS-PROJECT/images/Festival.jpg" alt="">
-                    <div class="content">
-                        <h3>Cultural Festivals in Nepal: A Journey Through Tradition</h3>
-                        <p>Nepal is a land of festivals, where every season brings a vibrant celebration.</p>
-                        <div class="meta">By Yogesh Pant · Dec 8, 2024 · 4 min read</div>
-                    </div>
-                </a>
-            </div>
-
-            <div class="blog-card">
-                <a href="Blog5.html">
-
-                    <img src="../AIRBNB-VCS-PROJECT/images/Adventure.jpg" alt="">
-                    <div class="content">
-                        <h3>Adventure Activities in Nepal: Thrills for Every Traveler</h3>
-                        <p>Nepal is not just about mountains and temples; it is a playground for adventure.</p>
-                        <div class="meta">By Aditya Shah · Dec 5, 2024 · 7 min read</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-
+      <div class="logo">
+        <img src="../AIRBNB-VCS-PROJECT/images/Logo.png" alt="Homeo Logo">
+      </div>
+      <div class="nav-icons">
+        <i id="hamburger-menu" class="fas fa-bars"></i>
+      </div>
+      <div id="menu-dropdown" class="menu-dropdown">
+        <ul>
+          <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+          <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+        </ul>
+        <div class="dropdown-divider"></div>
+        <button id="login-signup-btn">Login / Signup</button>
+      </div>
     </div>
-    <!-- ===== Footer ===== -->
-    <footer>
-        <div class="footer-content">
-            <div class="footer-column">
-                <h3>About Homeo</h3>
-                <ul>
-                    <li><a href="#">How it works</a></li>
-                    <li><a href="#">Newsroom</a></li>
-                    <li><a href="#">Investors</a></li>
-                    <li><a href="#">Careers</a></li>
-                </ul>
-            </div>
+  </header>
 
-            <div class="footer-column">
-                <h3>Community</h3>
-                <ul>
-                    <li><a href="#">Accessibility</a></li>
-                    <li><a href="#">Support</a></li>
-                    <li><a href="#">Referrals</a></li>
-                    <li><a href="#">Join as host</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Host</h3>
-                <ul>
-                    <li><a href="#">Host your home</a></li>
-                    <li><a href="#">Host an experience</a></li>
-                    <li><a href="#">Community forum</a></li>
-                    <li><a href="#">Hosting resources</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Support</h3>
-                <ul>
-                    <li><a href="#">Help Center</a></li>
-                    <li><a href="#">AirCover</a></li>
-                    <li><a href="#">Safety information</a></li>
-                    <li><a href="#">Contact support</a></li>
-                </ul>
-            </div>
-
-            <div class="footer-column">
-                <h3>Follow Us</h3>
-                <div class="social-icons">
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                    <a href="#"><i class="fab fa-twitter"></i></a>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                    <a href="#"><i class="fab fa-pinterest"></i></a>
-                </div>
-            </div>
+  <!-- Blog Cards -->
+  <div class="container-content">
+    <div class="top-row">
+      <a href="Blog1.html" class="blog-card featured">
+        <img src="../AIRBNB-VCS-PROJECT/images/Blog1.jpeg" alt="">
+        <div class="content">
+          <h3>Hidden Gems of Nepal: Beyond the Crowded Trails</h3>
+          <p>Nepal is famous for the Himalayas and iconic trekking routes like Everest Base Camp and Annapurna Circuit</p>
+          <div class="meta">By Arjan Regmi · Dec 15, 2024 · 5 min read</div>
         </div>
+      </a>
 
-        <div class="footer-bottom">
-            <p>© 2023 Homeo, Inc. All rights reserved · Privacy · Terms · Sitemap</p>
+      <a href="Blog2.html" class="blog-card">
+        <img src="../AIRBNB-VCS-PROJECT/images/Blog2.jpg" alt="">
+        <div class="content">
+          <h3>Our Story: How Homeo Began, The beginnings of a Journey</h3>
+          <p>The Epic Story of Homeo.</p>
+          <div class="meta">By Jasun Maharjan · Dec 12, 2024 · 8 min read</div>
         </div>
-    </footer>
+      </a>
+    </div>
 
+    <div class="bottom-row">
+      <a href="Blog3.html" class="blog-card">
+        <img src="../AIRBNB-VCS-PROJECT/images/Blog3.jpg" alt="">
+        <div class="content">
+          <h3>Discovering Kathmandu's Best Restaurants</h3>
+          <p>Here's a guide to some must-visit restaurants.</p>
+          <div class="meta">By Rikesh Sharma · Dec 10, 2024 · 6 min read</div>
+        </div>
+      </a>
+
+      <a href="Blog4.html" class="blog-card">
+        <img src="../AIRBNB-VCS-PROJECT/images/Festival.jpg" alt="">
+        <div class="content">
+          <h3>Cultural Festivals in Nepal: A Journey Through Tradition</h3>
+          <p>Nepal is a land of festivals, where every season brings a vibrant celebration.</p>
+          <div class="meta">By Yogesh Pant · Dec 8, 2024 · 4 min read</div>
+        </div>
+      </a>
+
+      <a href="Blog5.html" class="blog-card">
+        <img src="../AIRBNB-VCS-PROJECT/images/Adventure.jpg" alt="">
+        <div class="content">
+          <h3>Adventure Activities in Nepal: Thrills for Every Traveler</h3>
+          <p>Nepal is not just about mountains and temples; it is a playground for adventure.</p>
+          <div class="meta">By Aditya Shah · Dec 5, 2024 · 7 min read</div>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Hamburger menu toggle
+    const hamburger = document.getElementById('hamburger-menu');
+    const menuDropdown = document.getElementById('menu-dropdown');
+
+    hamburger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menuDropdown.classList.toggle('active');
+    });
+
+    document.addEventListener('click', () => {
+      menuDropdown.classList.remove('active');
+    });
+
+    menuDropdown.addEventListener('click', e => e.stopPropagation());
+  </script>
 </body>
 
 </html>

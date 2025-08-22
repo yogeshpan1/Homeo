@@ -7,6 +7,7 @@
   <title>Discovering Kathmandu's Best Restaurants</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
   <style>
     * {
@@ -22,9 +23,134 @@
       line-height: 1.7;
     }
 
-    .container {
-      max-width: 820px;
+    /* Navbar Styles */
+        header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: #fff;
+      padding: 4px 0;
+      /* smaller navbar height */
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      /* subtle bottom shadow */
+    }
+
+
+    header .container {
+      max-width: 1200px;
       margin: 0 auto;
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .logo img {
+      height: 100%;
+      max-height: 60px;
+      object-fit: contain;
+    }
+
+
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .nav-icons i {
+      font-size: 1.5rem;
+      margin-left: 20px;
+      cursor: pointer;
+      color: #F5503D;
+      text-shadow: none;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-icons i:hover {
+      transform: scale(1.1);
+    }
+
+
+    .menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 16px;
+      background: white;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      padding: 12px 0;
+      width: 220px;
+      font-size: 14px;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+      z-index: 1002;
+    }
+
+    .menu-dropdown.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .menu-dropdown ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu-dropdown li a {
+      display: block;
+      padding: 10px 20px;
+      color: #333;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .menu-dropdown li a:hover {
+      background-color: #f7f7f7;
+      border-radius: 6px;
+    }
+
+    .dropdown-divider {
+      height: 1px;
+      background-color: #eee;
+      margin: 10px 0;
+    }
+
+    #login-signup-btn {
+      width: calc(100% - 32px);
+      margin: 0 16px;
+      background-color: #ff5a5f;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 0;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #login-signup-btn:hover {
+      background-color: #e04a4f;
+    }
+
+    /* Content Styles */
+    .container-content {
+      max-width: 820px;
+      margin: 120px auto 0; /* leave space for navbar */
       padding: 40px 20px 80px;
     }
 
@@ -76,8 +202,9 @@
     }
 
     @media (max-width: 768px) {
-      .container {
+      .container-content {
         padding: 24px 16px 60px;
+        margin-top: 100px;
       }
 
       h1 {
@@ -98,7 +225,29 @@
 </head>
 
 <body>
-  <div class="container">
+  <!-- Navbar -->
+  <header>
+    <div class="container">
+      <div class="logo">
+        <img src="../AIRBNB-VCS-PROJECT/images/Logo.png" alt="Homeo Logo">
+      </div>
+      <div class="nav-icons">
+        <i id="hamburger-menu" class="fas fa-bars"></i>
+      </div>
+      <div id="menu-dropdown" class="menu-dropdown">
+        <ul>
+          <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+          <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+        </ul>
+        <div class="dropdown-divider"></div>
+        <button id="login-signup-btn">Login / Signup</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Restaurant Content -->
+  <div class="container-content">
     <div class="header">
       <h1>Discovering Kathmandu's Best Restaurants</h1>
       <p class="lead">
@@ -149,6 +298,23 @@
       of the city's culinary diversity, whether you're looking for traditional dishes or modern flavors.
     </p>
   </div>
+
+  <script>
+       // Hamburger menu toggle
+      const hamburger = document.getElementById("hamburger-menu");
+      const menuDropdown = document.getElementById("menu-dropdown");
+
+      hamburger.addEventListener("click", e => {
+        e.stopPropagation();
+        menuDropdown.classList.toggle("active");
+      });
+
+      document.addEventListener("click", () => {
+        menuDropdown.classList.remove("active");
+      });
+
+      menuDropdown.addEventListener("click", e => e.stopPropagation());
+  </script>
 </body>
 
 </html>
