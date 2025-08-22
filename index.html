@@ -2047,228 +2047,200 @@
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   
   <!-- ===== JavaScript: Custom Code ===== -->
-  <script>
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-      const header = document.querySelector('header');
-      if (window.scrollY > 100) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
-      }
-    });
-
-    // Hamburger menu toggle
-    document.getElementById('hamburger-menu').addEventListener('click', () => {
-      const dropdown = document.getElementById('menu-dropdown');
-      dropdown.classList.toggle('active');
-    });
-
-    // Close hamburger menu when clicking outside
-    document.addEventListener('click', (e) => {
-      const hamburger = document.getElementById('hamburger-menu');
-      const dropdown = document.getElementById('menu-dropdown');
-      
-      if (!hamburger.contains(e.target) && !dropdown.contains(e.target)) {
-        dropdown.classList.remove('active');
-      }
-    });
-
-    // Gift card modal functionality
-    const giftCardLink = document.getElementById('gift-cards-link');
-    const giftCardModal = document.getElementById('gift-card-modal');
-    const giftCardClose = document.getElementById('gift-card-close');
-    const giftCardForm = document.getElementById('gift-card-form');
-
-    giftCardLink.addEventListener('click', (e) => {
-      e.preventDefault();
-      giftCardModal.classList.add('active');
-      // Close hamburger menu
-      document.getElementById('menu-dropdown').classList.remove('active');
-    });
-
-    giftCardClose.addEventListener('click', () => {
-      giftCardModal.classList.remove('active');
-    });
-
-    // Close modal when clicking outside
-    giftCardModal.addEventListener('click', (e) => {
-      if (e.target === giftCardModal) {
-        giftCardModal.classList.remove('active');
-      }
-    });
-
-    // Handle form submission
-    giftCardForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const voucherCode = document.getElementById('voucher-code').value;
-      const email = document.getElementById('email').value;
-      
-      // Simulate processing
-      const redeemBtn = document.querySelector('.redeem-btn');
-      const originalText = redeemBtn.innerHTML;
-      redeemBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
-      redeemBtn.disabled = true;
-      
-      setTimeout(() => {
-        alert(`Gift card redemption successful!\nCode: ${voucherCode}\nEmail: ${email}\n\nYour account will be credited within 24 hours.`);
-        redeemBtn.innerHTML = originalText;
-        redeemBtn.disabled = false;
-        giftCardModal.classList.remove('active');
-        giftCardForm.reset();
-      }, 2000);
-    });
-
-    // Guest dropdown functionality
-    const guestField = document.getElementById('guest-field');
-    const guestDropdown = document.getElementById('guest-dropdown');
-    const guestInput = document.getElementById('guests');
-    const doneBtn = document.getElementById('done-btn');
-    let adultsCount = 0;
-    let childrenCount = 0;
-
-    guestField.addEventListener('click', () => {
-      guestDropdown.classList.toggle('hidden');
-    });
-
-    // Plus/minus buttons
-    document.querySelectorAll('.plus, .minus').forEach(button => {
-      button.addEventListener('click', (e) => {
-        e.stopPropagation();
-        const type = button.getAttribute('data-type');
-        const countElement = document.getElementById(`${type}-count`);
-        let count = parseInt(countElement.textContent);
-        
-        if (button.classList.contains('plus')) {
-          count++;
-        } else if (button.classList.contains('minus') && count > 0) {
-          count--;
-        }
-        
-        countElement.textContent = count;
-        
-        if (type === 'adults') adultsCount = count;
-        if (type === 'children') childrenCount = count;
-        
-        updateGuestInput();
-      });
-    });
-
-    function updateGuestInput() {
-      const total = adultsCount + childrenCount;
-      if (total === 0) {
-        guestInput.value = '';
-        guestInput.placeholder = 'Add guests';
-      } else {
-        let text = '';
-        if (adultsCount > 0) text += `${adultsCount} adult${adultsCount > 1 ? 's' : ''}`;
-        if (childrenCount > 0) {
-          if (text) text += ', ';
-          text += `${childrenCount} child${childrenCount > 1 ? 'ren' : ''}`;
-        }
-        guestInput.value = text;
-      }
-    }
-
-    // Clear all button
-    document.getElementById('clear-all-btn').addEventListener('click', () => {
-      adultsCount = 0;
-      childrenCount = 0;
-      document.getElementById('adults-count').textContent = '0';
-      document.getElementById('children-count').textContent = '0';
-      document.getElementById('pets').checked = false;
-      updateGuestInput();
-    });
-
-    // Done button
-    doneBtn.addEventListener('click', () => {
-      guestDropdown.classList.add('hidden');
-    });
-
-    // Close dropdown when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!guestField.contains(e.target)) {
-        guestDropdown.classList.add('hidden');
-      }
-    });
-
-    // Date picker initialization
-    flatpickr("#checkin", {
-      dateFormat: "M d, Y",
-      minDate: "today",
-      onChange: function(selectedDates, dateStr, instance) {
-        // Update checkout minimum date
-        const checkoutPicker = flatpickr("#checkout");
-        if (checkoutPicker) {
-          checkoutPicker.set('minDate', selectedDates[0]);
-        }
-      }
-    });
-
-    flatpickr("#checkout", {
-      dateFormat: "M d, Y",
-      minDate: "today"
-    });
-
-    // Listing carousel functionality
-    function slide(button, direction) {
-      const listingRow = button.parentElement.querySelector('.listing-row');
-      const cardWidth = 300; // Approximate card width including gap
-      const scrollAmount = cardWidth * 2; // Scroll 2 cards at a time
-      
-      listingRow.scrollBy({
-        left: direction * scrollAmount,
-        behavior: 'smooth'
-      });
-    }
-
-    // Image slider functionality for listing cards
-    document.querySelectorAll('.listing-card').forEach(card => {
-      const imageSlider = card.querySelector('.image-slider');
-      const prevBtn = card.querySelector('.image-nav.prev');
-      const nextBtn = card.querySelector('.image-nav.next');
-      const dots = card.querySelectorAll('.slider-dot');
-      const totalImages = dots.length;
-      let currentIndex = 0;
-
-      function updateSlider() {
-        const translateX = -currentIndex * 100;
-        imageSlider.style.transform = `translateX(${translateX}%)`;
-        
-        dots.forEach((dot, index) => {
-          dot.classList.toggle('active', index === currentIndex);
-        });
-      }
-
-      prevBtn?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        currentIndex = currentIndex > 0 ? currentIndex - 1 : totalImages - 1;
-        updateSlider();
-      });
-
-      nextBtn?.addEventListener('click', (e) => {
-        e.stopPropagation();
-        currentIndex = currentIndex < totalImages - 1 ? currentIndex + 1 : 0;
-        updateSlider();
-      });
-
-      dots.forEach((dot, index) => {
-        dot.addEventListener('click', (e) => {
-          e.stopPropagation();
-          currentIndex = index;
-          updateSlider();
-        });
-      });
-
-      // Mini search bar functionality
-const miniSearchBar = document.getElementById('mini-search-bar');
-const mainSearchBar = document.querySelector('.searchBar-container');
-
+   <script>
+  // ================= HEADER SCROLL EFFECT =================
 window.addEventListener('scroll', () => {
-  const scrollPosition = window.scrollY;
-  
-  // Show mini search bar when scrolled past the hero section
-  if (scrollPosition > 200) { // Adjust this value as needed
+  const header = document.querySelector('header');
+  header.classList.toggle('scrolled', window.scrollY > 100);
+});
+
+// ================= HAMBURGER MENU =================
+const hamburger = document.getElementById("hamburger-menu");
+const menuDropdown = document.getElementById("menu-dropdown");
+
+hamburger.addEventListener("click", e => {
+  e.stopPropagation();
+  menuDropdown.classList.toggle("active");
+});
+
+// Close when clicking outside
+document.addEventListener("click", (e) => {
+  if (!hamburger.contains(e.target) && !menuDropdown.contains(e.target)) {
+    menuDropdown.classList.remove("active");
+  }
+});
+
+// Prevent menu closing when clicking inside
+menuDropdown.addEventListener("click", e => e.stopPropagation());
+
+// ================= LOGIN REDIRECT =================
+const loginBtn = document.getElementById('login-signup-btn');
+loginBtn?.addEventListener('click', () => {
+  window.location.href = 'login.html';
+});
+
+// ================= GIFT CARD MODAL =================
+const giftCardLink = document.getElementById('gift-cards-link');
+const giftCardModal = document.getElementById('gift-card-modal');
+const giftCardClose = document.getElementById('gift-card-close');
+const giftCardForm = document.getElementById('gift-card-form');
+
+giftCardLink?.addEventListener('click', (e) => {
+  e.preventDefault();
+  giftCardModal.classList.add('active');
+  menuDropdown.classList.remove('active'); // close menu if open
+});
+
+giftCardClose?.addEventListener('click', () => {
+  giftCardModal.classList.remove('active');
+});
+
+giftCardModal?.addEventListener('click', (e) => {
+  if (e.target === giftCardModal) giftCardModal.classList.remove('active');
+});
+
+giftCardForm?.addEventListener('submit', (e) => {
+  e.preventDefault();
+  const voucherCode = document.getElementById('voucher-code').value;
+  const email = document.getElementById('email').value;
+  const redeemBtn = document.querySelector('.redeem-btn');
+  const originalText = redeemBtn.innerHTML;
+
+  redeemBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+  redeemBtn.disabled = true;
+
+  setTimeout(() => {
+    alert(`Gift card redemption successful!\nCode: ${voucherCode}\nEmail: ${email}\n\nYour account will be credited within 24 hours.`);
+    redeemBtn.innerHTML = originalText;
+    redeemBtn.disabled = false;
+    giftCardModal.classList.remove('active');
+    giftCardForm.reset();
+  }, 2000);
+});
+
+// ================= GUEST DROPDOWN =================
+const guestField = document.getElementById('guest-field');
+const guestDropdown = document.getElementById('guest-dropdown');
+const guestInput = document.getElementById('guests');
+const doneBtn = document.getElementById('done-btn');
+let adultsCount = 0, childrenCount = 0;
+
+guestField?.addEventListener('click', (e) => {
+  e.stopPropagation();
+  guestDropdown.classList.toggle('hidden');
+});
+
+document.querySelectorAll('.plus, .minus').forEach(button => {
+  button.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const type = button.dataset.type;
+    const countElement = document.getElementById(`${type}-count`);
+    let count = parseInt(countElement.textContent);
+
+    if (button.classList.contains('plus')) count++;
+    else if (count > 0) count--;
+
+    countElement.textContent = count;
+    if (type === 'adults') adultsCount = count;
+    if (type === 'children') childrenCount = count;
+
+    updateGuestInput();
+  });
+});
+
+function updateGuestInput() {
+  const total = adultsCount + childrenCount;
+  if (total === 0) {
+    guestInput.value = '';
+    guestInput.placeholder = 'Add guests';
+  } else {
+    let text = [];
+    if (adultsCount > 0) text.push(`${adultsCount} adult${adultsCount > 1 ? 's' : ''}`);
+    if (childrenCount > 0) text.push(`${childrenCount} child${childrenCount > 1 ? 'ren' : ''}`);
+    guestInput.value = text.join(', ');
+  }
+}
+
+document.getElementById('clear-all-btn')?.addEventListener('click', () => {
+  adultsCount = childrenCount = 0;
+  document.getElementById('adults-count').textContent = '0';
+  document.getElementById('children-count').textContent = '0';
+  document.getElementById('pets').checked = false;
+  updateGuestInput();
+});
+
+doneBtn?.addEventListener('click', () => {
+  guestDropdown.classList.add('hidden');
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', (e) => {
+  if (!guestField.contains(e.target) && !guestDropdown.contains(e.target)) {
+    guestDropdown.classList.add('hidden');
+  }
+});
+
+// ================= DATE PICKERS =================
+flatpickr("#checkin", {
+  dateFormat: "M d, Y",
+  minDate: "today",
+  onChange: function(selectedDates) {
+    const checkoutPicker = flatpickr("#checkout");
+    if (checkoutPicker) checkoutPicker.set('minDate', selectedDates[0]);
+  }
+});
+
+flatpickr("#checkout", {
+  dateFormat: "M d, Y",
+  minDate: "today"
+});
+
+// ================= LISTING CAROUSEL =================
+function slide(button, direction) {
+  const listingRow = button.parentElement.querySelector('.listing-row');
+  const cardWidth = 300; // Adjust if needed
+  listingRow.scrollBy({ left: direction * cardWidth * 2, behavior: 'smooth' });
+}
+
+// ================= CARD IMAGE SLIDER =================
+document.querySelectorAll('.listing-card').forEach(card => {
+  const imageSlider = card.querySelector('.image-slider');
+  const prevBtn = card.querySelector('.image-nav.prev');
+  const nextBtn = card.querySelector('.image-nav.next');
+  const dots = card.querySelectorAll('.slider-dot');
+  const totalImages = dots.length;
+  let currentIndex = 0;
+
+  function updateSlider() {
+    imageSlider.style.transform = `translateX(${-currentIndex * 100}%)`;
+    dots.forEach((dot, index) => dot.classList.toggle('active', index === currentIndex));
+  }
+
+  prevBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentIndex = currentIndex > 0 ? currentIndex - 1 : totalImages - 1;
+    updateSlider();
+  });
+
+  nextBtn?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    currentIndex = currentIndex < totalImages - 1 ? currentIndex + 1 : 0;
+    updateSlider();
+  });
+
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', (e) => {
+      e.stopPropagation();
+      currentIndex = index;
+      updateSlider();
+    });
+  });
+});
+
+// ================= MINI SEARCH BAR =================
+const miniSearchBar = document.getElementById('mini-search-bar');
+window.addEventListener('scroll', () => {
+  if (window.scrollY > 200) {
     miniSearchBar.classList.remove('hidden');
     miniSearchBar.classList.add('visible');
   } else {
@@ -2277,28 +2249,24 @@ window.addEventListener('scroll', () => {
   }
 });
 
-// Also add click handlers for the mini search buttons
-document.getElementById('mini-where').addEventListener('click', () => {
+document.getElementById('mini-where')?.addEventListener('click', () => {
   document.getElementById('destination').focus();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-document.getElementById('mini-date').addEventListener('click', () => {
+document.getElementById('mini-date')?.addEventListener('click', () => {
   document.getElementById('checkin').focus();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-document.getElementById('mini-guests').addEventListener('click', () => {
+document.getElementById('mini-guests')?.addEventListener('click', () => {
   document.getElementById('guest-field').click();
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-document.querySelector('.mini-search-icon').addEventListener('click', () => {
-  // Trigger search functionality
+document.querySelector('.mini-search-icon')?.addEventListener('click', () => {
   alert('Search triggered from mini bar!');
-  // You can add your actual search logic here
 });
-    });
-  </script>
+</script>
 </body>
 </html>
