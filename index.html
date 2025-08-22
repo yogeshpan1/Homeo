@@ -1,0 +1,771 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Homeo | Travel Made Easy</title>
+  <link rel="icon" href="../images/topLogo.png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"/>
+
+  <!-- ===== CSS: External Libraries ===== -->
+   <link rel="stylesheet" href="../CSS/style.css">
+</head>
+<body>
+
+    <!-- ===== HTML: Header / Navigation ===== -->
+    <header>
+      <div class="container">
+        <div class="logo">
+          <img src="../images/Logo.png" alt="Homeo Logo" />
+        </div>
+
+        <!-- Mini Search Bar -->
+        <div id="mini-search-bar" class="mini-search hidden">
+          <button id="mini-where" class="mini-btn">Where</button>
+          <span class="divider"></span>
+          <button id="mini-date" class="mini-btn">Date</button>
+          <span class="divider"></span>
+          <button id="mini-guests" class="mini-btn">Add Guests</button>
+          <button class="mini-search-icon"><i class="fas fa-search"></i></button>
+        </div>
+
+        <div class="nav-icons">
+          <div class="menu-wrapper relative">
+            <i id="hamburger-menu" class="fas fa-bars"></i>
+            <div id="menu-dropdown" class="menu-dropdown">
+              <ul>
+                <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
+                <li><a href="#"><i class="fas fa-home"></i> Host</a></li>
+                <li><a href="#"><i class="fas fa-gift"></i> Gift cards</a></li>
+              </ul>
+              <div class="dropdown-divider"></div>
+              <button id="login-signup-btn"><i class="fas fa-user"></i> Log in | Sign up</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- ===== HTML: Hero Section ===== -->
+    <section id="hero">
+      <h1>Find Your Perfect Getaway</h1>
+      <p>Discover amazing places to stay around the world</p>
+      
+      <!-- Search Bar -->
+      <div class="searchBar-container">
+        <div class="searchBar-box">
+
+          <!-- Destination Input -->
+          <div class="searchBar-field">
+            <i class="fas fa-map-marker-alt"></i>
+            <div class="field-content">
+              <label>Where</label>
+              <input type="text" id="destination" placeholder="Search destinations" />
+            </div>
+          </div>
+
+          <!-- Check In Date -->
+          <div class="searchBar-field" id="checkin-field">
+            <i class="fas fa-calendar-alt"></i>
+            <div class="field-content">
+              <label>Check in</label>
+              <input type="text" id="checkin" placeholder="Add date" readonly />
+            </div>
+          </div>
+
+          <!-- Check Out Date -->
+          <div class="searchBar-field" id="checkout-field">
+            <i class="fas fa-calendar-alt"></i>
+            <div class="field-content">
+              <label>Check out</label>
+              <input type="text" id="checkout" placeholder="Add date" readonly />
+            </div>
+          </div>
+
+          <!-- Guests Selector -->
+          <div class="searchBar-field relative" id="guest-field">
+            <i class="fas fa-user-friends"></i>
+            <div class="field-content">
+              <label>Guests</label>
+              <input
+                type="text"
+                id="guests"
+                readonly
+                placeholder="Add guests"
+                class="w-full text-sm outline-none bg-transparent mt-1 cursor-pointer"
+              />
+            </div>
+
+            <!-- Guests Dropdown -->
+            <div id="guest-dropdown" class="hidden">
+              <!-- Adults -->
+              <div class="guest-row">
+                <span>Adults</span>
+                <div class="flex items-center">
+                  <button class="minus" data-type="adults">–</button>
+                  <span id="adults-count" class="count">0</span>
+                  <button class="plus" data-type="adults">+</button>
+                </div>
+              </div>
+
+              <!-- Children -->
+              <div class="guest-row">
+                <span>Children</span>
+                <div class="flex items-center">
+                  <button class="minus" data-type="children">–</button>
+                  <span id="children-count" class="count">0</span>
+                  <button class="plus" data-type="children">+</button>
+                </div>
+              </div>
+
+              <!-- Pets and Clear All -->
+              <div class="pets-row">
+                <label for="pets" class="pets-label">
+                  <input type="checkbox" id="pets" />
+                  Bringing pets
+                </label>
+                <button id="clear-all-btn" class="clear-all-btn" type="button">Clear All</button>
+              </div>
+
+              <!-- Done Button -->
+              <button id="done-btn">Done</button>
+            </div>
+          </div>
+
+          <!-- Search Button -->
+          <button class="search-button"><i class="fas fa-search"></i></button>
+        </div>
+      </div>
+    </section>
+    
+          <!-- ===== HTML: Hotel Listings ===== -->
+      <section id="hotel-listings">
+        <!-- Beachfront Escapes Section -->
+        <div class="listing-category">
+          <h2>Beachfront Escapes</h2>
+          <div class="listing-wrapper">
+            <button class="arrow left" onclick="slide(this, -1)">&#10094;</button>
+            <div class="listing-row">
+              <!-- Card 1 -->
+              <div class="listing-card">
+                  <div class="listing-image">
+                      <div class="image-slider">
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJlYWNoJTIwYm91bmdhbG93fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGJlYWNoJTIwYm91bmdhbG93fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                      </div>
+                      <button class="image-nav prev">&#10094;</button>
+                      <button class="image-nav next">&#10095;</button>
+                      <div class="slider-controls">
+                          <span class="slider-dot active"></span>
+                          <span class="slider-dot"></span>
+                          <span class="slider-dot"></span>
+                      </div>
+                  </div>
+                  <h3>Seaside Bungalow</h3>
+                  <div class="price">$145 for 2 days • ☆ 4.5</div>
+                  
+                  <div class="listing-details">
+                    <div class="detail-left">
+                      <p>Charming beach bungalow steps from the sand with a cozy interior and outdoor shower. Enjoy stunning ocean views from your private deck.</p>
+                    </div>
+                    <div class="detail-right">
+                      <div class="listing-features">
+                          <span class="feature-tag">2 Bedrooms</span>
+                          <span class="feature-tag">1 Bathroom</span>
+                          <span class="feature-tag">Beach Access</span>
+                          <span class="feature-tag">Outdoor Shower</span>
+                      </div>
+                      <div class="card-footer">
+                        
+                        <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="listing-card">
+                  <div class="listing-image">
+                      <div class="image-slider">
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                      </div>
+                      <button class="image-nav prev">&#10094;</button>
+                      <button class="image-nav next">&#10095;</button>
+                      <div class="slider-controls">
+                          <span class="slider-dot active"></span>
+                          <span class="slider-dot"></span>
+                          <span class="slider-dot"></span>
+                      </div>
+                  </div>
+                  <h3>Oceanview Villa</h3>
+                  <div class="price">$320 for 2 days • ☆ 4.8</div>
+                  
+                  <div class="listing-details">
+                    <div class="detail-left">
+                      <p>Luxury villa with panoramic ocean views, private pool, and modern amenities. Features include a gourmet kitchen and spacious living areas.</p>
+                    </div>
+                    <div class="detail-right">
+                      <div class="listing-features">
+                          <span class="feature-tag">3 Bedrooms</span>
+                          <span class="feature-tag">2 Bathrooms</span>
+                          <span class="feature-tag">Private Pool</span>
+                          <span class="feature-tag">Ocean View</span>
+                      </div>
+                      <div class="card-footer">
+                        
+                        <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="listing-card">
+                  <div class="listing-image">
+                      <div class="image-slider">
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1631049307264-da0ec9d70304?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1578683010236-d716f9a3f461?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTN8fGhovGVsJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1567767292278-a4f21aa2d36e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJlYWNoJTIwaG91c2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                      </div>
+                      <button class="image-nav prev">&#10094;</button>
+                      <button class="image-nav next">&#10095;</button>
+                      <div class="slider-controls">
+                          <span class="slider-dot active"></span>
+                          <span class="slider-dot"></span>
+                          <span class="slider-dot"></span>
+                      </div>
+                  </div>
+                  <h3>Beach House Paradise</h3>
+                  <div class="price">$280 for 2 days • ☆ 4.7</div>
+                  
+                  <div class="listing-details">
+                    <div class="detail-left">
+                      <p>Spacious beach house with direct beach access, perfect for families and groups. Features a large living area and beautiful deck with outdoor seating.</p>
+                    </div>
+                    <div class="detail-right">
+                      <div class="listing-features">
+                          <span class="feature-tag">4 Bedrooms</span>
+                          <span class="feature-tag">3 Bathrooms</span>
+                          <span class="feature-tag">Direct Beach Access</span>
+                          <span class="feature-tag">Family Friendly</span>
+                      </div>
+                      <div class="card-footer">
+                        
+                        <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Card 4 -->
+              <div class="listing-card">
+                  <div class="listing-image">
+                      <div class="image-slider">
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1611892440504-42a792e24d32?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                      </div>
+                      <button class="image-nav prev">&#10094;</button>
+                      <button class="image-nav next">&#10095;</button>
+                      <div class="slider-controls">
+                          <span class="slider-dot active"></span>
+                          <span class="slider-dot"></span>
+                          <span class="slider-dot"></span>
+                      </div>
+                  </div>
+                  <h3>Luxury Beach Resort</h3>
+                  <div class="price">$420 for 2 days • ☆ 4.9</div>
+                  
+                  <div class="listing-details">
+                    <div class="detail-left">
+                      <p>5-star resort with premium amenities, spa services, and multiple dining options. Experience ultimate luxury in a breathtaking beachfront setting.</p>
+                    </div>
+                    <div class="detail-right">
+                      <div class="listing-features">
+                          <span class="feature-tag">1 Bedroom</span>
+                          <span class="feature-tag">1 Bathroom</span>
+                          <span class="feature-tag">Spa Access</span>
+                          <span class="feature-tag">All Inclusive</span>
+                      </div>
+                      <div class="card-footer">
+                        
+                        <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Card 5 -->
+              <div class="listing-card">
+                  <div class="listing-image">
+                      <div class="image-slider">
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1520250497591-112f2f40a3f4?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGJlYWNoJTIwYm91bmdhbG93fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1510798831971-661eb04b3739?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fGJlYWNoJTIwYm91bmdhbG93fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1571896349842-33c89424de2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                      </div>
+                      <button class="image-nav prev">&#10094;</button>
+                      <button class="image-nav next">&#10095;</button>
+                      <div class="slider-controls">
+                          <span class="slider-dot active"></span>
+                          <span class="slider-dot"></span>
+                          <span class="slider-dot"></span>
+                      </div>
+                  </div>
+                  <h3>Sunset Bungalow</h3>
+                  <div class="price">$175 for 2 days • ☆ 4.6</div>
+                  
+                  <div class="listing-details">
+                    <div class="detail-left">
+                      <p>Beautiful bungalow with stunning sunset views, perfect for romantic getaways. Features a cozy interior and comfortable king-sized bed.</p>
+                    </div>
+                    <div class="detail-right">
+                      <div class="listing-features">
+                          <span class="feature-tag">1 Bedroom</span>
+                          <span class="feature-tag">1 Bathroom</span>
+                          <span class="feature-tag">Sunset View</span>
+                          <span class="feature-tag">Romantic</span>
+                      </div>
+                      <div class="card-footer">
+                        
+                        <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Card 6 -->
+              <div class="listing-card">
+                  <div class="listing-image">
+                      <div class="image-slider">
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8aG90ZWwlMjByb29tfGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1564501049412-61c2a3083791?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGhvdGVsJTIwcm9vbXxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                      </div>
+                      <button class="image-nav prev">&#10094;</button>
+                      <button class="image-nav next">&#10095;</button>
+                      <div class="slider-controls">
+                          <span class="slider-dot active"></span>
+                          <span class="slider-dot"></span>
+                          <span class="slider-dot"></span>
+                      </div>
+                  </div>
+                  <h3>Beachfront Paradise</h3>
+                  <div class="price">$380 for 2 days • ☆ 4.9</div>
+                  
+                  <div class="listing-details">
+                    <div class="detail-left">
+                      <p>Luxury beachfront property with stunning views and premium amenities. Offers direct access to the beach and a private pool.</p>
+                    </div>
+                    <div class="detail-right">
+                      <div class="listing-features">
+                          <span class="feature-tag">3 Bedrooms</span>
+                          <span class="feature-tag">2 Bathrooms</span>
+                          <span class="feature-tag">Beachfront</span>
+                          <span class="feature-tag">Luxury</span>
+                      </div>
+                      <div class="card-footer">
+                        
+                        <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <button class="arrow right" onclick="slide(this, 1)">&#10095;</button>
+          </div>
+        </div>
+
+        <!-- Mountain Getaways Section -->
+        <div class="listing-category">
+          <h2>Mountain Getaways</h2>
+          <div class="listing-wrapper">
+            <button class="arrow left" onclick="slide(this, -1)">&#10094;</button>
+            <div class="listing-row">
+              <!-- Card 1 -->
+              <div class="listing-card">
+                  <div class="listing-image">
+                      <div class="image-slider">
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1597211833712-2e452c25e99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                      </div>
+                      <button class="image-nav prev">&#10094;</button>
+                      <button class="image-nav next">&#10095;</button>
+                      <div class="slider-controls">
+                          <span class="slider-dot active"></span>
+                          <span class="slider-dot"></span>
+                          <span class="slider-dot"></span>
+                      </div>
+                  </div>
+                  <h3>Mountain View Cabin</h3>
+                  <div class="price">$190 for 2 days • ☆ 4.7</div>
+                  
+                  <div class="listing-details">
+                    <div class="detail-left">
+                      <p>Cozy cabin nestled in the mountains with breathtaking views. Features a wood-burning fireplace and easy access to hiking trails.</p>
+                    </div>
+                    <div class="detail-right">
+                      <div class="listing-features">
+                          <span class="feature-tag">2 Bedrooms</span>
+                          <span class="feature-tag">1 Bathroom</span>
+                          <span class="feature-tag">Fireplace</span>
+                          <span class="feature-tag">Mountain View</span>
+                      </div>
+                      <div class="card-footer">
+                        
+                        <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="listing-card">
+                  <div class="listing-image">
+                      <div class="image-slider">
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1vdW50YWluJTIwcmV0cmVhdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1590071089560-5d4df1fdaca5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1vdW50YWluJTIwcmV0cmVhdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1586375300770-1db2096c8d0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG1vdW50YWluJTIwcmV0cmVhdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=c crop&w=500&q=80')"></div>
+                      </div>
+                      <button class="image-nav prev">&#10094;</button>
+                      <button class="image-nav next">&#10095;</button>
+                      <div class="slider-controls">
+                          <span class="slider-dot active"></span>
+                          <span class="slider-dot"></span>
+                          <span class="slider-dot"></span>
+                      </div>
+                  </div>
+                  <h3>Alpine Retreat</h3>
+                  <div class="price">$320 for 2 days • ☆ 4.9</div>
+                  
+                  <div class="listing-details">
+                    <div class="detail-left">
+                      <p>Luxurious mountain retreat with panoramic views, hot tub, and modern amenities. Perfect for those seeking peace and tranquility.</p>
+                    </div>
+                    <div class="detail-right">
+                      <div class="listing-features">
+                          <span class="feature-tag">3 Bedrooms</span>
+                          <span class="feature-tag">2 Bathrooms</span>
+                          <span class="feature-tag">Hot Tub</span>
+                          <span class="feature-tag">Panoramic Views</span>
+                      </div>
+                      <div class="card-footer">
+                        
+                        <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="listing-card">
+                  <div class="listing-image">
+                      <div class="image-slider">
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1595877244574-e90ce41ce089?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fG1vdW50YWluJTIwbG9kZ2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1581888227590-9c6fa5c60b8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG1vdW50YWluJTIwbG9kZ2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1590071089560-5d4df1fdaca5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1vdW50YWluJTIwcmV0cmVhdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                      </div>
+                      <button class="image-nav prev">&#10094;</button>
+                      <button class="image-nav next">&#10095;</button>
+                      <div class="slider-controls">
+                          <span class="slider-dot active"></span>
+                          <span class="slider-dot"></span>
+                          <span class="slider-dot"></span>
+                      </div>
+                  </div>
+                  <h3>Mountain Lodge</h3>
+                  <div class="price">$280 for 2 days • ☆ 4.8</div>
+                  
+                  <div class="listing-details">
+                    <div class="detail-left">
+                      <p>Spacious mountain lodge with rustic charm and modern comforts. Features a large deck with stunning mountain views and easy ski access.</p>
+                    </div>
+                    <div class="detail-right">
+                      <div class="listing-features">
+                          <span class="feature-tag">4 Bedrooms</span>
+                          <span class="feature-tag">3 Bathrooms</span>
+                          <span class="feature-tag">Ski Access</span>
+                          <span class="feature-tag">Rustic Charm</span>
+                      </div>
+                      <div class="card-footer">
+                        
+                        <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Card 4 -->
+              <div class="listing-card">
+                  <div class="listing-image">
+                      <div class="image-slider">
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1597211833712-2e452c25e99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                      </div>
+                      <button class="image-nav prev">&#10094;</button>
+                      <button class="image-nav next">&#10095;</button>
+                      <div class="slider-controls">
+                          <span class="slider-dot active"></span>
+                          <span class="slider-dot"></span>
+                          <span class="slider-dot"></span>
+                      </div>
+                  </div>
+                  <h3>Forest Cabin</h3>
+                  <div class="price">$160 for 2 days • ☆ 4.6</div>
+                  
+                  <div class="listing-details">
+                    <div class="detail-left">
+                      <p>Secluded cabin in the forest with a peaceful atmosphere. Perfect for disconnecting and enjoying nature with hiking trails right at your doorstep.</p>
+                    </div>
+                    <div class="detail-right">
+                      <div class="listing-features">
+                          <span class="feature-tag">1 Bedroom</span>
+                          <span class="feature-tag">1 Bathroom</span>
+                          <span class="feature-tag">Secluded</span>
+                          <span class="feature-tag">Forest Access</span>
+                      </div>
+                      <div class="card-footer">
+                        
+                        <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <button class="arrow right" onclick="slide(this, 1)">&#10095;</button>
+          </div>
+        </div>
+
+        <!-- City Escapes Section -->
+        <div class="listing-category">
+          <h2>City Escapes</h2>
+          <div class="listing-wrapper">
+            <button class="arrow left" onclick="slide(this, -1)">&#10094;</button>
+            <div class="listing-row">
+              <!-- Card 1 -->
+              <div class="listing-card">
+                  <div class="listing-image">
+                      <div class="image-slider">
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=c crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                      </div>
+                      <button class="image-nav prev">&#10094;</button>
+                      <button class="image-nav next">&#10095;</button>
+                      <div class="slider-controls">
+                          <span class="slider-dot active"></span>
+                          <span class="slider-dot"></span>
+                          <span class="slider-dot"></span>
+                      </div>
+                  </div>
+                  <h3>Downtown Loft</h3>
+                  <div class="price">$180 for 2 days • ☆ 4.7</div>
+                  
+                  <div class="listing-details">
+                    <div class="detail-left">
+                      <p>Modern loft in the heart of the city with easy access to restaurants, shops, and entertainment. Features high ceilings and industrial design.</p>
+                    </div>
+                    <div class="detail-right">
+                      <div class="listing-features">
+                          <span class="feature-tag">1 Bedroom</span>
+                          <span class="feature-tag">1 Bathroom</span>
+                          <span class="feature-tag">City Center</span>
+                          <span class="feature-tag">Modern Design</span>
+                      </div>
+                      <div class="card-footer">
+                        
+                        <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Card 2 -->
+              <div class="listing-card">
+                  <div class="listing-image">
+                      <div class="image-slider">
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                      </div>
+                      <button class="image-nav prev">&#10094;</button>
+                      <button class="image-nav next">&#10095;</button>
+                      <div class="slider-controls">
+                          <span class="slider-dot active"></span>
+                          <span class="slider-dot"></span>
+                          <span class="slider-dot"></span>
+                      </div>
+                  </div>
+                  <h3>Luxury Penthouse</h3>
+                  <div class="price">$450 for 2 days • ☆ 4.9</div>
+                  
+                  <div class="listing-details">
+                    <div class="detail-left">
+                      <p>Stunning penthouse with panoramic city views, rooftop terrace, and premium amenities. Experience luxury in the heart of the city.</p>
+                    </div>
+                    <div class="detail-right">
+                      <div class="listing-features">
+                          <span class="feature-tag">2 Bedrooms</span>
+                          <span class="feature-tag">2 Bathrooms</span>
+                          <span class="feature-tag">Rooftop Terrace</span>
+                          <span class="feature-tag">Luxury</span>
+                      </div>
+                      <div class="card-footer">
+                        
+                        <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Card 3 -->
+              <div class="listing-card">
+                  <div class="listing-image">
+                      <div class="image-slider">
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                      </div>
+                      <button class="image-nav prev">&#10094;</button>
+                      <button class="image-nav next">&#10095;</button>
+                      <div class="slider-controls">
+                          <span class="slider-dot active"></span>
+                          <span class="slider-dot"></span>
+                          <span class="slider-dot"></span>
+                      </div>
+                  </div>
+                  <h3>Historic Townhouse</h3>
+                  <div class="price">$280 for 2 days • ☆ 4.8</div>
+                  
+                  <div class="listing-details">
+                    <div class="detail-left">
+                      <p>Charming historic townhouse with original architectural details and modern updates. Located in a trendy neighborhood with easy access to attractions.</p>
+                    </div>
+                    <div class="detail-right">
+                      <div class="listing-features">
+                          <span class="feature-tag">3 Bedrooms</span>
+                          <span class="feature-tag">2 Bathrooms</span>
+                          <span class="feature-tag">Historic</span>
+                          <span class="feature-tag">Trendy Location</span>
+                      </div>
+                      <div class="card-footer">
+                        
+                        <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+
+              <!-- Card 4 -->
+              <div class="listing-card">
+                  <div class="listing-image">
+                      <div class="image-slider">
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                      </div>
+                      <button class="image-nav prev">&#10094;</button>
+                      <button class="image-nav next">&#10095;</button>
+                      <div class="slider-controls">
+                          <span class="slider-dot active"></span>
+                          <span class="slider-dot"></span>
+                          <span class="slider-dot"></span>
+                      </div>
+                  </div>
+                  <h3>Studio Apartment</h3>
+                  <div class="price">$120 for 2 days • ☆ 4.5</div>
+                  
+                  <div class="listing-details">
+                    <div class="detail-left">
+                      <p>Cozy studio apartment in a convenient location. Perfect for solo travelers or couples looking to explore the city on a budget.</p>
+                    </div>
+                    <div class="detail-right">
+                      <div class="listing-features">
+                          <span class="feature-tag">Studio</span>
+                          <span class="feature-tag">1 Bathroom</span>
+                          <span class="feature-tag">Budget Friendly</span>
+                          <span class="feature-tag">Central Location</span>
+                      </div>
+                      <div class="card-footer">
+                        <button class="dive-deeper-btn" onclick="window.location.href='products.html'">Dive Deeper</button>
+                      </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+            <button class="arrow right" onclick="slide(this, 1)">&#10095;</button>
+          </div>
+        </div>
+      </section>
+
+
+    <!-- ===== HTML: Footer ===== -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-column">
+          <h3>About Homeo</h3>
+          <ul>
+            <li><a href="#">How it works</a></li>
+            <li><a href="#">Newsroom</a></li>
+            <li><a href="#">Investors</a></li>
+            <li><a href="#">Careers</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Community</h3>
+          <ul>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Support</a></li>
+            <li><a href="#">Referrals</a></li>
+            <li><a href="#">Join as host</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Host</h3>
+          <ul>
+            <li><a href="#">Host your home</a></li>
+            <li><a href="#">Host an experience</a></li>
+            <li><a href="#">Community forum</a></li>
+            <li><a href="#">Hosting resources</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Support</h3>
+          <ul>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">AirCover</a></li>
+            <li><a href="#">Safety information</a></li>
+            <li><a href="#">Contact support</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+      
+      <div class="footer-bottom">
+        <p>© 2023 Homeo, Inc. All rights reserved · Privacy · Terms · Sitemap</p>
+      </div>
+    </footer>
+
+  <!-- ===== JavaScript: External Libraries ===== -->
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <!-- ===== JavaScript: Custom Code ===== -->
+  <script src="../js/script.js"></script></body>
+</html>
