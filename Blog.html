@@ -286,74 +286,90 @@
     </div>
   </header>
 
-  <!-- Blog Cards -->
-  <div class="container-content">
-    <div class="top-row">
-      <a href="Blog1.html" class="blog-card featured">
-        <img src="../AIRBNB-VCS-PROJECT/images/Blog1.jpeg" alt="">
-        <div class="content">
-          <h3>Hidden Gems of Nepal: Beyond the Crowded Trails</h3>
-          <p>Nepal is famous for the Himalayas and iconic trekking routes like Everest Base Camp and Annapurna Circuit</p>
-          <div class="meta">By Arjan Regmi · Dec 15, 2024 · 5 min read</div>
-        </div>
-      </a>
+<!-- Blog Section -->
+<div class="container-content">
 
-      <a href="Blog2.html" class="blog-card">
-        <img src="../AIRBNB-VCS-PROJECT/images/Blog2.jpg" alt="">
-        <div class="content">
-          <h3>Our Story: How Homeo Began, The beginnings of a Journey</h3>
-          <p>The Epic Story of Homeo.</p>
-          <div class="meta">By Jasun Maharjan · Dec 12, 2024 · 8 min read</div>
-        </div>
-      </a>
+  <!-- Featured Post -->
+  <div class="featured-post" style="display:flex; align-items:center; gap:20px; margin-bottom:40px;">
+    <div style="flex:1;">
+      <span style="display:inline-block; background:#f1f1f1; color:#444; font-size:12px; font-weight:600; padding:4px 10px; border-radius:4px; margin-bottom:10px;">
+        Featured Post
+      </span>
+      <h2 style="font-size:28px; margin-bottom:10px; color:#222; line-height:1.3;">
+        Hidden Gems of Nepal: Beyond the Crowded Trails
+      </h2>
+      <p style="color:#555; font-size:15px; margin-bottom:12px;">
+        Nepal is famous for the Himalayas and iconic trekking routes like Everest Base Camp and Annapurna Circuit
+      </p>
+      <div class="meta" style="margin-bottom:15px;">By Arjan Regmi · Dec 15, 2024 · 5 min read</div>
+      <a href="Blog1.html" style="background:#F5503D; color:#fff; padding:10px 18px; border-radius:6px; font-weight:600; text-decoration:none;">Read Article</a>
     </div>
-
-    <div class="bottom-row">
-      <a href="Blog3.html" class="blog-card">
-        <img src="../AIRBNB-VCS-PROJECT/images/Blog3.jpg" alt="">
-        <div class="content">
-          <h3>Discovering Kathmandu's Best Restaurants</h3>
-          <p>Here's a guide to some must-visit restaurants.</p>
-          <div class="meta">By Rikesh Sharma · Dec 10, 2024 · 6 min read</div>
-        </div>
-      </a>
-
-      <a href="Blog4.html" class="blog-card">
-        <img src="../AIRBNB-VCS-PROJECT/images/Festival.jpg" alt="">
-        <div class="content">
-          <h3>Cultural Festivals in Nepal: A Journey Through Tradition</h3>
-          <p>Nepal is a land of festivals, where every season brings a vibrant celebration.</p>
-          <div class="meta">By Yogesh Pant · Dec 8, 2024 · 4 min read</div>
-        </div>
-      </a>
-
-      <a href="Blog5.html" class="blog-card">
-        <img src="../AIRBNB-VCS-PROJECT/images/Adventure.jpg" alt="">
-        <div class="content">
-          <h3>Adventure Activities in Nepal: Thrills for Every Traveler</h3>
-          <p>Nepal is not just about mountains and temples; it is a playground for adventure.</p>
-          <div class="meta">By Aditya Shah · Dec 5, 2024 · 7 min read</div>
-        </div>
-      </a>
+    <div style="flex:1;">
+      <img src="../AIRBNB-VCS-PROJECT/images/Blog1.jpeg" alt="Featured Blog" style="width:100%; border-radius:10px; object-fit:cover;">
     </div>
   </div>
 
-  <script>
-    // Hamburger menu toggle
-    const hamburger = document.getElementById('hamburger-menu');
-    const menuDropdown = document.getElementById('menu-dropdown');
+  <!-- Latest Articles Title -->
+  <h2 style="margin-bottom:10px; font-size:24px; text-align:center; color:#222;">Latest Articles</h2>
+  <p style="text-align:center; color:#777; margin-bottom:30px; font-size:14px;">
+    Deep Insights On Various Topics
+  </p>
 
-    hamburger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      menuDropdown.classList.toggle('active');
-    });
+  <!-- First Row (2 cols: big + small) -->
+  <div style="display:flex; gap:20px; margin-bottom:20px; flex-wrap:wrap;">
+    <a href="Blog2.html" class="blog-card" style="flex:2; min-width:250px;">
+      <img src="../AIRBNB-VCS-PROJECT/images/Blog2.jpg" alt="">
+      <div class="content">
+        <h3>Our Story: How Homeo Began, The beginnings of a Journey</h3>
+        <p>The Epic Story of Homeo.</p>
+        <div class="meta">By Jasun Maharjan · Dec 12, 2024 · 8 min read</div>
+      </div>
+    </a>
 
-    document.addEventListener('click', () => {
-      menuDropdown.classList.remove('active');
-    });
+    <a href="Blog3.html" class="blog-card" style="flex:1; min-width:250px;">
+      <img src="../AIRBNB-VCS-PROJECT/images/Blog3.jpg" alt="">
+      <div class="content">
+        <h3>Discovering Kathmandu's Best Restaurants</h3>
+        <p>Here's a guide to some must-visit restaurants.</p>
+        <div class="meta">By Rikesh Sharma · Dec 10, 2024 · 6 min read</div>
+      </div>
+    </a>
+  </div>
 
-    menuDropdown.addEventListener('click', e => e.stopPropagation());
-  </script>
+  <!-- Second Row (3 cols equal) -->
+  <div style="display:flex; gap:20px; flex-wrap:wrap;">
+    <a href="Blog4.html" class="blog-card" style="flex:1; min-width:200px;">
+      <img src="../AIRBNB-VCS-PROJECT/images/Festival.jpg" alt="">
+      <div class="content">
+        <h3>Cultural Festivals in Nepal: A Journey Through Tradition</h3>
+        <p>Nepal is a land of festivals, where every season brings a vibrant celebration.</p>
+        <div class="meta">By Yogesh Pant · Dec 8, 2024 · 4 min read</div>
+      </div>
+    </a>
+
+    <a href="Blog5.html" class="blog-card" style="flex:1; min-width:200px;">
+      <img src="../AIRBNB-VCS-PROJECT/images/Adventure.jpg" alt="">
+      <div class="content">
+        <h3>Adventure Activities in Nepal: Thrills for Every Traveler</h3>
+        <p>Nepal is not just about mountains and temples; it is a playground for adventure.</p>
+        <div class="meta">By Aditya Shah · Dec 5, 2024 · 7 min read</div>
+      </div>
+    </a>
+
+    <a href="Blog1.html" class="blog-card" style="flex:1; min-width:200px;">
+      <img src="../AIRBNB-VCS-PROJECT/images/Blog1.jpeg" alt="">
+      <div class="content">
+        <h3>Hidden Gems of Nepal: Beyond the Crowded Trails</h3>
+        <p>Nepal is famous for the Himalayas and iconic trekking routes like Everest Base Camp and Annapurna Circuit<p>
+        <div class="meta">By Arjan Regmi · Dec 3, 2024 · 5 min read</div>
+      </div>
+    </a>
+  </div>
+
+</div>
+  <script src="../AIRBNB-VCS-PROJECT/JS/hamscript.js"></script>
+
+
 </body>
 
 </html>
