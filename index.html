@@ -81,11 +81,11 @@
     text-shadow: 0 0 5px rgba(0,0,0,0.5);
   }
 
-  /* Hamburger menu icon - orange */
+  /* Hamburger menu icon - orange and fixed positioning */
   #hamburger-menu {
-    color: #F5503D;
+    color: #e04a4f;
     position: relative;
-    top: 5px; /* Moved up */
+    top: 0; /* Fixed positioning issue */
   }
 
   /* Login icon - white */
@@ -97,22 +97,18 @@
     text-shadow: none;
   }
 
-  header.scrolled #hamburger-menu {
-    color: #F5503D; /* Keep orange when scrolled */
-  }
-
-  header.scrolled .fa-user {
-    color: #F5503D !important; /* Change to orange when scrolled */
-  }
 
   /* ===== CSS: Hero Section ===== */
   #hero {
     padding: 20px 0 80px; /* Reduced height */
-    background: url('../images/navBanner.jpeg') no-repeat center center;
-    background-size: cover;
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), 
+      url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');    background-size: cover;
+                background-position: center;
+                
     text-align: center;
     color: white;
     position: relative;
+    min-height: 50px;
   }
 
   #hero::before {
@@ -456,10 +452,14 @@
     transition: background-color 0.3s ease;
   }
 
-  /* ===== CSS: Dropdown Menu (Hamburger) ===== */
+  /* ===== CSS: Dropdown Menu (Hamburger) - Fixed positioning ===== */
+  .menu-wrapper {
+    position: relative;
+  }
+
   .menu-dropdown {
     position: absolute;
-    top: 100%;
+    top: 40px; /* Fixed positioning - moved down from 100% */
     right: 0;
     background: white;
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
@@ -473,7 +473,6 @@
     transform: translateY(-10px);
     transition: opacity 0.3s ease, transform 0.3s ease;
     pointer-events: none;
-    margin-top: 10px;
   }
 
   .menu-dropdown.active {
@@ -494,6 +493,7 @@
     color: #333;
     text-decoration: none;
     transition: background 0.2s ease;
+    cursor: pointer;
   }
 
   .menu-dropdown li a:hover {
@@ -523,10 +523,158 @@
     opacity: 0.95;
   }
 
+  /* ===== CSS: Gift Card Modal ===== */
+  .gift-card-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(8px);
+    z-index: 2000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+
+  .gift-card-modal.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .gift-card-content {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 40px;
+    max-width: 500px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    position: relative;
+    text-align: center;
+  }
+
+  .gift-card-close {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #666;
+    cursor: pointer;
+    transition: color 0.3s ease;
+  }
+
+  .gift-card-close:hover {
+    color: #F5503D;
+  }
+
+  .gift-card-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #F5503D, #ff7b5f);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gift-card-subtitle {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 30px;
+  }
+
+  .gift-card-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    text-align: left;
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .form-group label {
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+  }
+
+  .form-group input {
+    padding: 12px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 12px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+  }
+
+  .form-group input:focus {
+    outline: none;
+    border-color: #F5503D;
+  }
+
+  .redeem-btn {
+    background: linear-gradient(135deg, #F5503D, #ff7b5f);
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-top: 10px;
+  }
+
+  .redeem-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(245, 80, 61, 0.3);
+  }
+
+  .gift-card-info {
+    background: rgba(245, 80, 61, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    margin-top: 20px;
+    text-align: left;
+  }
+
+  .gift-card-info h4 {
+    color: #F5503D;
+    margin-bottom: 10px;
+    font-size: 16px;
+  }
+
+  .gift-card-info ul {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+    padding-left: 20px;
+  }
+
+  .gift-card-info li {
+    margin-bottom: 5px;
+  }
+
   /* Focus outlines for buttons */
   #login-signup-btn:focus,
   #done-btn:focus,
-  .search-button:focus {
+  .search-button:focus,
+  .redeem-btn:focus {
     outline: 2px solid #0071c2;
     outline-offset: 2px;
   }
@@ -603,7 +751,7 @@
     background-color: #e04a4f;
   }
 
-    /* ===== CSS: Hotel Listings - UPDATED ===== */
+  /* ===== CSS: Hotel Listings ===== */
   .hotel-listings {
     padding: 0 3rem;         /* Remove top/bottom padding, keep left/right */
     max-width: 1400px;          /* Wider to use left/right whitespace */
@@ -895,60 +1043,246 @@
     color: white;
   }
 
-    footer {
-      background: #2d333f; /* dark grey/black */
-      padding: 40px 20px;
-      text-align: center;
-      border-top: 1px solid #444;
-      color: #ddd;
+  footer {
+    background: #2d333f; /* dark grey/black */
+    padding: 40px 20px;
+    text-align: center;
+    border-top: 1px solid #444;
+    color: #ddd;
+  }
+
+  footer .logo {
+    font-size: 40px;
+    color: #e74c3c;
+    margin-bottom: 10px;
+    display: inline-block;
+  }
+
+  footer p {
+    margin: 8px 0 20px;
+    font-size: 16px;
+    color: #ddd;
+  }
+
+  footer .social-icons {
+    margin: 15px 0;
+  }
+
+  footer .social-icons a {
+    display: inline-block;
+    margin: 0 10px;
+    font-size: 24px;
+    color: #ddd;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  footer .social-icons a:hover {
+    color: #e74c3c;
+  }
+
+  footer .links {
+    margin-top: 15px;
+    font-size: 14px;
+    color: #aaa;
+  }
+
+  footer .links a {
+    margin: 0 6px;
+    color: #aaa;
+    text-decoration: none;
+    transition: 0.3s;
+  }
+
+  footer .links a:hover {
+    color: #fff;
+  }
+
+  /* ===== MOBILE RESPONSIVE STYLES ===== */
+  @media (max-width: 768px) {
+    /* Header Mobile */
+    .container {
+      padding: 0 20px;
+      width: 95%;
     }
 
-    footer .logo {
-      font-size: 40px;
-      color: #e74c3c;
-      margin-bottom: 10px;
-      display: inline-block;
+    .logo img {
+      max-height: 45px;
+    }
+
+    .nav-icons i {
+      font-size: 1.3rem;
+      margin-left: 15px;
+    }
+
+    /* Hero Mobile */
+    #hero {
+      padding: 15px 0 60px;
+      min-height: 60vh;
+    }
+
+    #hero h1 {
+      font-size: 1.8rem;
+      bottom: -60px;
+    }
+
+    #hero p {
+      font-size: 1rem;
+    }
+
+    /* Search Bar Mobile */
+    .searchBar-container {
+      bottom: -80px;
+    }
+
+    .searchBar-box {
+      flex-direction: column;
+      border-radius: 20px;
+      padding: 20px;
+      width: 95%;
+    }
+
+    .searchBar-field {
+      padding: 15px 0;
+      min-width: 100%;
+      border-bottom: 1px solid #eee;
+    }
+
+    .searchBar-field:not(:last-child)::after {
+      display: none;
+    }
+
+    .searchBar-field:last-child {
+      border-bottom: none;
+    }
+
+    .search-button {
+      width: 100%;
+      border-radius: 12px;
+      height: 48px;
+      margin: 15px 0 0 0;
+    }
+
+    /* Guest Dropdown Mobile */
+    #guest-dropdown {
+      width: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      max-width: 350px;
+    }
+
+    /* Menu Dropdown Mobile */
+    .menu-dropdown {
+      right: -10px;
+      width: 200px;
+    }
+
+    /* Hotel Listings Mobile */
+    .hotel-listings {
+      padding: 0 1rem;
+    }
+
+    .listing-category h2 {
+      font-size: 1.3rem;
+      padding-left: 5px;
+    }
+
+    .listing-card {
+      flex: 0 0 280px;
+      min-width: 260px;
+    }
+
+    .listing-card:hover {
+      flex: 0 0 320px;
+    }
+
+    .arrow {
+      width: 35px;
+      height: 35px;
+      font-size: 1.2rem;
+    }
+
+    /* Gift Card Modal Mobile */
+    .gift-card-content {
+      padding: 30px 20px;
+      margin: 20px;
+      width: calc(100% - 40px);
+    }
+
+    .gift-card-title {
+      font-size: 1.5rem;
+    }
+
+    /* Mini Search Mobile */
+    .mini-search {
+      width: 95%;
+      padding: 10px 15px;
+    }
+
+    .mini-btn {
+      font-size: 13px;
+      padding: 6px 8px;
+    }
+
+    .mini-search-icon {
+      width: 32px;
+      height: 32px;
+      font-size: 12px;
+    }
+
+    /* Footer Mobile */
+    footer {
+      padding: 30px 15px;
     }
 
     footer p {
-      margin: 8px 0 20px;
-      font-size: 16px;
-      color: #ddd;
-    }
-
-    footer .social-icons {
-      margin: 15px 0;
+      font-size: 14px;
     }
 
     footer .social-icons a {
-      display: inline-block;
-      margin: 0 10px;
-      font-size: 24px;
-      color: #ddd;
-      text-decoration: none;
-      transition: 0.3s;
+      font-size: 20px;
+      margin: 0 8px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    /* Extra small mobile adjustments */
+    .container {
+      padding: 0 15px;
     }
 
-    footer .social-icons a:hover {
-      color: #e74c3c;
+    #hero h1 {
+      font-size: 1.5rem;
     }
 
-    footer .links {
-      margin-top: 15px;
-      font-size: 14px;
-      color: #aaa;
+    .searchBar-box {
+      padding: 15px;
     }
 
-    footer .links a {
-      margin: 0 6px;
-      color: #aaa;
-      text-decoration: none;
-      transition: 0.3s;
+    .listing-card {
+      flex: 0 0 250px;
+      min-width: 240px;
     }
 
-    footer .links a:hover {
-      color: #fff;
+    .listing-card:hover {
+      flex: 0 0 280px;
     }
+
+    .gift-card-content {
+      padding: 25px 15px;
+    }
+
+    .listing-category h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  /* ===== Large screens adjustments ===== */
+  @media (min-width: 1400px) {
+    .hotel-listings {
+      padding: 0 4rem;
+    }
+  }
   </style>
 </head>
 <body>
@@ -971,13 +1305,13 @@
         </div>
 
         <div class="nav-icons">
-          <div class="menu-wrapper relative">
+          <div class="menu-wrapper">
             <i id="hamburger-menu" class="fas fa-bars"></i>
             <div id="menu-dropdown" class="menu-dropdown">
               <ul>
                 <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
                 <li><a href="#"><i class="fas fa-home"></i> Host</a></li>
-                <li><a href="#"><i class="fas fa-gift"></i> Gift cards</a></li>
+                <li><a href="#" id="gift-cards-link"><i class="fas fa-gift"></i> Gift cards</a></li>
               </ul>
               <div class="dropdown-divider"></div>
               <button id="login-signup-btn"><i class="fas fa-user"></i> Log in | Sign up</button>
@@ -986,6 +1320,42 @@
         </div>
       </div>
     </header>
+
+    <!-- ===== HTML: Gift Card Modal ===== -->
+    <div id="gift-card-modal" class="gift-card-modal">
+      <div class="gift-card-content">
+        <button class="gift-card-close" id="gift-card-close">&times;</button>
+        <h2 class="gift-card-title">🎁 Gift Cards</h2>
+        <p class="gift-card-subtitle">Redeem your gift vouchers and enjoy exclusive travel deals</p>
+        
+        <form class="gift-card-form" id="gift-card-form">
+          <div class="form-group">
+            <label for="voucher-code">Gift Card Code</label>
+            <input type="text" id="voucher-code" placeholder="Enter your gift card code" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input type="email" id="email" placeholder="Enter your email address" required>
+          </div>
+          
+          <button type="submit" class="redeem-btn">
+            <i class="fas fa-gift"></i> Redeem Gift Card
+          </button>
+        </form>
+        
+        <div class="gift-card-info">
+          <h4>How to use your gift card:</h4>
+          <ul>
+            <li>Enter your unique gift card code above</li>
+            <li>Provide your email for confirmation</li>
+            <li>Gift card value will be applied to your account</li>
+            <li>Use at checkout for any booking</li>
+            <li>Valid for 12 months from issue date</li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <!-- ===== HTML: Hero Section ===== -->
     <section id="hero">
@@ -1676,6 +2046,260 @@
 
   <!-- ===== JavaScript: External Libraries ===== -->
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  
   <!-- ===== JavaScript: Custom Code ===== -->
-  <script src="../js/script.js"></script></body>
+  <script>
+    // Header scroll effect
+    window.addEventListener('scroll', () => {
+      const header = document.querySelector('header');
+      if (window.scrollY > 100) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+
+    // Hamburger menu toggle
+    document.getElementById('hamburger-menu').addEventListener('click', () => {
+      const dropdown = document.getElementById('menu-dropdown');
+      dropdown.classList.toggle('active');
+    });
+
+    // Close hamburger menu when clicking outside
+    document.addEventListener('click', (e) => {
+      const hamburger = document.getElementById('hamburger-menu');
+      const dropdown = document.getElementById('menu-dropdown');
+      
+      if (!hamburger.contains(e.target) && !dropdown.contains(e.target)) {
+        dropdown.classList.remove('active');
+      }
+    });
+
+    // Gift card modal functionality
+    const giftCardLink = document.getElementById('gift-cards-link');
+    const giftCardModal = document.getElementById('gift-card-modal');
+    const giftCardClose = document.getElementById('gift-card-close');
+    const giftCardForm = document.getElementById('gift-card-form');
+
+    giftCardLink.addEventListener('click', (e) => {
+      e.preventDefault();
+      giftCardModal.classList.add('active');
+      // Close hamburger menu
+      document.getElementById('menu-dropdown').classList.remove('active');
+    });
+
+    giftCardClose.addEventListener('click', () => {
+      giftCardModal.classList.remove('active');
+    });
+
+    // Close modal when clicking outside
+    giftCardModal.addEventListener('click', (e) => {
+      if (e.target === giftCardModal) {
+        giftCardModal.classList.remove('active');
+      }
+    });
+
+    // Handle form submission
+    giftCardForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const voucherCode = document.getElementById('voucher-code').value;
+      const email = document.getElementById('email').value;
+      
+      // Simulate processing
+      const redeemBtn = document.querySelector('.redeem-btn');
+      const originalText = redeemBtn.innerHTML;
+      redeemBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+      redeemBtn.disabled = true;
+      
+      setTimeout(() => {
+        alert(`Gift card redemption successful!\nCode: ${voucherCode}\nEmail: ${email}\n\nYour account will be credited within 24 hours.`);
+        redeemBtn.innerHTML = originalText;
+        redeemBtn.disabled = false;
+        giftCardModal.classList.remove('active');
+        giftCardForm.reset();
+      }, 2000);
+    });
+
+    // Guest dropdown functionality
+    const guestField = document.getElementById('guest-field');
+    const guestDropdown = document.getElementById('guest-dropdown');
+    const guestInput = document.getElementById('guests');
+    const doneBtn = document.getElementById('done-btn');
+    let adultsCount = 0;
+    let childrenCount = 0;
+
+    guestField.addEventListener('click', () => {
+      guestDropdown.classList.toggle('hidden');
+    });
+
+    // Plus/minus buttons
+    document.querySelectorAll('.plus, .minus').forEach(button => {
+      button.addEventListener('click', (e) => {
+        e.stopPropagation();
+        const type = button.getAttribute('data-type');
+        const countElement = document.getElementById(`${type}-count`);
+        let count = parseInt(countElement.textContent);
+        
+        if (button.classList.contains('plus')) {
+          count++;
+        } else if (button.classList.contains('minus') && count > 0) {
+          count--;
+        }
+        
+        countElement.textContent = count;
+        
+        if (type === 'adults') adultsCount = count;
+        if (type === 'children') childrenCount = count;
+        
+        updateGuestInput();
+      });
+    });
+
+    function updateGuestInput() {
+      const total = adultsCount + childrenCount;
+      if (total === 0) {
+        guestInput.value = '';
+        guestInput.placeholder = 'Add guests';
+      } else {
+        let text = '';
+        if (adultsCount > 0) text += `${adultsCount} adult${adultsCount > 1 ? 's' : ''}`;
+        if (childrenCount > 0) {
+          if (text) text += ', ';
+          text += `${childrenCount} child${childrenCount > 1 ? 'ren' : ''}`;
+        }
+        guestInput.value = text;
+      }
+    }
+
+    // Clear all button
+    document.getElementById('clear-all-btn').addEventListener('click', () => {
+      adultsCount = 0;
+      childrenCount = 0;
+      document.getElementById('adults-count').textContent = '0';
+      document.getElementById('children-count').textContent = '0';
+      document.getElementById('pets').checked = false;
+      updateGuestInput();
+    });
+
+    // Done button
+    doneBtn.addEventListener('click', () => {
+      guestDropdown.classList.add('hidden');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!guestField.contains(e.target)) {
+        guestDropdown.classList.add('hidden');
+      }
+    });
+
+    // Date picker initialization
+    flatpickr("#checkin", {
+      dateFormat: "M d, Y",
+      minDate: "today",
+      onChange: function(selectedDates, dateStr, instance) {
+        // Update checkout minimum date
+        const checkoutPicker = flatpickr("#checkout");
+        if (checkoutPicker) {
+          checkoutPicker.set('minDate', selectedDates[0]);
+        }
+      }
+    });
+
+    flatpickr("#checkout", {
+      dateFormat: "M d, Y",
+      minDate: "today"
+    });
+
+    // Listing carousel functionality
+    function slide(button, direction) {
+      const listingRow = button.parentElement.querySelector('.listing-row');
+      const cardWidth = 300; // Approximate card width including gap
+      const scrollAmount = cardWidth * 2; // Scroll 2 cards at a time
+      
+      listingRow.scrollBy({
+        left: direction * scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+
+    // Image slider functionality for listing cards
+    document.querySelectorAll('.listing-card').forEach(card => {
+      const imageSlider = card.querySelector('.image-slider');
+      const prevBtn = card.querySelector('.image-nav.prev');
+      const nextBtn = card.querySelector('.image-nav.next');
+      const dots = card.querySelectorAll('.slider-dot');
+      const totalImages = dots.length;
+      let currentIndex = 0;
+
+      function updateSlider() {
+        const translateX = -currentIndex * 100;
+        imageSlider.style.transform = `translateX(${translateX}%)`;
+        
+        dots.forEach((dot, index) => {
+          dot.classList.toggle('active', index === currentIndex);
+        });
+      }
+
+      prevBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = currentIndex > 0 ? currentIndex - 1 : totalImages - 1;
+        updateSlider();
+      });
+
+      nextBtn?.addEventListener('click', (e) => {
+        e.stopPropagation();
+        currentIndex = currentIndex < totalImages - 1 ? currentIndex + 1 : 0;
+        updateSlider();
+      });
+
+      dots.forEach((dot, index) => {
+        dot.addEventListener('click', (e) => {
+          e.stopPropagation();
+          currentIndex = index;
+          updateSlider();
+        });
+      });
+
+      // Mini search bar functionality
+const miniSearchBar = document.getElementById('mini-search-bar');
+const mainSearchBar = document.querySelector('.searchBar-container');
+
+window.addEventListener('scroll', () => {
+  const scrollPosition = window.scrollY;
+  
+  // Show mini search bar when scrolled past the hero section
+  if (scrollPosition > 200) { // Adjust this value as needed
+    miniSearchBar.classList.remove('hidden');
+    miniSearchBar.classList.add('visible');
+  } else {
+    miniSearchBar.classList.add('hidden');
+    miniSearchBar.classList.remove('visible');
+  }
+});
+
+// Also add click handlers for the mini search buttons
+document.getElementById('mini-where').addEventListener('click', () => {
+  document.getElementById('destination').focus();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+document.getElementById('mini-date').addEventListener('click', () => {
+  document.getElementById('checkin').focus();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+document.getElementById('mini-guests').addEventListener('click', () => {
+  document.getElementById('guest-field').click();
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+document.querySelector('.mini-search-icon').addEventListener('click', () => {
+  // Trigger search functionality
+  alert('Search triggered from mini bar!');
+  // You can add your actual search logic here
+});
+    });
+  </script>
+</body>
 </html>
