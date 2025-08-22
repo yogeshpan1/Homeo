@@ -10,18 +10,20 @@
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      padding-bottom: 160px; /* Prevent content from overlapping footer */
     }
 
     footer {
-      margin-top: auto; /* pushes footer to bottom */
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
       background: #2d333f; /* dark grey/black */
       padding: 40px 20px;
       text-align: center;
       border-top: 1px solid #444;
       color: #ddd;
+      z-index: 1000;
     }
 
     footer .logo {
@@ -74,6 +76,8 @@
 </head>
 <body>
 
+  <!--Footer-->
+
   <footer>
     <!-- Home icon -->
     <div class="logo">
@@ -91,8 +95,7 @@
       <a href="https://www.booking.com"><i class="fas fa-bed"></i></a>
     </div>
 
-    <br>
-    <br>
+    <br><br>
 
     <!-- Footer links -->
     <div class="links">
