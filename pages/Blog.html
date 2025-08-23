@@ -1,14 +1,12 @@
-\
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Cultural Festivals in Nepal</title>
+  <title>Homeo Blogs</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
   <style>
     * {
@@ -18,13 +16,14 @@
     }
 
     body {
-      font-family: "Inter", sans-serif;
-      background: #fff;
-      color: #0e0e10;
-      line-height: 1.7;
+      background: #f9f9f9;
+      font-family: 'Inter', sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
     }
 
-    /* Navbar Styles */
+    /* ===== Navbar ===== */
     header {
       position: fixed;
       top: 0;
@@ -147,122 +146,159 @@
       background-color: #e04a4f;
     }
 
-    /* Content Styles */
+    /* ===== Blog cards ===== */
     .container-content {
-      max-width: 820px;
-      margin: 120px auto 0;
-      /* leave space for navbar */
-      padding: 40px 20px 80px;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      max-width: 1200px;
+      margin: 100px auto 20px;
+      padding: 0 20px;
     }
 
-    .header {
-      text-align: center;
-      margin-bottom: 40px;
+    .top-row,
+    .bottom-row {
+      display: flex;
+      gap: 16px;
     }
 
-    h1 {
-      font-size: 44px;
-      font-weight: 800;
-      line-height: 52px;
-      margin-bottom: 20px;
-      color: #111827;
+    .featured {
+      flex: 2;
     }
 
-    .lead {
-      font-size: 18px;
-      color: #5a5f6a;
-      max-width: 700px;
-      margin: 0 auto 48px;
-      text-align: center;
-      line-height: 1.6;
+    .side-tall {
+      flex: 1;
     }
 
-    h2 {
-      font-size: 28px;
-      line-height: 34px;
-      margin: 56px 0 12px;
-      font-weight: 700;
-      color: #111827;
+    .bottom-row .blog-card {
+      flex: 1;
     }
 
-    p {
-      margin-bottom: 24px;
-      font-size: 17px;
-      max-width: 750px;
+    .blog-card {
+      background: white;
+      border-radius: 6px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08), 0 8px 20px rgba(0, 0, 0, 0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      text-decoration: none;
+      color: inherit;
     }
 
-    img {
+    .blog-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 12px rgba(255, 0, 0, 0.15),
+        0 12px 24px rgba(255, 0, 0, 0.2);
+    }
+
+    .blog-card img {
       width: 100%;
-      border-radius: 8px;
-      margin: 40px 0;
-      display: block;
+      object-fit: cover;
+      height: 160px;
+      transition: transform 0.4s ease;
     }
 
-    .spacer {
-      height: 6px;
+    .featured img,
+    .side-tall img {
+      height: 220px;
     }
+
+    .blog-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .content {
+      padding: 12px;
+    }
+
+    .content h3 {
+      margin: 0 0 6px;
+      font-size: 16px;
+      color: #222;
+      transition: color 0.3s ease;
+    }
+
+    .blog-card:hover h3 {
+      color: #ff0000;
+    }
+
+    .content p {
+      font-size: 13px;
+      color: #555;
+      margin-bottom: 8px;
+    }
+
+    .meta {
+      font-size: 11px;
+      color: #777;
+    }
+
+    /* Footer */
     footer {
-  background: #2d333f; 
-  padding: 20px 15px;   
-  text-align: center;
-  border-top: 1px solid #444;
-  color: #ddd;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+      background: #2d333f;
+      padding: 20px 15px;
+      text-align: center;
+      border-top: 1px solid #444;
+      color: #ddd;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-/* Footer Logo */
-footer .logo img {
-  max-height: 70px;   
-  width: auto;
-  margin-bottom: 5px; 
-  display: block;
-  padding-left: 15px;
-}
+    /* Footer Logo */
+    footer .logo img {
+      max-height: 70px;
+      width: auto;
+      margin-bottom: 5px;
+      display: block;
+      padding-left: 15px;
+    }
 
-/* Tagline */
-footer .tagline {
-  margin: 4px 0 8px;   
-  font-size: 22px;     
-  font-weight: 50;
-  color: #ddd;
-}
+    /* Tagline */
+    footer .tagline {
+      margin: 4px 0 8px;
+      font-size: 22px;
+      font-weight: 50;
+      color: #ddd;
+    }
 
-footer .social-icons {
-  margin: 6px 0 8px;   
-}
+    footer .social-icons {
+      margin: 6px 0 8px;
+    }
 
-footer .social-icons a {
-  display: inline-block;
-  margin: 0 8px;
-  font-size: 22px;
-  color: #ddd;
-  text-decoration: none;
-  transition: 0.3s;
-}
+    footer .social-icons a {
+      display: inline-block;
+      margin: 0 8px;
+      font-size: 22px;
+      color: #ddd;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-footer .social-icons a:hover {
-  color: #e74c3c;
-}
+    footer .social-icons a:hover {
+      color: #e74c3c;
+    }
 
-/* Footer Links */
-footer .links {
-  margin-top: 6px;    
-  font-size: 14px;
-  color: #aaa;
-}
+    /* Footer Links */
+    footer .links {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #aaa;
+    }
 
-footer .links a {
-  margin: 0 6px;
-  color: #aaa;
-  text-decoration: none;
-  transition: 0.3s;
-}
+    footer .links a {
+      margin: 0 6px;
+      color: #aaa;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-footer .links a:hover {
-  color: #fff;
-}
+    footer .links a:hover {
+      color: #fff;
+    }
 
 
     /* Mobile responsive styles for footer */
@@ -270,14 +306,43 @@ footer .links a:hover {
       footer {
         padding: 30px 15px;
       }
-      
+
       footer .tagline {
         font-size: 18px;
       }
-      
+
       footer .social-icons a {
         font-size: 20px;
         margin: 0 8px;
+      }
+    }
+
+
+    /* Responsive */
+    @media (max-width: 768px) {
+
+      .top-row,
+      .bottom-row {
+        flex-direction: column;
+      }
+
+      .featured img,
+      .side-tall img {
+        height: auto;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .content h3 {
+        font-size: 14px;
+      }
+
+      .content p {
+        font-size: 12px;
+      }
+
+      .meta {
+        font-size: 10px;
       }
     }
 
@@ -458,27 +523,6 @@ footer .links a:hover {
         padding: 25px 15px;
       }
     }
-
-    @media (max-width: 768px) {
-      .container-content {
-        padding: 24px 16px 60px;
-        margin-top: 100px;
-      }
-
-      h1 {
-        font-size: 32px;
-        line-height: 40px;
-      }
-
-      .lead {
-        font-size: 16px;
-      }
-
-      h2 {
-        font-size: 24px;
-        line-height: 30px;
-      }
-    }
   </style>
 </head>
 
@@ -487,15 +531,15 @@ footer .links a:hover {
   <header>
     <div class="container">
       <div class="logo">
-          <a href="index.html"><img src="../AIRBNB-VCS-PROJECT/images/Logo.png" alt="Homeo Logo"></a>
+        <a href="../index.html"><img src="../images/Logo.png" alt="Homeo Logo"></a>
       </div>
       <div class="nav-icons">
         <i id="hamburger-menu" class="fas fa-bars"></i>
       </div>
       <div id="menu-dropdown" class="menu-dropdown">
         <ul>
-          <li><a href="Blog.html"><i class="fas fa-blog"></i> Blog </a></li>
-          <li><a href="host.html"><i class="fas fa-home"></i> Host</a></li>
+          <li><a href="../pages/Blog.html"><i class="fas fa-blog"></i> Blog </a></li>
+          <li><a href="../pages/host.html"><i class="fas fa-home"></i> Host</a></li>
           <li><a href="#" id="gift-cards-link"><i class="fas fa-gift"></i> Gift Cards</a></li>
         </ul>
         <div class="dropdown-divider"></div>
@@ -504,78 +548,117 @@ footer .links a:hover {
     </div>
   </header>
 
-  <!-- Festivals Content -->
+  <!-- Blog Section -->
   <div class="container-content">
-    <div class="header">
-      <h1>Cultural Festivals in Nepal: A Journey Through Tradition</h1>
-      <p class="lead">
-        Nepal is a land of festivals, where every season brings a vibrant celebration. From religious rituals to
-        colorful processions, experiencing these festivals is a perfect way for travelers to connect with local culture.
-      </p>
+
+    <!-- Featured Post -->
+    <div class="featured-post" style="display:flex; align-items:center; gap:20px; margin-bottom:40px;">
+      <div style="flex:1;">
+        <span
+          style="display:inline-block; background:#f1f1f1; color:#444; font-size:12px; font-weight:600; padding:4px 10px; border-radius:4px; margin-bottom:10px;">
+          Featured Post
+        </span>
+        <h2 style="font-size:28px; margin-bottom:10px; color:#222; line-height:1.3;">
+          Hidden Gems of Nepal: Beyond the Crowded Trails
+        </h2>
+        <p style="color:#555; font-size:15px; margin-bottom:12px;">
+          Nepal is famous for the Himalayas and iconic trekking routes like Everest Base Camp and Annapurna Circuit
+        </p>
+        <div class="meta" style="margin-bottom:15px;">By Arjan Regmi · Dec 15, 2024 · 5 min read</div>
+        <a href="../pages/Blog1.html"
+          style="background:#F5503D; color:#fff; padding:10px 18px; border-radius:6px; font-weight:600; text-decoration:none;">Read
+          Article</a>
+      </div>
+      <div style="flex:1;">
+        <img src="../images/Blog1.jpeg" alt="Featured Blog"
+          style="width:100%; border-radius:10px; object-fit:cover;">
+      </div>
     </div>
 
-    <h2>Dashain</h2>
-    <p>
-      Dashain is the biggest and most widely celebrated festival in Nepal. It marks the victory of good over evil
-      and lasts for 15 days. Families gather together, exchange blessings, and enjoy traditional meals and rituals.
+    <!-- Latest Articles Title -->
+    <h2 style="margin-bottom:10px; font-size:24px; text-align:center; color:#222;">Latest Articles</h2>
+    <p style="text-align:center; color:#777; margin-bottom:30px; font-size:14px;">
+      Deep Insights On Various Topics
     </p>
-    <img src="../AIRBNB-VCS-PROJECT/images/Dashain-1024x576.jpg" alt="Dashain Festival Celebration">
 
-    <h2>Tihar</h2>
-    <p>
-      Also known as the festival of lights, Tihar is celebrated over five days. Homes are decorated with oil lamps,
-      colorful rangoli, and candles. Each day is dedicated to honoring different animals, including crows, dogs, and
-      cows.
-    </p>
-    <img src="images\Tihar.jpg" alt="Tihar Lights and Decorations">
+    <!-- First Row (2 cols: big + small) -->
+    <div style="display:flex; gap:20px; margin-bottom:20px; flex-wrap:wrap;">
+      <a href="../pages/Blog2.html" class="blog-card" style="flex:2; min-width:250px;">
+        <img src="../images/Blog2.jpg" alt="">
+        <div class="content">
+          <h3>Our Story: How Homeo Began, The beginnings of a Journey</h3>
+          <p>The Epic Story of Homeo.</p>
+          <div class="meta">By Jasun Maharjan · Dec 12, 2024 · 8 min read</div>
+        </div>
+      </a>
 
-    <h2>Holi</h2>
-    <p>
-      Holi, the festival of colors, is a joyous celebration of spring. People throw colored powders, dance to music,
-      and enjoy local sweets. It's one of the most photogenic and fun festivals for both locals and travelers.
-    </p>
-    <img src="../AIRBNB-VCS-PROJECT/images/holi.jpg" alt="Holi Festival Colors">
+      <a href="../pages/Blog3.html" class="blog-card" style="flex:1; min-width:250px;">
+        <img src="../images/Blog3.jpg" alt="">
+        <div class="content">
+          <h3>Discovering Kathmandu's Best Restaurants</h3>
+          <p>Here's a guide to some must-visit restaurants.</p>
+          <div class="meta">By Rikesh Sharma · Dec 10, 2024 · 6 min read</div>
+        </div>
+      </a>
+    </div>
 
-    <h2>Maha Shivaratri</h2>
-    <p>
-      Maha Shivaratri is a religious festival dedicated to Lord Shiva. Devotees visit temples, fast, and participate in
-      night-long vigils. Pashupatinath Temple in Kathmandu sees thousands of pilgrims during this sacred event.
-    </p>
-    <img src="images\MAHA.jpg" alt="Maha Shivaratri Pilgrims at Pashupatinath">
+    <!-- Second Row (3 cols equal) -->
+    <div style="display:flex; gap:20px; flex-wrap:wrap;">
+      <a href="../pages/Blog4.html" class="blog-card" style="flex:1; min-width:200px;">
+        <img src="../images/Blog3.jpg" alt="">
+        <div class="content">
+          <h3>Cultural Festivals in Nepal: A Journey Through Tradition</h3>
+          <p>Nepal is a land of festivals, where every season brings a vibrant celebration.</p>
+          <div class="meta">By Yogesh Pant · Dec 8, 2024 · 4 min read</div>
+        </div>
+      </a>
 
-    <div class="spacer"></div>
+      <a href="../pages/Blog5.html" class="blog-card" style="flex:1; min-width:200px;">
+        <img src="../images/Adventure.jpg" alt="">
+        <div class="content">
+          <h3>Adventure Activities in Nepal: Thrills for Every Traveler</h3>
+          <p>Nepal is not just about mountains and temples; it is a playground for adventure.</p>
+          <div class="meta">By Aditya Shah · Dec 5, 2024 · 7 min read</div>
+        </div>
+      </a>
 
-    <p>
-      Experiencing Nepal's festivals offers a deep insight into its culture, traditions, and values. Travelers
-      gain not just memories, but a connection to the heart of the country.
-    </p>
+      <a href="../pages/Blog1.html" class="blog-card" style="flex:1; min-width:200px;">
+        <img src="../images/Blog1.jpeg" alt="">
+        <div class="content">
+          <h3>Hidden Gems of Nepal: Beyond the Crowded Trails</h3>
+          <p>Nepal is famous for the Himalayas and iconic trekking routes like Everest Base Camp and Annapurna Circuit
+          <p>
+          <div class="meta">By Arjan Regmi · Dec 3, 2024 · 5 min read</div>
+        </div>
+      </a>
+    </div>
+
   </div>
-    <footer>
-  <!-- Logo -->
-  <div class="logo">
-    <img src="images/Logo.png" alt="Home Logo">
-  </div>
+  <footer>
+    <!-- Logo -->
+    <div class="logo">
+      <img src="../images/Logo.png" alt="Home Logo">
+    </div>
 
-  <!-- Tagline -->
-  <div class="tagline">Make searching a room comfortable</div>
+    <!-- Tagline -->
+    <div class="tagline">Make searching a room comfortable</div>
 
-  <!-- Social media -->
-  <div class="social-icons">
-    <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.booking.com"><i class="fas fa-bed"></i></a>
-  </div>
+    <!-- Social media -->
+    <div class="social-icons">
+      <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.booking.com"><i class="fas fa-bed"></i></a>
+    </div>
 
-  <!-- Footer links -->
-  <div class="links">
-    © 2025 Homeo 
-    <a href="#">Terms</a>
-    <a href="#">Privacy</a>
-    <a href="#">Cookies</a>
-  </div>
-</footer>
-
+    <!-- Footer links -->
+    <div class="links">
+      © 2025 Homeo
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+      <a href="#">Cookies</a>
+    </div>
+  </footer>
   <!-- Gift Card Modal -->
   <div id="gift-card-modal" class="gift-card-modal">
     <div class="gift-card-content">
@@ -612,7 +695,9 @@ footer .links a:hover {
     </div>
   </div>
 
-  <script src="../AIRBNB-VCS-PROJECT/JS/hamscript.js"></script>
+
+  <script src="../JS/hamscript.js"></script>
+
 
 </body>
 

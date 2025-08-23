@@ -1,10 +1,11 @@
+\
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Homeo Story</title>
+  <title>Cultural Festivals in Nepal</title>
 
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -23,6 +24,7 @@
       line-height: 1.7;
     }
 
+    /* Navbar Styles */
     header {
       position: fixed;
       top: 0;
@@ -76,7 +78,6 @@
 
     .nav-icons i:hover {
       transform: scale(1.1);
-      /* slight hover effect */
     }
 
     .menu-dropdown {
@@ -146,26 +147,17 @@
       background-color: #e04a4f;
     }
 
-    /* Story Page Styles */
+    /* Content Styles */
     .container-content {
       max-width: 820px;
       margin: 120px auto 0;
-      /* leave space for fixed navbar */
+      /* leave space for navbar */
       padding: 40px 20px 80px;
     }
 
     .header {
       text-align: center;
       margin-bottom: 40px;
-    }
-
-    .category {
-      font-size: 16px;
-      font-weight: 600;
-      color: #3b82f6;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      letter-spacing: 0.5px;
     }
 
     h1 {
@@ -199,79 +191,79 @@
       max-width: 750px;
     }
 
-    .spacer {
-      height: 6px;
-    }
-
     img {
       width: 100%;
       border-radius: 8px;
       margin: 40px 0;
       display: block;
     }
-    /* Footer */
-footer {
-  background: #2d333f; 
-  padding: 20px 15px;   
-  text-align: center;
-  border-top: 1px solid #444;
-  color: #ddd;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-/* Footer Logo */
-footer .logo img {
-  max-height: 70px;   
-  width: auto;
-  margin-bottom: 5px; 
-  display: block;
-  padding-left: 15px;
-}
+    .spacer {
+      height: 6px;
+    }
 
-/* Tagline */
-footer .tagline {
-  margin: 4px 0 8px;   
-  font-size: 22px;     
-  font-weight: 50;
-  color: #ddd;
-}
+    footer {
+      background: #2d333f;
+      padding: 20px 15px;
+      text-align: center;
+      border-top: 1px solid #444;
+      color: #ddd;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-footer .social-icons {
-  margin: 6px 0 8px;   
-}
+    /* Footer Logo */
+    footer .logo img {
+      max-height: 70px;
+      width: auto;
+      margin-bottom: 5px;
+      display: block;
+      padding-left: 15px;
+    }
 
-footer .social-icons a {
-  display: inline-block;
-  margin: 0 8px;
-  font-size: 22px;
-  color: #ddd;
-  text-decoration: none;
-  transition: 0.3s;
-}
+    /* Tagline */
+    footer .tagline {
+      margin: 4px 0 8px;
+      font-size: 22px;
+      font-weight: 50;
+      color: #ddd;
+    }
 
-footer .social-icons a:hover {
-  color: #e74c3c;
-}
+    footer .social-icons {
+      margin: 6px 0 8px;
+    }
 
-/* Footer Links */
-footer .links {
-  margin-top: 6px;    
-  font-size: 14px;
-  color: #aaa;
-}
+    footer .social-icons a {
+      display: inline-block;
+      margin: 0 8px;
+      font-size: 22px;
+      color: #ddd;
+      text-decoration: none;
+      transition: 0.3s;
+    }
 
-footer .links a {
-  margin: 0 6px;
-  color: #aaa;
-  text-decoration: none;
-  transition: 0.3s;
-}
+    footer .social-icons a:hover {
+      color: #e74c3c;
+    }
 
-footer .links a:hover {
-  color: #fff;
-}
+    /* Footer Links */
+    footer .links {
+      margin-top: 6px;
+      font-size: 14px;
+      color: #aaa;
+    }
+
+    footer .links a {
+      margin: 0 6px;
+      color: #aaa;
+      text-decoration: none;
+      transition: 0.3s;
+    }
+
+    footer .links a:hover {
+      color: #fff;
+    }
 
 
     /* Mobile responsive styles for footer */
@@ -279,11 +271,11 @@ footer .links a:hover {
       footer {
         padding: 30px 15px;
       }
-      
+
       footer .tagline {
         font-size: 18px;
       }
-      
+
       footer .social-icons a {
         font-size: 20px;
         margin: 0 8px;
@@ -462,6 +454,12 @@ footer .links a:hover {
       }
     }
 
+    @media (max-width: 480px) {
+      .gift-card-content {
+        padding: 25px 15px;
+      }
+    }
+
     @media (max-width: 768px) {
       .container-content {
         padding: 24px 16px 60px;
@@ -490,15 +488,15 @@ footer .links a:hover {
   <header>
     <div class="container">
       <div class="logo">
-          <a href="index.html"><img src="../AIRBNB-VCS-PROJECT/images/Logo.png" alt="Homeo Logo"></a>
+        <a href="../index.html"><img src="../images/Logo.png" alt="Homeo Logo"></a>
       </div>
       <div class="nav-icons">
         <i id="hamburger-menu" class="fas fa-bars"></i>
       </div>
       <div id="menu-dropdown" class="menu-dropdown">
         <ul>
-          <li><a href="Blog.html"><i class="fas fa-blog"></i> Blog </a></li>
-          <li><a href="host.html"><i class="fas fa-home"></i> Host</a></li>
+         <li><a href="../pages/Blog.html"><i class="fas fa-blog"></i> Blog </a></li>
+          <li><a href="../pages/host.html"><i class="fas fa-home"></i> Host</a></li>
           <li><a href="#" id="gift-cards-link"><i class="fas fa-gift"></i> Gift Cards</a></li>
         </ul>
         <div class="dropdown-divider"></div>
@@ -507,78 +505,77 @@ footer .links a:hover {
     </div>
   </header>
 
-  <!-- Homeo Story Content -->
+  <!-- Festivals Content -->
   <div class="container-content">
     <div class="header">
-      <div class="category">Company Story</div>
-      <h1>Our Story: How Homeo Began</h1>
+      <h1>Cultural Festivals in Nepal: A Journey Through Tradition</h1>
       <p class="lead">
-        Homeo was built to bring Nepali people closer and give foreign visitors a chance to experience Nepal like
-        locals. Inspired by AirBnB but rooted in Nepali culture, Homeo is for everyone seeking authentic stays.
+        Nepal is a land of festivals, where every season brings a vibrant celebration. From religious rituals to
+        colorful processions, experiencing these festivals is a perfect way for travelers to connect with local culture.
       </p>
     </div>
 
-    <h2>The Idea</h2>
+    <h2>Dashain</h2>
     <p>
-      In 2022, a group of friends traveling across Nepal noticed that international platforms didn’t capture the real
-      local experience. Most listings were missing or not suitable for Nepali travelers and foreigners seeking authentic
-      cultural stays. That’s how Homeo was born.
+      Dashain is the biggest and most widely celebrated festival in Nepal. It marks the victory of good over evil
+      and lasts for 15 days. Families gather together, exchange blessings, and enjoy traditional meals and rituals.
     </p>
+    <img src="../images/Dashain-1024x576.jpg" alt="Dashain Festival Celebration">
 
-    <img src="../AIRBNB-VCS-PROJECT/images/Blog2.jpg" alt="Founders brainstorming the initial concept">
-
-    <h2>Building for Nepal — and the World</h2>
+    <h2>Tihar</h2>
     <p>
-      Homeo was designed to make listing homes simple for anyone in Nepal. Village homestays, city apartments, and
-      countryside lodges are all accessible from one platform. Nepali travelers get affordable stays, and foreigners get
-      the chance to experience real homes, real food, and real people.
+      Also known as the festival of lights, Tihar is celebrated over five days. Homes are decorated with oil lamps,
+      colorful rangoli, and candles. Each day is dedicated to honoring different animals, including crows, dogs, and
+      cows.
     </p>
+    <img src="../images/Tihar.jpg" alt="Tihar Lights and Decorations">
 
-    <h2>Challenges Along the Way</h2>
+    <h2>Holi</h2>
     <p>
-      Building a platform in Nepal had challenges like connectivity issues and payment integration. With dedication and
-      feedback, Homeo became stronger and suited for both locals and international travelers.
+      Holi, the festival of colors, is a joyous celebration of spring. People throw colored powders, dance to music,
+      and enjoy local sweets. It's one of the most photogenic and fun festivals for both locals and travelers.
     </p>
+    <img src="../images/holi.jpg" alt="Holi Festival Colors">
 
-    <h2>Our Vision</h2>
+    <h2>Maha Shivaratri</h2>
     <p>
-      Homeo connects travelers with real experiences, helps families earn from hosting, and showcases Nepali
-      hospitality. Whether Nepali or foreign, Homeo helps everyone feel at home in Nepal.
+      Maha Shivaratri is a religious festival dedicated to Lord Shiva. Devotees visit temples, fast, and participate in
+      night-long vigils. Pashupatinath Temple in Kathmandu sees thousands of pilgrims during this sacred event.
     </p>
+    <img src="../images/MAHA.jpg" alt="Maha Shivaratri Pilgrims at Pashupatinath">
 
     <div class="spacer"></div>
 
     <p>
-      The story of Homeo is still being written. With every new host and traveler, we build a community that belongs to
-      Nepal and welcomes the world.
+      Experiencing Nepal's festivals offers a deep insight into its culture, traditions, and values. Travelers
+      gain not just memories, but a connection to the heart of the country.
     </p>
-    
   </div>
-    <footer>
-  <!-- Logo -->
-  <div class="logo">
-    <img src="images/Logo.png" alt="Home Logo">
-  </div>
+  <footer>
+    <!-- Logo -->
+    <div class="logo">
+      <img src="../images/Logo.png" alt="Home Logo">
+    </div>
 
-  <!-- Tagline -->
-  <div class="tagline">Make searching a room comfortable</div>
+    <!-- Tagline -->
+    <div class="tagline">Make searching a room comfortable</div>
 
-  <!-- Social media -->
-  <div class="social-icons">
-    <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
-    <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
-    <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
-    <a href="https://www.booking.com"><i class="fas fa-bed"></i></a>
-  </div>
+    <!-- Social media -->
+    <div class="social-icons">
+      <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+      <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+      <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
+      <a href="https://www.booking.com"><i class="fas fa-bed"></i></a>
+    </div>
 
-  <!-- Footer links -->
-  <div class="links">
-    © 2025 Homeo 
-    <a href="#">Terms</a>
-    <a href="#">Privacy</a>
-    <a href="#">Cookies</a>
-  </div>
-</footer>
+    <!-- Footer links -->
+    <div class="links">
+      © 2025 Homeo
+      <a href="#">Terms</a>
+      <a href="#">Privacy</a>
+      <a href="#">Cookies</a>
+    </div>
+  </footer>
 
   <!-- Gift Card Modal -->
   <div id="gift-card-modal" class="gift-card-modal">
@@ -616,7 +613,7 @@ footer .links a:hover {
     </div>
   </div>
 
-  <script src="../AIRBNB-VCS-PROJECT/JS/hamscript.js"></script>
+  <script src="../JS/hamscript.js"></script>
 
 </body>
 
