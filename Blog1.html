@@ -201,33 +201,43 @@
       height: 6px;
     }
 
-    /* Footer Styles */
+    
     footer {
       background: #2d333f;
-      /* dark grey/black */
-      padding: 40px 20px;
+      padding: 10px 5px;
       text-align: center;
       border-top: 1px solid #444;
       color: #ddd;
       margin-top: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
     }
 
-    footer .logo {
-      font-size: 40px;
-      color: #e74c3c;
-      margin-bottom: 10px;
-      display: inline-block;
+    footer .footer-logo {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      height: 100%;
     }
 
-    footer p {
+    footer .footer-logo img {
+      max-height: 60px;
+      width: auto;
+    }
+
+    footer .tagline {
       margin: 8px 0 20px;
-      font-size: 16px;
+      font-size: 22px;
       color: #ddd;
-      max-width: none;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      width: 100%;
     }
 
     footer .social-icons {
       margin: 15px 0;
+      width: 100%;
     }
 
     footer .social-icons a {
@@ -247,6 +257,7 @@
       margin-top: 15px;
       font-size: 14px;
       color: #aaa;
+      width: 100%;
     }
 
     footer .links a {
@@ -258,6 +269,22 @@
 
     footer .links a:hover {
       color: #fff;
+    }
+
+    /* Mobile responsive styles for footer */
+    @media (max-width: 768px) {
+      footer {
+        padding: 30px 15px;
+      }
+      
+      footer .tagline {
+        font-size: 18px;
+      }
+      
+      footer .social-icons a {
+        font-size: 20px;
+        margin: 0 8px;
+      }
     }
 
     /* ===== Gift Card Modal Styles ===== */
@@ -457,19 +484,6 @@
         font-size: 24px;
         line-height: 30px;
       }
-
-      footer {
-        padding: 30px 15px;
-      }
-
-      footer p {
-        font-size: 14px;
-      }
-
-      footer .social-icons a {
-        font-size: 20px;
-        margin: 0 8px;
-      }
     }
   </style>
 </head>
@@ -550,16 +564,15 @@
     </p>
   </div>
 
-  <!-- Footer -->
+  <!-- Footer - FIXED CENTERING -->
   <footer>
     <!-- Home icon -->
-    <div class="logo">
-      <img src="../AIRBNB-VCS-PROJECT/images/Logo.png" alt="Home Logo" width="100">
+    <div class="footer-logo">
+      <img src="../AIRBNB-VCS-PROJECT/images/Logo.png" alt="Home Logo">
     </div>
 
     <!-- Tagline -->
-    <p style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 24px;">Make searching a room
-      comfortable</p>
+    <p class="tagline">Make searching a room comfortable</p>
 
     <!-- Social media -->
     <div class="social-icons">
@@ -571,7 +584,7 @@
 
     <!-- Footer links -->
     <div class="links">
-      © 2025 Homeo
+      © 2025 Homero 
       <a href="#"><u>Terms</u></a>
       <a href="#"><u>Privacy</u></a>
       <a href="#"><u>Cookies</u></a>
