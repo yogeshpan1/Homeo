@@ -1,38 +1,53 @@
 .show
 {
-    margin-left: 150px;
-    margin-top: 90px;
+    margin-left: 100px;
+    margin-top: 20px;
 }
 
 .hotel_name
 {
     font-size: 27px;
     margin-bottom: 30px;
+    margin-top: 20px;
 }
 
-.heart_container
-{
-    width: 30px;
-    height: 20px;
-    overflow: hidden;
-    margin-top: 24px;
-    margin-left: 1030px;
-}
 
-.heart
-{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.bookmark-container {
+            background: #f9f9f9;
+            margin-left: 930px;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+            user-select: none;
+        }
 
-}
+        .bookmark-container:hover {
+            transform: translateY(-2px);
+        }
 
-.bookmark
-{
-    margin-top: 23px;
-    margin-left: 10px;
-    color: rgb(108, 108, 108);
-}
+        .heart {
+            font-size: 24px;
+            transition: all 0.3s ease;
+            color: #ddd;
+        }
+
+        .heart.bookmarked {
+            color: #ff4757;
+            transform: scale(1.2);
+        }
+
+        .bookmark-text {
+            font-size: 15px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .bookmark-text.bookmarked {
+            color: #ff4757;
+        }
 
 .room_photos
 {
@@ -81,6 +96,7 @@
     height: 50px;
     border-radius: 50%;
     background-color: #D9D9D9;
+    overflow: hidden;
 }
 
 .lock_container
@@ -110,6 +126,540 @@
     width: 100%;
     height: 100%;
     object-fit: fill;
-
-
 }
+
+.description
+{
+    width: 700px;
+    height: 300px;
+    background-color: #f9f9f9;
+    font-size: 15px;
+}
+
+.icon_text1
+{
+    font-size: 20px;
+    margin-left: 10px;
+    margin-top: 10px;
+}
+
+.container
+{
+     perspective: 1000px;
+}
+
+.date-selector
+{
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 24px;
+            box-shadow: 
+                0 25px 50px -12px rgba(0, 0, 0, 0.25),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+            width: 100%;
+            max-width: 420px;
+            padding: 32px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        .date-selector::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+        }
+
+        .date-selector:hover {
+            transform: translateY(-8px);
+            box-shadow: 
+                0 35px 70px -12px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.15);
+        }
+
+        .selector-header {
+            text-align: center;
+            margin-bottom: 28px;
+        }
+
+        .selector-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1a1a1a;
+            margin: 0 0 8px 0;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .selector-subtitle {
+            font-size: 14px;
+            color: #6b7280;
+            margin: 0;
+            font-weight: 400;
+        }
+        
+        .date-fields {
+            display: flex;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        
+        .date-field {
+            flex: 1;
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 16px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
+            position: relative;
+            background: white;
+            overflow: hidden;
+        }
+
+        .date-field::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .date-field:hover::before {
+            left: 100%;
+        }
+        
+        .date-field:hover {
+            border-color: #ff6b35;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.15);
+        }
+
+        .date-field:focus-within {
+            border-color: #ff6b35;
+            box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1);
+        }
+        
+        .date-field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            color: #ff6b35;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .date-field input {
+            border: none;
+            outline: none;
+            font-size: 16px;
+            color: #1a1a1a;
+            font-weight: 600;
+            background: transparent;
+            width: 100%;
+            font-family: inherit;
+        }
+
+        .date-field input::-webkit-calendar-picker-indicator {
+            opacity: 0;
+            position: absolute;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+        
+        .guests-field {
+            border: 2px solid #e5e7eb;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 20px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            background: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guests-field::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .guests-field:hover::before {
+            left: 100%;
+        }
+        
+        .guests-field:hover {
+            border-color: #ff6b35;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 107, 53, 0.15);
+        }
+        
+        .guests-field label {
+            display: block;
+            font-size: 11px;
+            font-weight: 600;
+            color: #ff6b35;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .guest-breakdown {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+
+        .guest-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .guest-type {
+            flex: 1;
+        }
+
+        .guest-type-title {
+            font-size: 15px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin: 0 0 4px 0;
+        }
+
+        .guest-type-subtitle {
+            font-size: 13px;
+            color: #6b7280;
+            margin: 0;
+        }
+
+        .guest-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .guest-btn {
+            width: 32px;
+            height: 32px;
+            border: 2px solid #e5e7eb;
+            border-radius: 10px;
+            background: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: #ff6b35;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            font-size: 16px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .guest-btn::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 50%;
+            background: rgba(255, 107, 53, 0.1);
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .guest-btn:hover::before {
+            width: 80px;
+            height: 80px;
+        }
+
+        .guest-btn:hover {
+            border-color: #ff6b35;
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
+        }
+
+        .guest-btn:active {
+            transform: scale(0.95);
+        }
+
+        .guest-btn:disabled {
+            color: #d1d5db;
+            border-color: #f3f4f6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .guest-btn:disabled:hover::before {
+            width: 0;
+            height: 0;
+        }
+
+        .guest-count {
+            font-size: 16px;
+            color: #1a1a1a;
+            font-weight: 600;
+            min-width: 20px;
+            text-align: center;
+        }
+
+        .guest-summary {
+            text-align: center;
+            padding: 12px 0;
+            font-size: 14px;
+            color: #ff6b35;
+            font-weight: 500;
+            border-top: 1px solid #e5e7eb;
+            margin-top: 8px;
+        }
+        
+        .availability-note {
+            background: linear-gradient(135deg, #fef2f2 0%, #fdf2f8 100%);
+            border: 2px solid #f9a8da;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 40px;
+            text-align: center;
+            font-size: 14px;
+            color: #be185d;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            font-weight: 500;
+            animation: slideIn 0.4s ease;
+            margin-left: 0;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .availability-note.show {
+            display: flex;
+        }
+
+        .availability-note .icon {
+            font-size: 18px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .action-btn {
+            width: 100%;
+            padding: 16px;
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            border: none;
+            border-radius: 16px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            margin-bottom: 20px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            font-family: inherit;
+        }
+
+        .action-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .action-btn:hover::before {
+            left: 100%;
+        }
+        
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(255, 107, 53, 0.4);
+        }
+
+        .action-btn:active {
+            transform: translateY(0);
+            box-shadow: 0 5px 15px rgba(255, 107, 53, 0.3);
+        }
+        
+        .divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e5e7eb, transparent);
+            margin: 24px 0;
+            position: relative;
+        }
+
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 40px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff6b35, #f7931e);
+            border-radius: 2px;
+        }
+        
+        .report-listing {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            color: #6b7280;
+            font-size: 14px;
+            cursor: pointer;
+            padding: 12px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .report-listing::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            border-radius: 12px;
+            background: rgba(107, 114, 128, 0.1);
+            transition: all 0.3s ease;
+            transform: translate(-50%, -50%);
+        }
+
+        .report-listing:hover::before {
+            width: 100%;
+            height: 100%;
+        }
+        
+        .report-listing:hover {
+            color: #374151;
+        }
+
+        .report-listing .icon {
+            transition: transform 0.3s ease;
+        }
+
+        .report-listing:hover .icon {
+            transform: scale(1.2);
+        }
+
+        /* Responsive design */
+        @media (max-width: 480px) {
+            .date-selector {
+                margin: 0;
+                max-width: 100%;
+                padding: 24px;
+            }
+            
+            .date-fields {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
+  .reviews-section {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    width: 800px;
+    padding: 24px;
+    margin: 0 0 0 350px;
+  }
+
+  .reviews-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+
+  .reviews-header i {
+    color: #ff385c;
+  }
+
+  .reviews-header h2 {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .review-card {
+    display: flex;
+    gap: 16px;
+    border-bottom: 1px solid #eee;
+    padding: 16px 0;
+  }
+
+  .review-card:last-child {
+    border-bottom: none;
+  }
+
+  .review {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+  }
+
+  .review-content {
+    flex: 1;
+  }
+
+  .review-content h4 {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .review-content small {
+    color: #666;
+    font-size: 13px;
+    display: block;
+    margin-bottom: 6px;
+  }
+
+  .stars {
+    color: #ff385c;
+    margin-bottom: 6px;
+  }
+
+  .review-text {
+    font-size: 14px;
+    line-height: 1.4;
+    color: #333;
+  }
+
