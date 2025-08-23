@@ -149,7 +149,8 @@
     /* Story Page Styles */
     .container-content {
       max-width: 820px;
-      margin: 120px auto 0; /* leave space for fixed navbar */
+      margin: 120px auto 0;
+      /* leave space for fixed navbar */
       padding: 40px 20px 80px;
     }
 
@@ -208,7 +209,8 @@
       margin: 40px 0;
       display: block;
     }
-     /* ===== Gift Card Modal Styles ===== */
+
+    /* ===== Gift Card Modal Styles ===== */
     .gift-card-modal {
       position: fixed;
       top: 0;
@@ -232,21 +234,24 @@
     }
 
     .gift-card-content {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 40px;
-  max-width: 500px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  scrollbar-width: none;     /* Firefox */
-  -ms-overflow-style: none;  /* IE/Edge */
-}
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE/Edge */
+    }
 
-.gift-card-content::-webkit-scrollbar {
-  display: none;             /* Chrome, Safari */
-}
+    .gift-card-content::-webkit-scrollbar {
+      display: none;
+      /* Chrome, Safari */
+    }
 
 
     .gift-card-close {
@@ -397,7 +402,6 @@
         line-height: 30px;
       }
     }
-
   </style>
 </head>
 
@@ -429,61 +433,69 @@
       <div class="category">Company Story</div>
       <h1>Our Story: How Homeo Began</h1>
       <p class="lead">
-        Homeo was built to bring Nepali people closer and give foreign visitors a chance to experience Nepal like locals. Inspired by AirBnB but rooted in Nepali culture, Homeo is for everyone seeking authentic stays.
+        Homeo was built to bring Nepali people closer and give foreign visitors a chance to experience Nepal like
+        locals. Inspired by AirBnB but rooted in Nepali culture, Homeo is for everyone seeking authentic stays.
       </p>
     </div>
 
     <h2>The Idea</h2>
     <p>
-      In 2022, a group of friends traveling across Nepal noticed that international platforms didn’t capture the real local experience. Most listings were missing or not suitable for Nepali travelers and foreigners seeking authentic cultural stays. That’s how Homeo was born.
+      In 2022, a group of friends traveling across Nepal noticed that international platforms didn’t capture the real
+      local experience. Most listings were missing or not suitable for Nepali travelers and foreigners seeking authentic
+      cultural stays. That’s how Homeo was born.
     </p>
 
     <img src="../AIRBNB-VCS-PROJECT/images/Blog2.jpg" alt="Founders brainstorming the initial concept">
 
     <h2>Building for Nepal — and the World</h2>
     <p>
-      Homeo was designed to make listing homes simple for anyone in Nepal. Village homestays, city apartments, and countryside lodges are all accessible from one platform. Nepali travelers get affordable stays, and foreigners get the chance to experience real homes, real food, and real people.
+      Homeo was designed to make listing homes simple for anyone in Nepal. Village homestays, city apartments, and
+      countryside lodges are all accessible from one platform. Nepali travelers get affordable stays, and foreigners get
+      the chance to experience real homes, real food, and real people.
     </p>
 
     <h2>Challenges Along the Way</h2>
     <p>
-      Building a platform in Nepal had challenges like connectivity issues and payment integration. With dedication and feedback, Homeo became stronger and suited for both locals and international travelers.
+      Building a platform in Nepal had challenges like connectivity issues and payment integration. With dedication and
+      feedback, Homeo became stronger and suited for both locals and international travelers.
     </p>
 
     <h2>Our Vision</h2>
     <p>
-      Homeo connects travelers with real experiences, helps families earn from hosting, and showcases Nepali hospitality. Whether Nepali or foreign, Homeo helps everyone feel at home in Nepal.
+      Homeo connects travelers with real experiences, helps families earn from hosting, and showcases Nepali
+      hospitality. Whether Nepali or foreign, Homeo helps everyone feel at home in Nepal.
     </p>
 
     <div class="spacer"></div>
 
     <p>
-      The story of Homeo is still being written. With every new host and traveler, we build a community that belongs to Nepal and welcomes the world.
+      The story of Homeo is still being written. With every new host and traveler, we build a community that belongs to
+      Nepal and welcomes the world.
     </p>
   </div>
-   <!-- Gift Card Modal -->
+  <!-- Gift Card Modal -->
   <div id="gift-card-modal" class="gift-card-modal">
     <div class="gift-card-content">
       <button class="gift-card-close" id="gift-card-close">&times;</button>
       <h2 class="gift-card-title">🎁 Gift Cards</h2>
       <p class="gift-card-subtitle">Redeem your gift vouchers and enjoy exclusive travel deals</p>
-      
+
       <form class="gift-card-form" id="gift-card-form">
         <div class="form-group">
           <label for="voucher-code">Gift Card Code</label>
           <input type="text" id="voucher-code" placeholder="Enter your gift card code" required>
         </div>
-        
+
         <div class="form-group">
           <label for="email">Email Address</label>
           <input type="email" id="email" placeholder="Enter your email address" required>
         </div>
-        
+
         <button type="submit" class="redeem-btn">
           <i class="fas fa-gift"></i> Redeem Gift Card
         </button>
       </form>
-      
+
       <div class="gift-card-info">
         <h4>How to use your gift card:</h4>
         <ul>
@@ -497,7 +509,7 @@
     </div>
   </div>
 
-        <script src="../AIRBNB-VCS-PROJECT/JS/hamscript.js"></script>
+  <script src="../AIRBNB-VCS-PROJECT/JS/hamscript.js"></script>
 
 </body>
 

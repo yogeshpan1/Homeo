@@ -27,7 +27,7 @@ const giftCardModal = document.getElementById('gift-card-modal');
 const giftCardClose = document.getElementById('gift-card-close');
 const giftCardForm = document.getElementById('gift-card-form');
 
-giftCardLink.addEventListener('click', (e) => {
+giftCardLink.addEventListener('click', e => {
   e.preventDefault();
   giftCardModal.classList.add('active');
   // Close hamburger menu
@@ -39,14 +39,14 @@ giftCardClose.addEventListener('click', () => {
 });
 
 // Close modal when clicking outside
-giftCardModal.addEventListener('click', (e) => {
+giftCardModal.addEventListener('click', e => {
   if (e.target === giftCardModal) {
     giftCardModal.classList.remove('active');
   }
 });
 
 // Handle form submission
-giftCardForm.addEventListener('submit', (e) => {
+giftCardForm.addEventListener('submit', e => {
   e.preventDefault();
   const voucherCode = document.getElementById('voucher-code').value;
   const email = document.getElementById('email').value;

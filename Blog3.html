@@ -24,7 +24,7 @@
     }
 
     /* Navbar Styles */
-        header {
+    header {
       position: fixed;
       top: 0;
       width: 100%;
@@ -150,7 +150,8 @@
     /* Content Styles */
     .container-content {
       max-width: 820px;
-      margin: 120px auto 0; /* leave space for navbar */
+      margin: 120px auto 0;
+      /* leave space for navbar */
       padding: 40px 20px 80px;
     }
 
@@ -200,7 +201,7 @@
     .spacer {
       height: 6px;
     }
-    
+
     /* ===== Gift Card Modal Styles ===== */
     .gift-card-modal {
       position: fixed;
@@ -225,21 +226,24 @@
     }
 
     .gift-card-content {
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(15px);
-  border-radius: 20px;
-  padding: 40px;
-  max-width: 500px;
-  width: 90%;
-  max-height: 90vh;
-  overflow-y: auto;
-  scrollbar-width: none;     /* Firefox */
-  -ms-overflow-style: none;  /* IE/Edge */
-}
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(15px);
+      border-radius: 20px;
+      padding: 40px;
+      max-width: 500px;
+      width: 90%;
+      max-height: 90vh;
+      overflow-y: auto;
+      scrollbar-width: none;
+      /* Firefox */
+      -ms-overflow-style: none;
+      /* IE/Edge */
+    }
 
-.gift-card-content::-webkit-scrollbar {
-  display: none;             /* Chrome, Safari */
-}
+    .gift-card-content::-webkit-scrollbar {
+      display: none;
+      /* Chrome, Safari */
+    }
 
 
     .gift-card-close {
@@ -427,7 +431,8 @@
       <h1>Discovering Kathmandu's Best Restaurants</h1>
       <p class="lead">
         Kathmandu is not just a city of temples and history; it's a paradise for food lovers. From traditional Nepalese
-        dishes to modern fusion cuisine, the city offers something for everyone. Here's a guide to some must-visit restaurants.
+        dishes to modern fusion cuisine, the city offers something for everyone. Here's a guide to some must-visit
+        restaurants.
       </p>
     </div>
 
@@ -479,23 +484,23 @@
       <button class="gift-card-close" id="gift-card-close">&times;</button>
       <h2 class="gift-card-title">🎁 Gift Cards</h2>
       <p class="gift-card-subtitle">Redeem your gift vouchers and enjoy exclusive travel deals</p>
-      
+
       <form class="gift-card-form" id="gift-card-form">
         <div class="form-group">
           <label for="voucher-code">Gift Card Code</label>
           <input type="text" id="voucher-code" placeholder="Enter your gift card code" required>
         </div>
-        
+
         <div class="form-group">
           <label for="email">Email Address</label>
           <input type="email" id="email" placeholder="Enter your email address" required>
         </div>
-        
+
         <button type="submit" class="redeem-btn">
           <i class="fas fa-gift"></i> Redeem Gift Card
         </button>
       </form>
-      
+
       <div class="gift-card-info">
         <h4>How to use your gift card:</h4>
         <ul>
@@ -508,7 +513,7 @@
       </div>
     </div>
   </div>
-      <script src="../AIRBNB-VCS-PROJECT/JS/hamscript.js"></script>
+  <script src="../AIRBNB-VCS-PROJECT/JS/hamscript.js"></script>
 
 </body>
 
