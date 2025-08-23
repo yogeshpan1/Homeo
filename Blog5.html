@@ -192,6 +192,181 @@
     .spacer {
       height: 6px;
     }
+    
+    /* ===== Gift Card Modal Styles ===== */
+    .gift-card-modal {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+
+    .gift-card-modal.active {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .gift-card-content {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 40px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 90vh;
+  overflow-y: auto;
+  scrollbar-width: none;     /* Firefox */
+  -ms-overflow-style: none;  /* IE/Edge */
+}
+
+.gift-card-content::-webkit-scrollbar {
+  display: none;             /* Chrome, Safari */
+}
+
+
+    .gift-card-close {
+      position: absolute;
+      top: 15px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 24px;
+      color: #666;
+      cursor: pointer;
+      transition: color 0.3s ease;
+    }
+
+    .gift-card-close:hover {
+      color: #F5503D;
+    }
+
+    .gift-card-title {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #333;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #F5503D, #ff7b5f);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gift-card-subtitle {
+      font-size: 1rem;
+      color: #666;
+      margin-bottom: 30px;
+    }
+
+    .gift-card-form {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      text-align: left;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .form-group label {
+      font-weight: 600;
+      color: #333;
+      font-size: 14px;
+    }
+
+    .form-group input {
+      padding: 12px 16px;
+      border: 2px solid #e0e0e0;
+      border-radius: 12px;
+      font-size: 16px;
+      transition: border-color 0.3s ease;
+      background: rgba(255, 255, 255, 0.8);
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #F5503D;
+    }
+
+    .redeem-btn {
+      background: linear-gradient(135deg, #F5503D, #ff7b5f);
+      color: white;
+      border: none;
+      padding: 15px;
+      border-radius: 12px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 10px;
+    }
+
+    .redeem-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(245, 80, 61, 0.3);
+    }
+
+    .gift-card-info {
+      background: rgba(245, 80, 61, 0.1);
+      border-radius: 12px;
+      padding: 20px;
+      margin-top: 20px;
+      text-align: left;
+    }
+
+    .gift-card-info h4 {
+      color: #F5503D;
+      margin-bottom: 10px;
+      font-size: 16px;
+    }
+
+    .gift-card-info ul {
+      color: #666;
+      font-size: 14px;
+      line-height: 1.6;
+      padding-left: 20px;
+    }
+
+    .gift-card-info li {
+      margin-bottom: 5px;
+    }
+
+    /* Focus outlines for buttons */
+    .redeem-btn:focus {
+      outline: 2px solid #0071c2;
+      outline-offset: 2px;
+    }
+
+    /* Responsive styles for gift card modal */
+    @media (max-width: 768px) {
+      .gift-card-content {
+        padding: 30px 20px;
+        margin: 20px;
+        width: calc(100% - 40px);
+      }
+
+      .gift-card-title {
+        font-size: 1.5rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .gift-card-content {
+        padding: 25px 15px;
+      }
+    }
 
     @media (max-width: 768px) {
       .container-content {
@@ -230,7 +405,7 @@
         <ul>
           <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
           <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-          <li><a href="#"><i class="fas fa-user"></i> Profile</a></li>
+          <li><a href="#" id="gift-cards-link"><i class="fas fa-gift"></i> Gift Cards</a></li>
         </ul>
         <div class="dropdown-divider"></div>
         <button id="login-signup-btn">Login / Signup</button>
@@ -277,6 +452,41 @@
     <p>
       Adventure in Nepal is for everyone—from beginners wanting to try paragliding to experienced thrill-seekers looking for extreme sports. With diverse landscapes and warm local hosts, Nepal ensures every adventure is safe, exciting, and unforgettable.
     </p>
+  </div>
+  <!-- Gift Card Modal -->
+  <div id="gift-card-modal" class="gift-card-modal">
+    <div class="gift-card-content">
+      <button class="gift-card-close" id="gift-card-close">&times;</button>
+      <h2 class="gift-card-title">🎁 Gift Cards</h2>
+      <p class="gift-card-subtitle">Redeem your gift vouchers and enjoy exclusive travel deals</p>
+      
+      <form class="gift-card-form" id="gift-card-form">
+        <div class="form-group">
+          <label for="voucher-code">Gift Card Code</label>
+          <input type="text" id="voucher-code" placeholder="Enter your gift card code" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="Enter your email address" required>
+        </div>
+        
+        <button type="submit" class="redeem-btn">
+          <i class="fas fa-gift"></i> Redeem Gift Card
+        </button>
+      </form>
+      
+      <div class="gift-card-info">
+        <h4>How to use your gift card:</h4>
+        <ul>
+          <li>Enter your unique gift card code above</li>
+          <li>Provide your email for confirmation</li>
+          <li>Gift card value will be applied to your account</li>
+          <li>Use at checkout for any booking</li>
+          <li>Valid for 12 months from issue date</li>
+        </ul>
+      </div>
+    </div>
   </div>
 
       <script src="../AIRBNB-VCS-PROJECT/JS/hamscript.js"></script>
