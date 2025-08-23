@@ -4,8 +4,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Host Your Homeo | Travel Made Easy</title>
+  <title>Homeo | Host</title>
+  <link rel="icon" href="../images/topLogo.png"/>
+  
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
 
@@ -32,12 +38,9 @@
       width: 100%;
       background: #fff;
       padding: 4px 0;
-      /* smaller navbar height */
       z-index: 1000;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
-      /* subtle bottom shadow */
     }
-
 
     header .container {
       max-width: 1200px;
@@ -53,6 +56,10 @@
       display: flex;
       align-items: center;
       height: 100%;
+      font-size: 2rem;
+      font-weight: 700;
+      color: #F5503D;
+      text-decoration: none;
     }
 
     .logo img {
@@ -61,11 +68,49 @@
       object-fit: contain;
     }
 
-
     .nav-icons {
       display: flex;
       align-items: center;
       justify-content: flex-end;
+      position: relative;
+    }
+
+    /* Sticky hosting button */
+    .sticky-host-btn {
+      background-color: #F5503D;
+      color: white;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 15px rgba(245, 80, 61, 0.3);
+      margin-right: 15px;
+      display: none;
+      animation: slideInFromTop 0.5s ease;
+    }
+
+    .sticky-host-btn.show {
+      display: inline-block;
+    }
+
+    .sticky-host-btn:hover {
+      background-color: #e04a4f;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(245, 80, 61, 0.4);
+    }
+
+    @keyframes slideInFromTop {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .nav-icons i {
@@ -147,7 +192,6 @@
     #login-signup-btn:hover {
       background-color: #e04a4f;
     }
-
 
     /* ===== CSS: Hero Section ===== */
     .host-hero {
@@ -454,6 +498,9 @@
     }
 
     .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
       padding: 25px;
       font-size: 1.3rem;
       font-weight: 600;
@@ -463,6 +510,7 @@
       justify-content: space-between;
       align-items: center;
       transition: background-color 0.3s ease;
+      text-align: left;
     }
 
     .faq-question:hover {
@@ -567,6 +615,13 @@
       color: #aaa;
       cursor: pointer;
       transition: color 0.3s ease;
+      background: none;
+      border: none;
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .close-modal:hover {
@@ -660,6 +715,12 @@
       display: inline-block;
     }
 
+    footer .logo-text {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #F5503D;
+    }
+
     footer p {
       margin: 8px 0 20px;
       font-size: 16px;
@@ -707,13 +768,10 @@
 
     /* ===== MOBILE RESPONSIVE STYLES ===== */
     @media (max-width: 768px) {
-      .header-container {
-        padding: 0 10px;
-      }
-
-      .sticky-cta {
-        padding: 10px 20px;
-        font-size: 0.9rem;
+      .sticky-host-btn {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+        margin-right: 10px;
       }
 
       .host-hero {
@@ -736,6 +794,7 @@
       .benefits-grid,
       .testimonials-grid {
         gap: 25px;
+        grid-template-columns: 1fr;
       }
 
       .benefit-card,
@@ -812,33 +871,40 @@
         width: 50px;
         height: 50px;
       }
+
+      .sticky-host-btn {
+        padding: 5px 10px;
+        font-size: 0.75rem;
+      }
     }
   </style>
 </head>
 
 <body>
   <!-- ===== HTML: Header / Navigation ===== -->
-  
   <header>
     <div class="container">
       <div class="logo">
-        <a href="../index.html"><img src="../images/Logo.png" alt="Homeo Logo"></a>
+        <a href="#" class="logo">Homeo</a>
       </div>
       <div class="nav-icons">
+        <!-- Sticky hosting button (appears after scrolling) -->
+        <button class="sticky-host-btn" id="sticky-host-btn">
+          <span class="d-none d-sm-inline">Start Hosting Today</span>
+          <span class="d-sm-none">Host</span>
+        </button>
         <i id="hamburger-menu" class="fas fa-bars"></i>
       </div>
       <div id="menu-dropdown" class="menu-dropdown">
         <ul>
-          <li><a href="../AIRBNB-VCS-PROJECT/pages/Blog.html"><i class="fas fa-blog"></i> Blog </a></li>
-          <li><a href="../AIRBNB-VCS-PROJECT/pages/host.html"><i class="fas fa-home"></i> Host</a></li>
-          <li><a href="#" id="gift-cards-link"><i class="fas fa-gift"></i> Gift Cards</a></li>
+          <li><a href="#blog"><i class="fas fa-blog"></i> Blog</a></li>
+          <li><a href="#host"><i class="fas fa-home"></i> Host</a></li>
+          <li><a href="#gift-cards" id="gift-cards-link"><i class="fas fa-gift"></i> Gift Cards</a></li>
         </ul>
         <div class="dropdown-divider"></div>
         <button id="login-signup-btn">Login / Signup</button>
       </div>
     </div>
-  </header>
-  </div>
   </header>
 
   <!-- ===== HTML: Hero Section ===== -->
@@ -877,6 +943,7 @@
         <h3>Host Protection</h3>
         <p>Our protection program covers you for up to $1 million in damages for each booking.</p>
       </div>
+    </div>
   </section>
 
   <!-- ===== HTML: How It Works Section ===== -->
@@ -971,9 +1038,9 @@
     <h2 class="section-title">Frequently Asked Questions</h2>
     <div class="faq-container">
       <div class="faq-item">
-        <div class="faq-question">
+        <button class="faq-question">
           How much can I earn as a Homeo host? <i class="fas fa-chevron-down"></i>
-        </div>
+        </button>
         <div class="faq-answer">
           <p>Earnings vary based on your location, property type, and how often you host. On average, hosts earn between
             $5,000-$10,000 per year. Our pricing tools can help you determine the optimal price for your space.</p>
@@ -981,9 +1048,9 @@
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
+        <button class="faq-question">
           What are the requirements to become a host? <i class="fas fa-chevron-down"></i>
-        </div>
+        </button>
         <div class="faq-answer">
           <p>To become a Homeo host, you need to have a spare room, apartment, or property that meets our basic safety
             and cleanliness standards. You'll also need to verify your identity and provide necessary documentation
@@ -992,9 +1059,9 @@
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
+        <button class="faq-question">
           How does Homeo protect my property? <i class="fas fa-chevron-down"></i>
-        </div>
+        </button>
         <div class="faq-answer">
           <p>We offer $1 million in property damage protection and $1 million in liability insurance for each booking.
             Our secure payment system ensures you get paid, and our verification process helps ensure guests are
@@ -1003,9 +1070,9 @@
       </div>
 
       <div class="faq-item">
-        <div class="faq-question">
+        <button class="faq-question">
           Can I set my own house rules? <i class="fas fa-chevron-down"></i>
-        </div>
+        </button>
         <div class="faq-answer">
           <p>Yes, you have full control over your house rules. You can specify check-in/check-out times, whether pets
             are allowed, smoking policies, and any other rules important to you. These are clearly communicated to
@@ -1028,7 +1095,7 @@
   <!-- ===== HTML: Host Form Modal ===== -->
   <div id="host-modal" class="modal">
     <div class="modal-content">
-      <span class="close-modal">&times;</span>
+      <button class="close-modal" type="button">&times;</button>
       <h2 class="modal-title">Become a <span>Homeo</span> Host</h2>
       <form id="host-form">
         <div class="form-row">
@@ -1085,12 +1152,11 @@
       </form>
     </div>
   </div>
-  <br>
 
   <!-- ===== HTML: Footer ===== -->
   <footer>
     <div class="logo">
-      <img src="../images/Logo.png" alt="Homeo Logo">
+      <div class="logo-text">Homeo</div>
     </div>
     <p style="font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; font-size: 24px;">Make searching a room
       comfortable</p>
@@ -1108,15 +1174,23 @@
     </div>
   </footer>
 
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
   <!-- ===== JavaScript: Custom Code ===== -->
   <script>
-    // Header scroll effect
-    window.addEventListener('scroll', () => {
-      const header = document.getElementById('main-header');
-      if (window.scrollY > 100) {
-        header.classList.add('scrolled');
-      } else {
-        header.classList.remove('scrolled');
+    // Sticky hosting button functionality
+    window.addEventListener('scroll', function() {
+      const heroSection = document.querySelector('.host-hero');
+      const stickyButton = document.getElementById('sticky-host-btn');
+      
+      if (heroSection && stickyButton) {
+        const heroBottom = heroSection.getBoundingClientRect().bottom;
+        if (heroBottom < 0) {
+          stickyButton.classList.add('show');
+        } else {
+          stickyButton.classList.remove('show');
+        }
       }
     });
 
@@ -1141,7 +1215,17 @@
     document.querySelectorAll('.faq-question').forEach(question => {
       question.addEventListener('click', () => {
         const item = question.parentElement;
-        item.classList.toggle('active');
+        const isActive = item.classList.contains('active');
+        
+        // Close all FAQ items
+        document.querySelectorAll('.faq-item').forEach(item => {
+          item.classList.remove('active');
+        });
+        
+        // Open clicked item if it wasn't active
+        if (!isActive) {
+          item.classList.add('active');
+        }
       });
     });
 
