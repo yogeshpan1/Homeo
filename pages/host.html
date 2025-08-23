@@ -42,15 +42,15 @@
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
     }
 
-    header .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 90%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      height: 70px;
-    }
+    .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 16px;
+  }
 
     .logo {
       display: flex;
@@ -767,50 +767,213 @@
     }
 
     /* ===== MOBILE RESPONSIVE STYLES ===== */
-    @media (max-width: 768px) {
-      .sticky-host-btn {
-        font-size: 0.8rem;
-        padding: 6px 12px;
-        margin-right: 10px;
-      }
 
-      .host-hero {
-        padding: 130px 0 60px;
-      }
-
-      .host-hero h1 {
-        font-size: 2.3rem;
-      }
-
-      .host-hero p {
-        font-size: 1.1rem;
-      }
-
-      .section-title {
-        font-size: 2.2rem;
-        margin-bottom: 40px;
+    /* Large tablets and small desktops */
+    @media (max-width: 992px) {
+      .container {
+        width: 95%;
+        padding: 0 15px;
       }
 
       .benefits-grid,
       .testimonials-grid {
-        gap: 25px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+      }
+
+      .steps-container {
+        padding: 0 15px;
+      }
+    }
+
+    /* Tablets */
+    @media (max-width: 768px) {
+      /* Header improvements */
+      .container {
+        width: 100%;
+        padding: 0 20px;
+      }
+
+      .logo {
+        font-size: 1.8rem;
+      }
+
+      .nav-icons i {
+        font-size: 1.4rem;
+        margin-left: 15px;
+        padding: 10px;
+        border-radius: 50%;
+        transition: background-color 0.3s ease;
+      }
+
+      .nav-icons i:hover {
+        background-color: rgba(245, 80, 61, 0.1);
+      }
+
+      .sticky-host-btn {
+        font-size: 0.8rem;
+        padding: 8px 14px;
+        margin-right: 10px;
+        white-space: nowrap;
+      }
+
+      .menu-dropdown {
+        right: 10px;
+        width: 250px;
+        padding: 15px 0;
+      }
+
+      .menu-dropdown li a {
+        padding: 12px 20px;
+        font-size: 15px;
+      }
+
+      #login-signup-btn {
+        padding: 12px 0;
+        font-size: 15px;
+        margin: 10px 16px 0 16px;
+      }
+
+      /* Hero section */
+      .host-hero {
+        padding: 120px 0 60px;
+        min-height: 70vh;
+      }
+
+      .host-hero-content {
+        padding: 0 30px;
+      }
+
+      .host-hero h1 {
+        font-size: 2.5rem;
+        margin-bottom: 25px;
+        line-height: 1.2;
+      }
+
+      .host-hero p {
+        font-size: 1.2rem;
+        margin-bottom: 35px;
+        line-height: 1.5;
+      }
+
+      .cta-button {
+        font-size: 1.1rem;
+        padding: 14px 32px;
+      }
+
+      /* Sections */
+      .benefits-section,
+      .how-it-works,
+      .testimonials,
+      .faq-section,
+      .cta-section {
+        padding: 80px 0;
+      }
+
+      .section-title {
+        font-size: 2.4rem;
+        margin-bottom: 50px;
+        padding: 0 20px;
+      }
+
+      .benefits-grid,
+      .testimonials-grid {
+        gap: 30px;
         grid-template-columns: 1fr;
+        padding: 0 30px;
       }
 
       .benefit-card,
       .testimonial-card {
-        padding: 25px 20px;
+        padding: 30px 25px;
+        margin-bottom: 20px;
       }
 
+      .benefit-card h3,
+      .testimonial-author h4 {
+        font-size: 1.4rem;
+      }
+
+      .benefit-card p,
+      .testimonial-text {
+        font-size: 1rem;
+        line-height: 1.6;
+      }
+
+      /* How it works */
       .step {
         flex-direction: column;
         text-align: center;
-        padding: 30px 25px;
+        padding: 35px 30px;
+        margin-bottom: 30px;
       }
 
       .step-number {
         margin-right: 0;
-        margin-bottom: 20px;
+        margin-bottom: 25px;
+        font-size: 3rem;
+      }
+
+      .step-content h3 {
+        font-size: 1.5rem;
+        margin-bottom: 18px;
+      }
+
+      .step-content p {
+        font-size: 1rem;
+      }
+
+      /* FAQ */
+      .faq-container {
+        padding: 0 30px;
+      }
+
+      .faq-question {
+        font-size: 1.2rem;
+        padding: 22px;
+        line-height: 1.4;
+      }
+
+      .faq-answer {
+        padding: 0 22px 22px;
+        font-size: 1rem;
+      }
+
+      /* CTA section */
+      .cta-content {
+        padding: 0 30px;
+      }
+
+      .cta-content h2 {
+        font-size: 2.4rem;
+        margin-bottom: 25px;
+      }
+
+      .cta-content p {
+        font-size: 1.2rem;
+        margin-bottom: 35px;
+      }
+
+      /* Modal improvements */
+      .modal-content {
+        padding: 35px 25px;
+        margin: 40px auto;
+        width: 95%;
+        max-height: 90vh;
+        overflow-y: auto;
+      }
+
+      .modal-title {
+        font-size: 2rem;
+        margin-bottom: 25px;
+      }
+
+      .close-modal {
+        width: 45px;
+        height: 45px;
+        font-size: 1.8rem;
+        top: 15px;
+        right: 20px;
       }
 
       .form-row {
@@ -818,36 +981,282 @@
         gap: 0;
       }
 
-      .modal-content {
-        padding: 30px 20px;
-        margin: 30px auto;
+      .form-group {
+        margin-bottom: 20px;
       }
 
-      .modal-title {
-        font-size: 1.8rem;
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 14px;
+        font-size: 16px; /* Prevents zoom on iOS */
       }
 
-      .faq-question {
-        font-size: 1.1rem;
-        padding: 20px;
+      .form-submit {
+        padding: 16px;
+        font-size: 1rem;
+        margin-top: 15px;
       }
 
-      .cta-content h2 {
-        font-size: 2.2rem;
+      /* Footer */
+      footer {
+        padding: 50px 30px 25px;
       }
 
-      .cta-content p {
-        font-size: 1.1rem;
+      footer p {
+        font-size: 18px;
+        margin: 10px 0 25px;
+      }
+
+      footer .social-icons a {
+        margin: 0 15px;
+        font-size: 26px;
       }
     }
 
+    /* Mobile phones */
     @media (max-width: 480px) {
+      /* Header */
+      .container {
+        padding: 0 15px;
+      }
+
+      .logo {
+        font-size: 1.6rem;
+      }
+
+      .nav-icons i {
+        font-size: 1.3rem;
+        margin-left: 12px;
+        padding: 8px;
+      }
+
+      .sticky-host-btn {
+        padding: 6px 10px;
+        font-size: 0.75rem;
+        margin-right: 8px;
+      }
+
+      .menu-dropdown {
+        right: 5px;
+        width: calc(100vw - 30px);
+        max-width: 280px;
+      }
+
+      /* Hero */
+      .host-hero {
+        padding: 110px 0 50px;
+        min-height: 65vh;
+      }
+
+      .host-hero-content {
+        padding: 0 20px;
+      }
+
       .host-hero h1 {
         font-size: 2rem;
+        margin-bottom: 20px;
+        line-height: 1.1;
+      }
+
+      .host-hero p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+      }
+
+      .cta-button {
+        font-size: 1rem;
+        padding: 12px 28px;
+      }
+
+      /* Sections */
+      .benefits-section,
+      .how-it-works,
+      .testimonials,
+      .faq-section,
+      .cta-section {
+        padding: 60px 0;
       }
 
       .section-title {
         font-size: 1.8rem;
+        margin-bottom: 40px;
+        padding: 0 15px;
+        line-height: 1.2;
+      }
+
+      .benefits-grid,
+      .testimonials-grid {
+        gap: 25px;
+        padding: 0 20px;
+      }
+
+      .benefit-card,
+      .testimonial-card,
+      .step {
+        padding: 25px 20px;
+        margin-bottom: 15px;
+      }
+
+      .benefit-icon {
+        width: 65px;
+        height: 65px;
+        line-height: 65px;
+        font-size: 2.2rem;
+        margin-bottom: 20px;
+      }
+
+      .benefit-card h3 {
+        font-size: 1.3rem;
+        margin-bottom: 12px;
+      }
+
+      .benefit-card p {
+        font-size: 0.95rem;
+      }
+
+      /* Testimonials */
+      .testimonial-text {
+        font-size: 0.95rem;
+        margin-bottom: 20px;
+      }
+
+      .author-avatar {
+        width: 45px;
+        height: 45px;
+        margin-right: 12px;
+      }
+
+      .author-info h4 {
+        font-size: 1.1rem;
+      }
+
+      .author-info p {
+        font-size: 0.9rem;
+      }
+
+      /* Steps */
+      .step-number {
+        font-size: 2.5rem;
+        margin-bottom: 20px;
+      }
+
+      .step-content h3 {
+        font-size: 1.3rem;
+        margin-bottom: 15px;
+      }
+
+      .step-content p {
+        font-size: 0.95rem;
+      }
+
+      /* FAQ */
+      .faq-container {
+        padding: 0 20px;
+      }
+
+      .faq-question {
+        font-size: 1rem;
+        padding: 18px;
+      }
+
+      .faq-answer {
+        padding: 0 18px 18px;
+        font-size: 0.95rem;
+      }
+
+      /* CTA */
+      .cta-content {
+        padding: 0 20px;
+      }
+
+      .cta-content h2 {
+        font-size: 2rem;
+        margin-bottom: 20px;
+        line-height: 1.2;
+      }
+
+      .cta-content p {
+        font-size: 1rem;
+        margin-bottom: 30px;
+      }
+
+      /* Modal */
+      .modal-content {
+        padding: 25px 20px;
+        margin: 20px auto;
+        width: calc(100% - 20px);
+        border-radius: 15px;
+      }
+
+      .modal-title {
+        font-size: 1.6rem;
+        margin-bottom: 20px;
+      }
+
+      .close-modal {
+        width: 40px;
+        height: 40px;
+        font-size: 1.5rem;
+        top: 12px;
+        right: 15px;
+      }
+
+      .form-group {
+        margin-bottom: 18px;
+      }
+
+      .form-group label {
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+
+      .form-group input,
+      .form-group select,
+      .form-group textarea {
+        padding: 12px;
+        font-size: 16px;
+        border-radius: 8px;
+      }
+
+      /* Footer */
+      footer {
+        padding: 40px 20px 20px;
+      }
+
+      footer .logo-text {
+        font-size: 1.6rem;
+      }
+
+      footer p {
+        font-size: 16px;
+        margin: 8px 0 20px;
+      }
+
+      footer .social-icons a {
+        margin: 0 10px;
+        font-size: 22px;
+      }
+
+      footer .links {
+        font-size: 13px;
+      }
+
+      footer .links a {
+        margin: 0 6px;
+        display: inline-block;
+        margin-bottom: 5px;
+      }
+    }
+
+    /* Extra small devices */
+    @media (max-width: 360px) {
+      .host-hero h1 {
+        font-size: 1.8rem;
+      }
+
+      .section-title {
+        font-size: 1.6rem;
       }
 
       .benefit-card,
@@ -856,25 +1265,17 @@
         padding: 20px 15px;
       }
 
-      .benefit-icon {
-        width: 70px;
-        height: 70px;
-        line-height: 70px;
-        font-size: 2.5rem;
+      .modal-content {
+        padding: 20px 15px;
+        margin: 15px auto;
       }
 
-      .testimonial-text {
-        font-size: 1rem;
+      .cta-content h2 {
+        font-size: 1.8rem;
       }
 
-      .author-avatar {
-        width: 50px;
-        height: 50px;
-      }
-
-      .sticky-host-btn {
-        padding: 5px 10px;
-        font-size: 0.75rem;
+      .menu-dropdown {
+        width: calc(100vw - 20px);
       }
     }
   </style>
@@ -882,11 +1283,11 @@
 
 <body>
   <!-- ===== HTML: Header / Navigation ===== -->
-  <header>
-    <div class="container">
-      <div class="logo">
-        <a href="#" class="logo">Homeo</a>
-      </div>
+    <header>
+      <div class="container">
+        <div class="logo">
+          <a href="../index.html"><img src="../images/Logo.png" alt="Homeo Logo"></a>
+        </div>
       <div class="nav-icons">
         <!-- Sticky hosting button (appears after scrolling) -->
         <button class="sticky-host-btn" id="sticky-host-btn">
@@ -897,8 +1298,8 @@
       </div>
       <div id="menu-dropdown" class="menu-dropdown">
         <ul>
-          <li><a href="#blog"><i class="fas fa-blog"></i> Blog</a></li>
-          <li><a href="#host"><i class="fas fa-home"></i> Host</a></li>
+          <li><a href="Blog.html"><i class="fas fa-blog"></i> Blog</a></li>
+          <li><a href="host.html"><i class="fas fa-home"></i> Host</a></li>
           <li><a href="#gift-cards" id="gift-cards-link"><i class="fas fa-gift"></i> Gift Cards</a></li>
         </ul>
         <div class="dropdown-divider"></div>
