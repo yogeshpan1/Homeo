@@ -209,6 +209,86 @@
       margin: 40px 0;
       display: block;
     }
+    /* Footer */
+footer {
+  background: #2d333f; 
+  padding: 20px 15px;   
+  text-align: center;
+  border-top: 1px solid #444;
+  color: #ddd;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Footer Logo */
+footer .logo img {
+  max-height: 70px;   
+  width: auto;
+  margin-bottom: 5px; 
+  display: block;
+  padding-left: 15px;
+}
+
+/* Tagline */
+footer .tagline {
+  margin: 4px 0 8px;   
+  font-size: 22px;     
+  font-weight: 50;
+  color: #ddd;
+}
+
+footer .social-icons {
+  margin: 6px 0 8px;   
+}
+
+footer .social-icons a {
+  display: inline-block;
+  margin: 0 8px;
+  font-size: 22px;
+  color: #ddd;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+footer .social-icons a:hover {
+  color: #e74c3c;
+}
+
+/* Footer Links */
+footer .links {
+  margin-top: 6px;    
+  font-size: 14px;
+  color: #aaa;
+}
+
+footer .links a {
+  margin: 0 6px;
+  color: #aaa;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+footer .links a:hover {
+  color: #fff;
+}
+
+
+    /* Mobile responsive styles for footer */
+    @media (max-width: 768px) {
+      footer {
+        padding: 30px 15px;
+      }
+      
+      footer .tagline {
+        font-size: 18px;
+      }
+      
+      footer .social-icons a {
+        font-size: 20px;
+        margin: 0 8px;
+      }
+    }
 
     /* ===== Gift Card Modal Styles ===== */
     .gift-card-modal {
@@ -417,8 +497,8 @@
       </div>
       <div id="menu-dropdown" class="menu-dropdown">
         <ul>
-          <li><a href="#"><i class="fas fa-question-circle"></i> Help Center</a></li>
-          <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+          <li><a href="Blog.html"><i class="fas fa-blog"></i> Blog </a></li>
+          <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
           <li><a href="#" id="gift-cards-link"><i class="fas fa-gift"></i> Gift Cards</a></li>
         </ul>
         <div class="dropdown-divider"></div>
@@ -472,7 +552,34 @@
       The story of Homeo is still being written. With every new host and traveler, we build a community that belongs to
       Nepal and welcomes the world.
     </p>
+    
   </div>
+    <footer>
+  <!-- Logo -->
+  <div class="logo">
+    <img src="images/Logo.png" alt="Home Logo">
+  </div>
+
+  <!-- Tagline -->
+  <div class="tagline">Make searching a room comfortable</div>
+
+  <!-- Social media -->
+  <div class="social-icons">
+    <a href="https://www.instagram.com"><i class="fab fa-instagram"></i></a>
+    <a href="https://www.youtube.com"><i class="fab fa-youtube"></i></a>
+    <a href="https://www.facebook.com"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.booking.com"><i class="fas fa-bed"></i></a>
+  </div>
+
+  <!-- Footer links -->
+  <div class="links">
+    © 2025 Homeo 
+    <a href="#">Terms</a>
+    <a href="#">Privacy</a>
+    <a href="#">Cookies</a>
+  </div>
+</footer>
+
   <!-- Gift Card Modal -->
   <div id="gift-card-modal" class="gift-card-modal">
     <div class="gift-card-content">
