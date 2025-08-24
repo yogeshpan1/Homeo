@@ -29,36 +29,35 @@
 
 ## 🚀 Tech Stack
 - **Frontend:** HTML, CSS, JavaScript  
-- **Backend:** *(Add if used – e.g., Node.js, PHP, Django)*  
-- **Database:** *(Add if used – e.g., MySQL, MongoDB)*  
 - **Version Control:** Git & GitHub  
 
 ---
 
 ## 📂 Project Structure
 Homeo/
-│── index.html # Homepage
-│── login.html # User login
-│── signup.html # User registration
-│── hotels.html # View hotels/rooms
-│── booking.html # Booking page
-│── host.html # Host room form
-│── blog.html # Blog section
-│── about.html # About Us / Portfolio
-│── assets/ # Images, logos, icons
-│── css/ # Stylesheets
-│── js/ # JavaScript files
+│── index.html        # Homepage
+│
+├── pages/            # Other HTML pages
+│   ├── login.html    # User login
+│   ├── signup.html   # User registration
+│   ├── hotels.html   # View hotels/rooms
+│   ├── booking.html  # Booking page
+│   ├── host.html     # Host room form
+│   ├── blog.html     # Blog section
+│   └── about.html    # About Us / Portfolio
+│
+├── images/           # Images, logos, icons
+├── css/              # Stylesheets
+└── js/               # JavaScript files
 
 ---
 
 ## ⚙️ Installation & Setup
 1. Clone this repository  
    ```bash
-   git clone https://github.com/https://github.com/yogeshpan1/AIRBNB-VCS-PROJECT.git
+   git clone https://github.com/yogeshpan1/Homeo.git
    cd homeo
 2. Open index.html in your browser (or use Live Server in VS Code).
-
-3. (If backend exists) Run the server with the required command.
 
 ---
 
