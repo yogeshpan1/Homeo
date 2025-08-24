@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Yogesh Pant</title>
+
+  <link rel="stylesheet" href="../CSS/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    /* ===== Navbar ===== */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: linear-gradient(135deg, #0c0c0c 0%, #1a1a1a 100%);
+      padding: 4px 0;
+      /* smaller navbar height */
+      z-index: 1000;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+      /* subtle bottom shadow */
+    }
+
+
+    header .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 90%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 70px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+
+    .logo img {
+      height: 100%;
+      max-height: 60px;
+      object-fit: contain;
+    }
+
+
+    .nav-icons {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+    }
+
+    .nav-icons i {
+      font-size: 1.5rem;
+      margin-left: 20px;
+      cursor: pointer;
+      color: #ffffff;
+      text-shadow: none;
+      transition: transform 0.2s ease;
+    }
+
+    .nav-icons i:hover {
+      transform: scale(1.1);
+    }
+
+    .menu-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 16px;
+      background: white;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+      border-radius: 12px;
+      padding: 12px 0;
+      width: 220px;
+      font-size: 14px;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+      z-index: 1002;
+    }
+
+    .menu-dropdown.active {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    .menu-dropdown ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .menu-dropdown li a {
+      display: block;
+      padding: 10px 20px;
+      color: #333;
+      text-decoration: none;
+      transition: background 0.2s ease;
+    }
+
+    .menu-dropdown li a:hover {
+      background-color: #f7f7f7;
+      border-radius: 6px;
+    }
+
+    .dropdown-divider {
+      height: 1px;
+      background-color: #eee;
+      margin: 10px 0;
+    }
+
+    #login-signup-btn {
+      width: calc(100% - 32px);
+      margin: 0 16px;
+      background-color: #ff5a5f;
+      color: white;
+      font-weight: 600;
+      font-size: 14px;
+      padding: 10px 0;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #login-signup-btn:hover {
+      background-color: #e04a4f;
+    }
+
+    .nav-icons i.fa-bars {
+    display: block !important;
+    font-size: 1.5rem !important;
+    color: #ffffff !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+  }
+
+  </style>
+  <!--
+    - google font link
+  -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+    <div class="container">
+      <div class="logo">
+        <a href="../index.html"><img src="../images/Logo.png" alt="Homeo Logo"></a>
+      </div>
+      <div class="nav-icons">
+        <i id="hamburger-menu" class="fas fa-bars"></i>
+      </div>
+      <div id="menu-dropdown" class="menu-dropdown">
+        <ul>
+          <li><a href="../pages/Blog.html"><i class="fas fa-blog"></i> Blog </a></li>
+          <li><a href="../pages/host.html"><i class="fas fa-home"></i> Host</a></li>
+          <li><a href="#" id="gift-cards-link"><i class="fas fa-gift"></i> Gift Cards</a></li>
+          <li><a href="pages/about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
+        </ul>
+        <div class="dropdown-divider"></div>
+        <button id="login-signup-btn">Login / Signup</button>
+      </div>
+    </div>
+  </header>
+  <br> <br>
+  <main>
+
+    <aside class="sidebar" data-sidebar>
+
+      <div class="sidebar-info">
+
+        <figure class="avatar-box">
+            <img src="../images/my-avatar.jpg" alt="Richard hanrick" width="80" style="border-radius: 30%; height: 180px; object-fit: cover;">
+        </figure>
+
+
+        <div class="info-content">
+          <h1 class="name" title="Richard hanrick">Yogesh Pant</h1>
+
+          <p class="title">Student</p>
+        </div>
+
+        <button class="info_more-btn" data-sidebar-btn>
+          <span>Show Contacts</span>
+
+          <ion-icon name="chevron-down"></ion-icon>
+        </button>
+
+      </div>
+
+      <div class="sidebar-info_more">
+
+        <div class="separator"></div>
+
+        <ul class="contacts-list">
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+
+              <a href="mailto:richard@example.com" class="contact-link">yogeshpant911@gmail.com</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+
+              <a href="tel:+977 2133522795" class="contact-link">+977 9765228806</a>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Birthday</p>
+
+              <time datetime="1982-06-23">April 28, 2006</time>
+            </div>
+
+          </li>
+
+          <li class="contact-item">
+
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+
+            <div class="contact-info">
+              <p class="contact-title">Location</p>
+
+              <address>Tokha, Kathmandu, Nepal</address>
+            </div>
+
+          </li>
+
+        </ul>
+
+        <div class="separator"></div>
+
+        <ul class="social-list">
+
+          <li class="social-item">
+            <a href="#" class="social-link">
+              <ion-icon name="logo-LinkedIn"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="#" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+
+          <li class="social-item">
+            <a href="#" class="social-link">
+              <ion-icon name="logo-twitter"></ion-icon>
+            </a>
+          </li>
+
+        </ul>
+
+      </div>
+
+    </aside>
+
+    <div class="main-content">
+
+      <nav class="navbar">
+
+        <ul class="navbar-list">
+            <li class="navbar-item">
+              <button class="navbar-link active" data-nav-link>About</button>
+            </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Resume</button>
+            </li>
+            <li class="navbar-item">
+              <button class="navbar-link" data-nav-link>Contact</button>
+            </li>
+          </ul>
+
+      </nav>
+
+
+      <article class="about  active" data-page="about">
+
+        <header>
+          <h2 class="h2 article-title">About me</h2>
+        </header>
+
+        <section class="about-text">
+          <p>
+            I'm <b>Yogesh Pant</b>, a second-year student at Islington College, Kathmandu.  
+    Currently, I’m working as a Marketing Intern at ING Skill Academy, where I focus on the admissions department.
+          </p>
+
+          <p>
+              I enjoy exploring new opportunities, learning through real-world experiences, and applying my skills to grow both personally and professionally.  
+    My aim is to keep learning, contribute meaningfully, and gain hands-on experience that helps me build a strong career foundation.
+          </p>
+        </section>
+
+        <section class="service">
+
+          <h3 class="h3 service-title">What i'm doing</h3>
+
+          <ul class="service-list">
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="../images/icon-design.svg
+                " alt="design icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web design</h4>
+
+                <p class="service-item-text">
+                  Professional web design that makes your brand shine online.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="../images/icon-dev.svg" alt="Web development icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Web development</h4>
+
+                <p class="service-item-text">
+                  High-quality development of sites at the professional level.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="../images/icon-app.svg" alt="mobile app icon" width="40">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Application</h4>
+
+                <p class="service-item-text">
+                  Professional development of applications for deskotop and mobile.
+                </p>
+              </div>
+
+            </li>
+
+            <li class="service-item">
+
+              <div class="service-icon-box">
+                <img src="../images/marketing.png" alt="camera icon" width="50">
+              </div>
+
+              <div class="service-content-box">
+                <h4 class="h4 service-item-title">Marketing</h4>
+
+                <p class="service-item-text">
+                Professional marketing that gets you noticed, remembered and chosen.
+                </p>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+
+        
+        <!-- clients-->
+
+        <section class="clients">
+
+          <h3 class="h3 clients-title">Engaged With</h3>
+
+          <ul class="clients-list has-scrollbar">
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="../images/SEP-PROG.png" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="../images/Kavya-Ing.svg" alt="client logo">
+              </a>
+            </li>
+
+            <li class="clients-item">
+              <a href="#">
+                <img src="../images/islington.png" alt="client logo">
+              </a>
+            </li>
+            
+
+          </ul>
+
+        </section>
+
+      </article>
+
+      <!--#RESUME -->
+
+      <article class="resume" data-page="resume">
+
+        <header>
+          <h2 class="h2 article-title">Resume</h2>
+        </header>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Education</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Islington College</h4>
+
+              <span>2024-2027</span>
+
+              <p class="timeline-text">
+                Pursuing BSc(Hons)Computing
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Learning Realm International School</h4>
+
+              <span>2022 — 2024</span>
+
+              <p class="timeline-text">
+                Completed Intermediates in Science with a biology major.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Aishwarya Vidya Niketan</h4>
+
+              <span>2018 — 2022</span>
+
+              <p class="timeline-text">
+                Completed Secondary Level Education.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="timeline">
+
+          <div class="title-wrapper">
+            <div class="icon-box">
+              <ion-icon name="book-outline"></ion-icon>
+            </div>
+
+            <h3 class="h3">Experience-ING SKILL ACADEMY</h3>
+          </div>
+
+          <ol class="timeline-list">
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Sales & Outreach (Intern)</h4>
+
+              <span>April 2025 — June 2025 </span>
+
+              <p class="timeline-text">
+                Engaged with students and parents to promote the Skill Enrichment Programme (SEP), strengthening communication and advisory skills.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Kavya School +2– Admissions Officer (Intern)</h4>
+
+              <span>July 2025 — August 2025</span>
+
+              <p class="timeline-text">
+                Worked with the admissions team to transition SEP graduates into Kavya’s +2 program by engaging with prospective students and parents, arranging school visits, and providing guidance on academic pathways.
+              </p>
+
+            </li>
+
+            <li class="timeline-item">
+
+              <h4 class="h4 timeline-item-title">Islington College – Admissions Officer (Intern)</h4>
+
+              <span>August 2025 — Present</span>
+
+              <p class="timeline-text">
+                Focused on guiding prospective students toward bachelor’s programs at Islington College by providing academic counseling, organizing campus visits, and supporting them throughout the application and enrollment process.
+              </p>
+
+            </li>
+
+          </ol>
+
+        </section>
+
+        <section class="skill">
+
+          <h3 class="h3 skills-title">My skills</h3>
+
+          <ul class="skills-list content-card">
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Web design</h5>
+                <data value="80">80%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 80%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Web Devlopment</h5>
+                <data value="90">90%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 90%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Application Building</h5>
+                <data value="75">75%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 75%;"></div>
+              </div>
+
+            </li>
+
+            <li class="skills-item">
+
+              <div class="title-wrapper">
+                <h5 class="h5">Sales</h5>
+                <data value="85">85%</data>
+              </div>
+
+              <div class="skill-progress-bg">
+                <div class="skill-progress-fill" style="width: 85%;"></div>
+              </div>
+
+            </li>
+
+          </ul>
+
+        </section>
+
+      </article>
+
+      <article class="contact" data-page="contact">
+
+        <header>
+          <h2 class="h2 article-title">Contact</h2>
+        </header>
+
+        <section class="contact-form">
+
+          <h3 class="h3 form-title">Contact Form</h3>
+
+          <form action="#" class="form" data-form>
+
+            <div class="input-wrapper">
+              <input type="text" name="fullname" class="form-input" placeholder="Full name" required data-form-input>
+
+              <input type="email" name="email" class="form-input" placeholder="Email address" required data-form-input>
+            </div>
+
+            <br>
+
+            <textarea name="message" class="form-input" placeholder="Your Message" required data-form-input></textarea>
+
+            <button class="form-btn" type="submit" disabled data-form-btn>
+              <ion-icon name="paper-plane"></ion-icon>
+              <span>Send Message</span>
+            </button>
+
+          </form>
+
+        </section>
+
+      </article>
+
+    </div>
+
+  </main>
+
+
+  <script src="../JS/script.js"></script>
+
+  
+  <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>

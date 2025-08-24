@@ -809,7 +809,7 @@
   }
 
   .listing-card:hover {
-    flex: 0 0 480px;   /* wider but not too much */
+    flex: 0 0 480px;   
     max-height: 400px; /* total cap */
     box-shadow: 0 10px 25px rgba(0,0,0,0.15);
     transform: translateY(-5px);
@@ -817,7 +817,6 @@
     position: relative;
   }
 
-  /* Updated image container size - larger and more square */
   .listing-image {
     width: 100%;
     height: 220px; /* Increased from 180px */
@@ -830,7 +829,7 @@
   }
 
   .listing-card:hover .listing-image {
-    height: 150px; /* Reduce image height on hover to make room for content */
+    height: 150px; 
   }
 
   .image-slider {
@@ -939,13 +938,12 @@
     right: 0;
   }
 
-  /* Card content - reduced gap between image and title */
   .listing-card h3 {
     font-size: 1.2rem;
     font-weight: 600;
-    margin-bottom: 0.3rem; /* Reduced from 0.5rem */
+    margin-bottom: 0.3rem; 
     color: #2d333f;
-    margin-top: 0.5rem; /* Added to compensate for reduced margin-bottom on image */
+    margin-top: 0.5rem;
   }
 
   .listing-card .price {
@@ -955,7 +953,6 @@
     margin-bottom: 1rem;
   }
 
-  /* FIXED: Expanded content on hover - now shows Dive Deeper button */
   .listing-details {
     display: flex;
     flex-direction: column;
@@ -968,7 +965,7 @@
   }
 
   .listing-card:hover .listing-details {
-    max-height: 200px; /* Increased to accommodate new button */
+    max-height: 200px; 
     opacity: 1;
     margin-top: 0.8rem;
   }
@@ -1022,7 +1019,7 @@
     background: #e04a4f;
   }
 
-  /* Dive Deeper Button - FIXED: Now visible */
+  /* Dive Deeper Button*/
   .dive-deeper-btn {
     background: transparent;
     color: #F5503D;
@@ -1245,7 +1242,6 @@
   }
 
   @media (max-width: 480px) {
-    /* Extra small mobile adjustments */
     .container {
       padding: 0 15px;
     }
@@ -1287,7 +1283,6 @@
 <body>
 
     <!-- ===== HTML: Header / Navigation ===== -->
-    <!-- ===== HTML: Header / Navigation ===== -->
     <header>
       <div class="container">
         <div class="logo">
@@ -1312,6 +1307,7 @@
                 <li><a href="pages/Blog.html"><i class="fas fa-blog"></i> Blog </a></li>
                 <li><a href="pages/host.html"><i class="fas fa-home"></i> Host</a></li>
                 <li><a href="#" id="gift-cards-link"><i class="fas fa-gift"></i> Gift cards</a></li>
+                <li><a href="pages/about.html"><i class="fas fa-info-circle"></i> About Us</a></li>
               </ul>
               <div class="dropdown-divider"></div>
               <a href="pages/login.html"><button id="login-signup-btn"><i class="fas fa-user"></i> Log in | Sign up</button></a>
@@ -1701,9 +1697,8 @@
                   <div class="listing-image">
                       <div class="image-slider">
                           <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1597211833712-2e452c25e99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
-                      </div>
+                          <div class="slider-image" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/367397409.jpg?k=b506d81cb1a53a2503211821aac75843d04469a1ebdee3c6c685c267ca684531&o=')"></div>
+                          <div class="slider-image" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/225943025.jpg?k=2e0c98e60a03f8fd20e63238501c6a9dd67a738fc0de2269c3fb85936740c56e&o=')"></div>                      </div>
                       <button class="image-nav prev">&#10094;</button>
                       <button class="image-nav next">&#10095;</button>
                       <div class="slider-controls">
@@ -1739,8 +1734,8 @@
                   <div class="listing-image">
                       <div class="image-slider">
                           <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1449158743715-0a90ebb6d2d8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fG1vdW50YWluJTIwcmV0cmVhdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1590071089560-5d4df1fdaca5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1vdW50YWluJTIwcmV0cmVhdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1586375300770-1db2096c8d0a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fG1vdW50YWluJTIwcmV0cmVhdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=c crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/113077569.jpg?k=c76e59a3d01a024df4d4c0c7d931353aff0af835cf1c1cc1bcd38e2a370c9c68&o=')"></div>
+                          <div class="slider-image" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/113074280.jpg?k=219224f668c9923ab3b77fa4636578d984a2021a6ee3130486704e734d13731f&o=')"></div>
                       </div>
                       <button class="image-nav prev">&#10094;</button>
                       <button class="image-nav next">&#10095;</button>
@@ -1776,10 +1771,11 @@
               <div class="listing-card">
                   <div class="listing-image">
                       <div class="image-slider">
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1595877244574-e90ce41ce089?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTZ8fG1ouvW50YWluJTIwbG9kZ2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80')"></div>
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1581888227590-9c6fa5c60b8a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MjB8fG1vdW50YWluJTIwbG9kZ2V8ZW58MHx8MHx8fDA%3D&auto=format&fit=crop&w=500&q=80')"></div>
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1590071089560-5d4df1fdaca5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fG1vdW50YWluJTIwcmV0cmVhdHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
-                      </div>
+                          <div class="slider-image" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/113077569.jpg?k=c76e59a3d01a024df4d4c0c7d931353aff0af835cf1c1cc1bcd38e2a370c9c68&o=')"></div>
+                          <div class="slider-image" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/113074280.jpg?k=219224f668c9923ab3b77fa4636578d984a2021a6ee3130486704e734d13731f&o=')"></div>
+                          <div class="slider-image" style="background-image: url('https://cf.bstatic.com/xdata/images/hotel/max1024x768/611029799.jpg?k=8c355d96d5b3fcd26aa31d26bf1df9a3cdec7ea34b414bbcf6e66ea4d115525c&o=')"></div>
+
+                        </div>
                       <button class="image-nav prev">&#10094;</button>
                       <button class="image-nav next">&#10095;</button>
                       <div class="slider-controls">
@@ -1814,7 +1810,7 @@
               <div class="listing-card">
                   <div class="listing-image">
                       <div class="image-slider">
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1596394516093-501ba68a0ba6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://imgs.search.brave.com/UKneEirRe1TFZZAg-j43PoMdF1M_n1GVILa7jaR8ZtE/rs:fit:500:0:1:0/g:ce/aHR0cHM6Ly93YWxs/cGFwZXJhY2Nlc3Mu/Y29tL2Z1bGwvMzI4/MDgzNC5qcGc')"></div>
                           <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1578662996442-48f60103fc96?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
                           <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1597211833712-2e452c25e99f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NXx8bW91bnRhaW4lMjBjYWJpbnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
                       </div>
@@ -1864,9 +1860,9 @@
               <div class="listing-card">
                   <div class="listing-image">
                       <div class="image-slider">
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=c crop&w=500&q=80')"></div>
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6ODM0NTc1NDY3MTQ1MTMxNDA5/original/f540b46d-c271-4508-95ca-b50ec416ebba.jpeg?im_w=1200')"></div>
+                          <div class="slider-image" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6ODM0NTc1NDY3MTQ1MTMxNDA5/original/474d5b29-d6d2-493e-aad0-fbf99c15c3a4.jpeg?im_w=720')"></div>
+                          <div class="slider-image" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6ODM0NTc1NDY3MTQ1MTMxNDA5/original/6d6407a6-7804-45d4-b5fb-f9832eec9e8e.jpeg?im_w=720')"></div>
                       </div>
                       <button class="image-nav prev">&#10094;</button>
                       <button class="image-nav next">&#10095;</button>
@@ -1902,9 +1898,9 @@
               <div class="listing-card">
                   <div class="listing-image">
                       <div class="image-slider">
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTI1MDg0MzQ1MTg0Nzc0ODk3OA==/original/9ae138fd-9516-429d-88f9-7511945836b6.jpeg?im_w=1200')"></div>
+                          <div class="slider-image" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTI1MDg0MzQ1MTg0Nzc0ODk3OA==/original/9f7d2eb7-e763-4786-91da-8f76cd3a283c.jpeg?im_w=720')"></div>
+                          <div class="slider-image" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-U3RheVN1cHBseUxpc3Rpbmc6MTI1MDg0MzQ1MTg0Nzc0ODk3OA==/original/3f8d3e2e-a124-4650-84df-2afbfa9a762e.jpeg?im_w=720')"></div>
                       </div>
                       <button class="image-nav prev">&#10094;</button>
                       <button class="image-nav next">&#10095;</button>
@@ -1940,9 +1936,9 @@
               <div class="listing-card">
                   <div class="listing-image">
                       <div class="image-slider">
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=c crop&w=500&q=80')"></div>
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-1240501916154054415/original/5419c8ad-9455-4bc2-aab8-6df66ca33431.jpeg?im_w=1200')"></div>
+                          <div class="slider-image" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-1240501916154054415/original/1eb82b6d-e127-493f-9e02-bf6bf316cd1d.jpeg?im_w=720')"></div>
+                          <div class="slider-image" style="background-image: url('https://a0.muscache.com/im/pictures/hosting/Hosting-1240501916154054415/original/807c2ca9-9913-4577-9b61-f402a6619d61.jpeg?im_w=720')"></div>
                       </div>
                       <button class="image-nav prev">&#10094;</button>
                       <button class="image-nav next">&#10095;</button>
@@ -1978,8 +1974,8 @@
               <div class="listing-card">
                   <div class="listing-image">
                       <div class="image-slider">
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8YXBhcnRtZW50fGVufDB8fDB8fHww&auto=format&fit=crop&w=500&q=80')"></div>
-                          <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
+                          <div class="slider-image" style="background-image: url('https://a0.muscache.com/im/pictures/miso/Hosting-28076715/original/756271a4-bdd8-49e0-b49c-5b217aab690b.jpeg?im_w=1200')"></div>
+                          <div class="slider-image" style="background-image: url('https://a0.muscache.com/im/pictures/miso/Hosting-28076715/original/e45ff53c-2915-46e7-a336-a3a041119313.jpeg?im_w=1440')"></div>
                           <div class="slider-image" style="background-image: url('https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGFwYXJ0bWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=80')"></div>
                       </div>
                       <button class="image-nav prev">&#10094;</button>
