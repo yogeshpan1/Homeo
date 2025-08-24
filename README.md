@@ -34,18 +34,16 @@
 ---
 
 ## 📂 Project Structure
-project-folder/
-│
-├── index.html
-├── /css
-│   └── style.css
-├── /js
-│   └── script.js
-├── /images
-│   └── logo.png
-└── /pages
-    └── about.html
-    
+
+<pre>
+project-root
+├── images/
+├── css/
+├── pages/
+├── js/
+└── index.html
+</pre>
+
 ---
 
 ## ⚙️ Installation & Setup
