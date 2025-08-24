@@ -8,11 +8,11 @@
 </p>
 
 <p align="center">
-  <a href="#">🔑 Login & Signup</a> •
-  <a href="#">🏨 View Hotels</a> •
-  <a href="#">🛏️ Host Rooms</a> •
-  <a href="#">📰 Blog</a> •
-  <a href="#">👥 About Us</a>
+  <a href="https://homeo-project.netlify.app/">🔑 Home</a> •
+  <a href="https://homeo-project.netlify.app/pages/login.html">🔑 Login & Signup</a> •
+  <a href="https://homeo-project.netlify.app/pages/host">🛏️ Host Rooms</a> •
+  <a href="https://homeo-project.netlify.app/pages/blog">📰 Blog</a> •
+  <a href="https://homeo-project.netlify.app/pages/about">👥 About Us</a>
 </p>
 
 ---
