@@ -61,6 +61,7 @@ project-root
 <p align="center"> <img src="/images/readme/blog.png" alt="Home Page Demo" width="600"/> </p>
 <p align="center"> <img src="/images/readme/room.png" alt="Home Page Demo" width="600"/> </p>
 <p align="center"> <img src="/images/readme/host.png" alt="Home Page Demo" width="600"/> </p>
+<p align="center"> <img src="/images/readme/aboutus.png" alt="Home Page Demo" width="600"/> </p>
 
 ---
 
