@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="assets/logo.png" alt="Homeo Logo" width="120"/>
+  <img src="/images/readme/Logo.png" alt="Homeo Logo" width="120"/>
 </p>
 
 <h1 align="center">🏠 Homeo</h1>
@@ -62,8 +62,11 @@ Homeo/
 ---
 
 ## 📸 Screenshots / Demo
-<p align="center"> <img src="/images/readme/Logo.png" alt="Home Page Demo" width="600"/> </p>
-
+<p align="center"> <img src="/images/readme/home1.png" alt="Home Page Demo" width="600"/> </p>
+<p align="center"> <img src="/images/readme/home2.png" alt="Home Page Demo" width="600"/> </p>
+<p align="center"> <img src="/images/readme/blog.png" alt="Home Page Demo" width="600"/> </p>
+<p align="center"> <img src="/images/readme/room.png" alt="Home Page Demo" width="600"/> </p>
+<p align="center"> <img src="/images/readme/host.png" alt="Home Page Demo" width="600"/> </p>
 ---
 
 ## 👨‍💻 Team Members
