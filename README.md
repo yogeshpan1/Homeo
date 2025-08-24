@@ -34,22 +34,18 @@
 ---
 
 ## 📂 Project Structure
-Homeo/
-│── index.html        # Homepage
+project-folder/
 │
-├── pages/            # Other HTML pages
-│   ├── login.html    # User login
-│   ├── signup.html   # User registration
-│   ├── hotels.html   # View hotels/rooms
-│   ├── booking.html  # Booking page
-│   ├── host.html     # Host room form
-│   ├── blog.html     # Blog section
-│   └── about.html    # About Us / Portfolio
-│
-├── images/           # Images, logos, icons
-├── css/              # Stylesheets
-└── js/               # JavaScript files
-
+├── index.html
+├── /css
+│   └── style.css
+├── /js
+│   └── script.js
+├── /images
+│   └── logo.png
+└── /pages
+    └── about.html
+    
 ---
 
 ## ⚙️ Installation & Setup
