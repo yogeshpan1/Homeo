@@ -2,7 +2,7 @@
   <img src="/images/readme/Logo.png" alt="Homeo Logo" width="120"/>
 </p>
 
-<h1 align="center">🏠 Homeo</h1>
+<h1 align="center">Homeo</h1>
 <p align="center">
   A simple Airbnb-style booking website built as a college project for the <b>Code Management with VCS</b> module.
 </p>
@@ -67,21 +67,19 @@ Homeo/
 <p align="center"> <img src="/images/readme/blog.png" alt="Home Page Demo" width="600"/> </p>
 <p align="center"> <img src="/images/readme/room.png" alt="Home Page Demo" width="600"/> </p>
 <p align="center"> <img src="/images/readme/host.png" alt="Home Page Demo" width="600"/> </p>
+
 ---
 
-## 👨‍💻 Team Members
+## 👥 Team Members
 
-[Yogesh Pant] – Team Lead, Server hosting, Portfolio & About us pages
-
-[Rikesh Adhikari] – Frontend & Backend Development, Home page
-
-[Arjan Regmi] – Frontend & Backend Development, Login Pages
-
-[Aaditya Pudasaini] – Frontend & Backend Development, Room pages 
-
-[Jasun Maharjan] - Content Manager & Presentation
-
-[Shirbhooshan Razopadhyay] - UI/UX & Design
+| Name                     | Role(s) & Contribution                                      |
+|--------------------------|-------------------------------------------------------------|
+| Yogesh Pant              | Team Lead, Server Hosting, Portfolio & About Us pages       |
+| Rikesh Adhikari          | Frontend & Backend Development, Home page                   |
+| Arjan Regmi              | Frontend & Backend Development, Login pages                 |
+| Aaditya Pudasaini        | Frontend & Backend Development, Room pages                  |
+| Jasun Maharjan           | Content Manager & Presentation                              |
+| Shirbhooshan Razopadhyay | UI/UX & Design                                              |
 
 ---
 
