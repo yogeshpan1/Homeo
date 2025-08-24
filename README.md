@@ -62,7 +62,7 @@ Homeo/
 ---
 
 ## 📸 Screenshots / Demo
-<p align="center"> <img src="assets/demo-home.png" alt="Home Page Demo" width="600"/> </p>
+<p align="center"> <img src="/images/readme/Logo.png" alt="Home Page Demo" width="600"/> </p>
 
 ---
 
