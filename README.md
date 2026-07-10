@@ -1,7 +1,7 @@
 <p align="center">
   <img src="/images/readme/Logo.png" alt="Homeo Logo" width="120"/>
 </p>
-
+ 
 <h1 align="center">Homeo</h1>
 <p align="center">
   A simple Airbnb-style booking website built as a college project for the <b>Code Management with VCS</b> module.
