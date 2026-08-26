@@ -5,7 +5,7 @@
 <h1 align="center">Homeo</h1>
 <p align="center">
   A simple Airbnb-style booking website built as a college project for the <b>Code Management with VCS</b> module.
-</p>
+</p> 
 
 <p align="center">
   <a href="https://homeo-project.netlify.app/">🔑 Home</a> •
